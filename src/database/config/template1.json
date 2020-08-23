@@ -1,0 +1,171 @@
+{
+    "id": "",
+    "name": "Mananml",
+    "pages": [
+        {
+            "id": "",
+            "name": "口粮 - 国外",
+            "template": "",
+            "route": {
+                "path": "/",
+                "params": ""
+            },
+            "accessControl": {
+                "guest": true,
+                "customer": true,
+                "admin": true
+            },
+            "sections": [
+                {
+                    "id": "",
+                    "name": "",
+                    "template": "",
+                    "route": {
+                        "path": "/",
+                        "param": ""
+                    },
+                    "accessControl": {
+                        "guest": true,
+                        "customer": true,
+                        "admin": true
+                    }
+                }
+            ]
+        },
+        {
+            "id": "",
+            "name": "口粮 - 国内",
+            "template": "",
+            "route": {
+                "path": "/localProducts",
+                "params": ""
+            },
+            "accessControl": {
+                "guest": true,
+                "customer": true,
+                "admin": true
+            },
+            "sections": []
+        },
+        {
+            "id": "",
+            "name": "主页",
+            "template": "",
+            "route": {
+                "path": "/main",
+                "params": ""
+            },
+            "accessControl": {
+                "guest": true,
+                "customer": true,
+                "admin": true
+            },
+            "sections": []
+        },
+        {
+            "id": "",
+            "name": "Checkout",
+            "template": "",
+            "route": {
+                "path": "/checkout",
+                "params": ""
+            },
+            "accessControl": {
+                "guest": true,
+                "customer": true,
+                "admin": true
+            },
+            "sections": []
+        },
+        {
+            "id": "",
+            "name": "管理员登陆",
+            "template": "",
+            "route": {
+                "path": "/adminLogin",
+                "params": ""
+            },
+            "accessControl": {
+                "guest": true,
+                "customer": true,
+                "admin": true
+            },
+            "sections": []
+        },
+        {
+            "id": "",
+            "name": "管理订单",
+            "template": "",
+            "route": {
+                "path": "/manageOrder",
+                "params": ""
+            },
+            "accessControl": {
+                "guest": false,
+                "customer": false,
+                "admin": true
+            },
+            "sections": []
+        },
+        {
+            "id": "",
+            "name": "管理国外口粮",
+            "template": "",
+            "route": {
+                "path": "/manageProduct",
+                "params": ""
+            },
+            "accessControl": {
+                "guest": false,
+                "customer": false,
+                "admin": true
+            },
+            "sections": []
+        },
+        {
+            "id": "",
+            "name": "管理国内口粮",
+            "template": "",
+            "route": {
+                "path": "/manageProductLocal",
+                "params": ""
+            },
+            "accessControl": {
+                "guest": false,
+                "customer": false,
+                "admin": true
+            },
+            "sections": []
+        },
+        {
+            "id": "",
+            "name": "口粮资料管理",
+            "template": "",
+            "route": {
+                "path": "/manageProductInfo",
+                "params": ""
+            },
+            "accessControl": {
+                "guest": false,
+                "customer": false,
+                "admin": true
+            },
+            "sections": []
+        },
+        {
+            "id": "",
+            "name": "支付订单",
+            "template": "",
+            "route": {
+                "path": "/payment",
+                "params": ":id"
+            },
+            "accessControl": {
+                "guest": false,
+                "customer": false,
+                "admin": true
+            },
+            "sections": []
+        }
+    ]
+}

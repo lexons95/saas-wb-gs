@@ -1,0 +1,66 @@
+{
+    "objectss": [
+        {
+            "id": "page_object",
+            "name": "page",
+            "attributes": [
+                {
+                    "key": "id",
+                    "value": ""
+                },
+                {
+                    "key": "name",
+                    "value": ""
+                },
+                {
+                    "key": "template",
+                    "value": ""
+                },
+                {
+                    "key": "route",
+                    "value": {
+                        
+                    }
+                }
+            ]
+        }
+        
+    ],
+    "objects": {
+        "parent": {
+            "id": "",
+            "name": "",
+            "pages": []
+        },
+        "page": {
+            "id": "",
+            "name": "",
+            "template": "",
+            "route": {
+                "path": "/",
+                "params": ""
+            },
+            "accessControl": {
+                "guest": true,
+                "customer": true,
+                "admin": true
+            },
+            "sections": []
+        },
+        "section": {
+            "id": "",
+            "name": "",
+            "template": "",
+            "route": {
+                "path": "/",
+                "param": ""
+            },
+            "accessControl": {
+                "guest": true,
+                "customer": true,
+                "admin": true
+            }
+        }
+
+    }
+}

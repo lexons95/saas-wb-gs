@@ -1,0 +1,32 @@
+[
+  {
+    "id": "",
+    "name": "cart page",
+    "template": "",
+    "route": {
+        "path": "/products",
+        "params": ""
+    },
+    "accessControl": {
+        "guest": true,
+        "customer": true,
+        "admin": true
+    },
+    "sections": [
+        {
+            "id": "",
+            "name": "",
+            "template": "",
+            "route": {
+                "path": "/",
+                "param": ""
+            },
+            "accessControl": {
+                "guest": true,
+                "customer": true,
+                "admin": true
+            }
+        }
+    ]
+}
+]

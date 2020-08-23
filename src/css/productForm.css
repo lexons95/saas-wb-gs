@@ -1,0 +1,53 @@
+#productForm {
+  height: 100%;
+  width: 100%;
+  /* overflow: hidden; */
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+
+
+.inventory-table-variant-header {
+  flex-grow: 1;
+  display: flex;
+  align-items: center; 
+  justify-content: space-between;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-break: keep-all;
+}
+
+
+.productForm-upload .ant-upload-list-picture-card .ant-upload-list-item{
+
+}
+
+.productForm-upload-fav-icon {
+  color: white;
+}
+
+
+
+#productForm2 {
+  height: 100%;
+  width: 100%;
+  padding: 0 15px 15px 15px;
+}
+
+#productForm2 .ant-tabs {
+  height: 100%;
+  width: 100%;
+}
+
+#productForm2 .ant-tabs-content{
+  height: 100%;
+}
+
+#productForm2 .ant-tabs-tabpane {
+  overflow-y: scroll;
+  /* overflow: scroll; */
+  /* padding: 0 24px; */
+}

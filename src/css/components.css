@@ -1,0 +1,74 @@
+#page_login {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  font-size: 32px;
+  background-color: rgba(255,255,255,0.4);
+  z-index: 999;
+}
+
+#page_01 {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+
+/* inventoryFormTable */
+.inventoryTable-main .editable-cell {
+  position: relative;
+}
+
+.inventoryTable-main .editable-cell-value-wrap {
+  padding: 5px 12px;
+  cursor: pointer;
+}
+
+.inventoryTable-main .editable-row:hover .editable-cell-value-wrap {
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  padding: 4px 11px;
+  height: 30px;
+}
+
+.inventoryTable-main [data-theme='dark'] .editable-row:hover .editable-cell-value-wrap {
+  border: 1px solid #434343;
+  height: 30px;
+
+}
+
+/* orderInfo */
+.orderInfo-item-summary {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.orderInfo-extra {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.orderInfo-extra > div {
+  flex: 1 1 50%;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.orderInfo-extra > div > img {
+  width: 100%;
+}

@@ -1,0 +1,31 @@
+.inventory-selectionPanel {
+  position: fixed;
+  left: 0;
+  right: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  z-index: 1010;
+  pointer-events: none;
+  transition: 0.4s ease-in-out;
+  display: flex;
+  justify-content: center;
+}
+
+.inventory-selectionPanel.open {
+  top: 16px;
+  opacity: 1;
+}
+
+.inventory-selectionPanel.close {
+  top: -100px;
+  opacity: 0;
+}
+
+.inventory-selectionPanel > div {
+  padding: 10px 16px;
+  background: #fff;
+  box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+  pointer-events: all;
+  border-radius: 2px;
+}

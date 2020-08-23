@@ -1,0 +1,166 @@
+:root {
+  --color-text: #FFFFFF;
+  --color-border: #F0F0F0;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* color: var(--color-text); */
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+html, body, div, #root, #layout {
+  box-sizing: border-box;
+}
+
+html, body {
+  height:100%;
+  width:100%;
+  padding:0;
+  margin:0;
+}
+
+body {
+  position: relative;
+  overflow-y: auto;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+  padding:0;
+  margin:0;
+  position: relative;
+  overflow: hidden;
+}
+
+#layout {
+
+}
+
+#layout > header {
+
+}
+
+#layout > main {
+
+}
+
+#layout > footer {
+
+}
+
+.box {
+  position:relative;
+  overflow:hidden;
+}
+.box-scroll{
+  position:relative;
+  overflow:auto;
+  -webkit-overflow-scrolling: touch;
+}
+.box-scroll-x{
+  position:relative;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+.box-scroll-y{
+  position:relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.wrapper {
+  position:absolute;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+}
+
+.shjui-page {
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  border: 1px solid blue;
+}
+
+
+/* height = width */
+/* 1:1 */
+[data-aspect-ratio="1:1"] {
+  padding: 100% 0 0 0;
+}
+/* height < width */
+/* 4:3 */
+[data-aspect-ratio="4:3"] {
+  padding: 75% 0 0 0;
+}
+/* 3:2 */
+[data-aspect-ratio="3:2"] {
+  padding: 66.66% 0 0 0;
+}
+/* 16:9 */
+[data-aspect-ratio="16:9"] {
+  padding: 56.25% 0 0 0;
+}
+/* 8:5 */
+[data-aspect-ratio="8:5"] {
+  padding: 62.5% 0 0 0;
+}
+
+/* height > width */
+/* 3:4 */
+[data-aspect-ratio="3:4"] {
+  padding: 133.33% 0 0 0;
+}
+/* 2:3 */
+[data-aspect-ratio="2:3"] {
+  padding: 150% 0 0 0;
+}
+/* 9:16 */
+[data-aspect-ratio="9:16"] {
+  padding: 177.78% 0 0 0;
+}
+/* 5:8 */
+[data-aspect-ratio="5:8"] {
+  padding: 160% 0 0 0;
+}
+
+
+/* .box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+} */
+
+@media only screen
+  and (min-width: 768px)
+  and (max-width: 1024px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+
+}
+
+@media screen
+  and (min-width: 1025px)
+  and (-webkit-min-device-pixel-ratio: 1) {
+
+}
