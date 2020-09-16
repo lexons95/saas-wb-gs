@@ -1,21 +1,19 @@
 import React, {useState, useEffect} from 'react';
-import { Form, Upload, Input, Button, InputNumber, Select } from 'antd';
+import { Form, Upload, Input, Button, InputNumber, Select, Modal, message, Row, Col, Divider } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import ImgCrop from 'antd-img-crop';
 import gql from 'graphql-tag';
-import { useLazyQuery, useMutation } from "@apollo/react-hooks";
+import { useLazyQuery, useMutation } from '@apollo/client';
 
-import Page_01 from './component/Page_01';
-import ImageUpload from './component/ImageUpload';
-import ImageUpload2 from './component/ImageUpload2';
-import qiniuAPI from '../../utils/qiniuAPI';
+import Page01 from './component/Page01';
 import { useConfigCache, setConfigCache } from '../../utils/customHook';
 import { showMessage } from '../../utils/component/notification';
 import Loading from '../../utils/component/Loading';
-import axios from 'axios';
 
 import awsS3API from '../../utils/awsS3API';
-
+import ImageCropper from './component/ImageCropper';
+import 'antd/es/modal/style';
+import 'antd/es/slider/style';
 
 const UPDATE_CONFIG_QUERY = gql`
   mutation updateConfig($config: JSONObject, $configId: String!) {
@@ -27,36 +25,61 @@ const UPDATE_CONFIG_QUERY = gql`
   }
 `;
 
-const GET_S3_SIGNED_URL = gql`
-  query getS3SignedUrl($bucketName: String!, $Key: String!, $ContentType: String!) {
-    getS3SignedUrl(bucketName: $bucketName, Key: $Key, ContentType: $ContentType) {
-      success
-      message
-      data
+function getBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = error => reject(error);
+  });
+}
+
+const handleImageInput = (fileList = [], defaultConfigValue, fieldName) => {
+  let changed = false;
+  let current = defaultConfigValue;
+  let result = "";
+  if (fileList.length > 0) {
+    if (fileList[0].originFileObj && current != fileList[0].name) {
+      let imageNameSplited = fileList[0].name.split('.');
+      let newImageName = `saas_${fieldName}_${new Date().getTime()}_${imageNameSplited[imageNameSplited.length - 2]}.${imageNameSplited[imageNameSplited.length - 1]}`;
+      result = newImageName;
+      changed = true;
     }
   }
-`;
+  else {
+    if (current != "") {
+      result = "";
+      changed = true;
+    }
+  }
+
+  return {
+    changed: changed,
+    current: current,
+    result: result
+  }
+}
 
 const Configuration = (props) => {
   const configCache = useConfigCache();
+  const AWSS3API = awsS3API(configCache ? configCache.configId : null);
+
   const [ form ] = Form.useForm();
   const [ fileList, setFileList ] = useState([]);
   const [ logoFileList, setLogoFileList ] = useState([]);
+  const [ avatarFileList, setAvatarFileList ] = useState([]);
 
-  const [ updateConfig, { loading: updateLoading} ] = useMutation(UPDATE_CONFIG_QUERY,{
-    onCompleted: (result) => {
-      console.log('UPDATE_CONFIG_QUERY',result.updateConfig.data.value);
+  const [ updateConfig, { loading: updateLoading } ] = useMutation(UPDATE_CONFIG_QUERY,{
+    onCompleted: async (result) => {
       setConfigCache(result.updateConfig.data.value)
+      // console.log('result.updateConfig.data.value',result.updateConfig.data.value)
       showMessage({type: 'success', message: 'Success: Configuration Updated'})
     },
     onError: (error) => {
-      console.log('UPDATE_CONFIG_QUERY err',error)
       showMessage({type: 'success', message: 'Error: Error while updating Configuration'})
-
     }
   })
 
-  const AWSS3API = awsS3API(configCache.configId);
 
   useEffect(()=>{
     if (configCache != null) {
@@ -77,6 +100,14 @@ const Configuration = (props) => {
         }])
       }
 
+      if (configCache.profile && configCache.profile.avatar && configCache.profile.avatar != '') {
+        setAvatarFileList([{
+          uid: configCache.profile.avatar,
+          url: configCache.imageSrc + configCache.profile.avatar,
+          thumbUrl: configCache.imageSrc + configCache.profile.avatar
+        }])
+      }
+
       form.setFieldsValue({
         notice: configCache.profile.notice,
         delivery: configCache.delivery
@@ -84,243 +115,337 @@ const Configuration = (props) => {
     }
   },[configCache]);
 
+  const handleFileUpload = async (imageStatus, fileList) => {
+    if (imageStatus.changed) {
+
+      // remove existing image
+      if (imageStatus.current && imageStatus.current != "") {
+        console.log('removeee', imageStatus.current)
+        await AWSS3API.deleteOne(imageStatus.current).then((result)=>{
+          console.log('delete one result',result)
+
+        }).catch((err)=>{
+          console.log('delete one err',err)
+
+        })
+      }
+
+      // upload new image
+      if (imageStatus.result && imageStatus.result != "") {
+        let fileObj = fileList[0];
+        await AWSS3API.getSignedUrl(imageStatus.result, fileObj.type).then(async (result)=>{
+          let signedUrl = result.data.getS3SignedUrl.data;
+          await AWSS3API.uploadOneWithURL(signedUrl, fileObj).then(uploadResult=>{
+            console.log('uploadOneWithURL',uploadResult)
+          }).catch(uploadErr=>{
+            console.log('uploadErr',uploadErr)
+          })
+        });
+      }
+
+
+    }
+  }
+
+  const handlePreviewOpen = async (file) => {
+    console.log('fileeee preview', file)
+    if (!file.url && !file.preview) {
+      file.preview = await getBase64(file.originFileObj);
+    }
+    Modal.info({
+      title: file.name,
+      content: (
+        <img alt={`preview: ${file ? file.name : ""}`} style={{ width: '100%' }} src={file ? file.preview : ''} />
+      )
+    })
+  };
+
+  const handleCheckFile = (file) => {
+    const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
+    if (!isJpgOrPng) {
+      message.error('You can only upload JPG/PNG file!');
+    }
+    const isLt2M = file.size / 1024 / 1024 < 3;
+    if (!isLt2M) {
+      message.error('Image must smaller than 3MB!');
+    }
+    return isJpgOrPng && isLt2M;
+  }
+
+  const handleOnImageChange = (fileList=[], setFile) => {
+    console.log('fileList',fileList)
+    
+    let file = fileList.length > 0 ? fileList[0] : null;
+    if (file) {
+      let filePassed = handleCheckFile(file);
+      if (filePassed) {
+        const fileSizeLimit = 1000000 // 1MB
+        if (file.size >= fileSizeLimit) {
+          const reader = new FileReader();
+          reader.readAsDataURL(file.originFileObj);
+          reader.onload = (e) => {
+            const img = new Image();
+            img.src = e.target.result;
+  
+            img.onload = () => {
+              const canvas = document.createElement('canvas');
+              const currentWidth = img.width;
+              const currentHeight = img.height;
+              const newRatio = 0.7;
+              let newWidth = currentWidth * newRatio;
+              let newHeight = currentHeight * newRatio
+              canvas.width = newWidth;
+              canvas.height = newHeight;
+  
+              const ctx = canvas.getContext('2d');
+              ctx.drawImage(img, 0, 0, newWidth, newHeight);
+              ctx.canvas.toBlob(function(blob){
+                let imageFile = new File([blob],file.name,{ 
+                  lastModified: new Date().getTime(), 
+                  type: file.type 
+                });
+                let newImageObj = Object.assign({},file,{
+                  originFileObj: imageFile, 
+                  size: imageFile.size
+                })
+
+                // var newImg = document.createElement('img'),
+                // url = URL.createObjectURL(blob);
+    
+                // newImg.onload = function() {
+                //   // no longer need to read the blob so it's revoked
+                //   URL.revokeObjectURL(url);
+                // };
+    
+                
+                setFile([newImageObj])
+              }, file.type, 0.95);
+            };
+          };
+          
+        }
+        else {
+          setFile(fileList)
+        }
+      }
+      else {
+        setFile([])
+      }
+    }
+    else {
+      setFile([])
+    }
+  }
+
+  const resizeFile = (file) => {
+    let result = file;
+    if (file) {
+      let filePassed = handleCheckFile(file);
+      if (filePassed) {
+        const fileSizeLimit = 1000000 // 1MB
+        if (file.size >= fileSizeLimit) {
+          const reader = new FileReader();
+          reader.readAsDataURL(file.originFileObj);
+          reader.onload = (e) => {
+            const img = new Image();
+            img.src = e.target.result;
+  
+            img.onload = () => {
+              const canvas = document.createElement('canvas');
+              const currentWidth = img.width;
+              const currentHeight = img.height;
+              const newRatio = 0.7;
+              let newWidth = currentWidth * newRatio;
+              let newHeight = currentHeight * newRatio
+              canvas.width = newWidth;
+              canvas.height = newHeight;
+  
+              const ctx = canvas.getContext('2d');
+              ctx.drawImage(img, 0, 0, newWidth, newHeight);
+              ctx.canvas.toBlob(function(blob){
+                let imageFile = new File([blob],file.name,{ 
+                  lastModified: new Date().getTime(), 
+                  type: file.type 
+                });
+                let newImageObj = Object.assign({},file,{
+                  originFileObj: imageFile, 
+                  size: imageFile.size
+                })
+                result = newImageObj;
+              }, file.type, 0.95);
+            }
+          } 
+        }
+      }
+    }
+    return result;
+  }
+
   const handleSubmit = async (values) => {
-    // console.log('handleSubmit',values)
-    // console.log('filelist',fileList)
-    // console.log('logoFileList',logoFileList)
 
     let setter = {
       'profile.notice': values.notice,
       'delivery': values.delivery
     }
 
-    // handle payment image
-
-    const handleImageInput = (fileList = [], defaultConfigValue, fieldName) => {
-      let changed = false;
-      let current = defaultConfigValue;
-      let result = "";
-      if (fileList.length > 0) {
-        if (fileList[0].originFileObj && current != fileList[0].name) {
-          let imageNameSplited = fileList[0].name.split('.');
-          let newImageName = `saas_${fieldName}_${new Date().getTime()}_${imageNameSplited[imageNameSplited.length - 2]}.${imageNameSplited[imageNameSplited.length - 1]}`;
-          result = newImageName;
-          changed = true;
-        }
-      }
-      else {
-        if (current != "") {
-          result = "";
-          changed = true;
-        }
-      }
-
-      return {
-        changed: changed,
-        current: current,
-        result: result
-      }
-    }
-
-    // let paymentQRChanged = false;
-    // let currentPaymentQRImage = configCache.paymentQRImage;
-    // let paymentQRImageResult = "";
-    // if (fileList.length > 0) {
-    //   if (fileList[0].originFileObj && currentPaymentQRImage != fileList[0].name) {
-    //     let imageNameSplited = fileList[0].name.split('.');
-    //     let newImageName = `saas_payment_${new Date().getTime()}_${imageNameSplited[imageNameSplited.length - 2]}.${imageNameSplited[imageNameSplited.length - 1]}`;
-    //     paymentQRImageResult = newImageName;
-    //     paymentQRChanged = true;
-    //   }
-    // }
-    // else {
-    //   if (currentPaymentQRImage != "") {
-    //     paymentQRImageResult = "";
-    //     paymentQRChanged = true;
-    //   }
-    // }
-
-    // if (configCache && configCache.configId) {
-    //   if (paymentQRChanged) {
-    //     setter['paymentQRImage'] = paymentQRImageResult;
-
-    //     const QiniuAPI = await qiniuAPI();
-
-    //     if (paymentQRImageResult != "") {
-    //       let newFileObject = {...fileList[0], name: paymentQRImageResult}
-    //       await QiniuAPI.upload(newFileObject)
-    //       if (currentPaymentQRImage != "") {
-    //         await QiniuAPI.batchDelete([configCache.paymentQRImage])
-    //       }
-    //     }
-    //     else {
-    //       if (currentPaymentQRImage != "") {
-    //         await QiniuAPI.batchDelete([configCache.paymentQRImage])
-    //       }
-    //     }
-    //   }
-    //   updateConfig({
-    //     variables: {
-    //       config: setter,
-    //       configId: configCache.configId
-    //     }
-    //   })
-    // }
-
-    let paymentImage = handleImageInput(fileList, configCache.paymentQRImage, 'payment')
-    let logoImage = handleImageInput(logoFileList, configCache.profile.logo, 'logo')
-
     if (configCache && configCache.configId) {
-      if (paymentImage.changed || logoImage.changed) {
-        const QiniuAPI = await qiniuAPI();
-        if (paymentImage.changed) {
-          setter['paymentQRImage'] = paymentImage.result;
+      let paymentImageStatus = handleImageInput(fileList, configCache.paymentQRImage, 'payment')
+      let logoImageStatus = handleImageInput(logoFileList, configCache.profile.logo, 'logo')
+      let avatarImageStatus = handleImageInput(avatarFileList, configCache.profile.avatar, 'avatar')
 
-          if (paymentImage.result != "") {
-            let newFileObject = {...fileList[0], name: paymentImage.result}
-            await QiniuAPI.upload(newFileObject)
-            if (paymentImage.current != "") {
-              await QiniuAPI.batchDelete([configCache.paymentQRImage])
-            }
-          }
-          else {
-            if (paymentImage.current != "") {
-              await QiniuAPI.batchDelete([configCache.paymentQRImage])
-            }
-          }
-        }
-  
-        if (logoImage.changed) {
-          setter['profile.logo'] = logoImage.result;
-
-          if (logoImage.result != "") {
-            let newFileObject = {...logoFileList[0], name: logoImage.result}
-            await QiniuAPI.upload(newFileObject)
-            if (logoImage.current != "") {
-              await QiniuAPI.batchDelete([configCache.profile.logo])
-            }
-          }
-          else {
-            if (logoImage.current != "") {
-              await QiniuAPI.batchDelete([configCache.profile.logo])
-            }
-          }
-        }
-
+      if (paymentImageStatus.changed) {
+        setter['paymentQRImage'] = paymentImageStatus.result;
       }
+      if (logoImageStatus.changed) {
+        setter['profile.logo'] = logoImageStatus.result;
+      }
+      if (avatarImageStatus.changed) {
+        setter['profile.avatar'] = avatarImageStatus.result;
+      }
+
+      // proper way should be update config first then upload file
+      // but because the update local cache is inside updateConfig (onCompleted)
+      // the page will be refreshed before the file is uploaded while reading the updated file name in config
+      // which will cause the file not found
+
+      await handleFileUpload(paymentImageStatus, fileList);
+      await handleFileUpload(logoImageStatus, logoFileList);
+      await handleFileUpload(avatarImageStatus, avatarFileList);
+
       updateConfig({
         variables: {
           config: setter,
           configId: configCache.configId
         }
       })
+
+      // this way not working, the onCompleted wont execute
+      // updateConfig({
+      //   variables: {
+      //     config: setter,
+      //     configId: configCache.configId
+      //   },
+      //   onCompleted: async (result) => {
+      //     console.log('UPDATE_CONFIG_QUERY',result.updateConfig.data.value);
+      //     await handleFileUpload(paymentImageStatus, fileList);
+      //     await handleFileUpload(logoImageStatus, logoFileList);
+      //     setConfigCache(result.updateConfig.data.value)
+      //     showMessage({type: 'success', message: 'Success: Configuration Updated'})
+      //   },
+      //   onError: (error) => {
+      //     console.log('UPDATE_CONFIG_QUERY err',error)
+      //     showMessage({type: 'success', message: 'Error: Error while updating Configuration'})
+    
+      //   }
+      // })
+
+
     }
 
 
   }
 
-  const [ s3FileList, setS3FileList ] = useState([]);
-
-  const [ getS3SignedUrl ] = useLazyQuery(GET_S3_SIGNED_URL,{
-    onCompleted: async (result) => {
-      console.log('resultresult',result)
-      if (result.getS3SignedUrl && result.getS3SignedUrl.success) {
-        let file = s3FileList[0];
-        console.log('filefile',file.type)
-        let options = {
-          params: {
-            Key: file.name
-          },
-          headers: {
-            'x-amz-acl': 'public-read',
-            'Content-Type': file.type,
-          }
-        }
-
-        await axios
-        .put(result.getS3SignedUrl.data, file.originFileObj, options.headers)
-        .then(res => {
-          console.log('Upload Successful',res)
-        })
-        .catch(err => {
-          console.log('Sorry, something went wrong')
-          console.log('err', err);
-        });
-      }
-    }
-  });
-
-  const fileLimit2 = 1;
-
-  const uploadButton2 = (
+  const uploadButton = (
     <div>
       <PlusOutlined />
       <div className="ant-upload-text">Upload</div>
     </div>
   );
 
-  const handleFileListChange2 = ({ fileList: newFileList }) => {
-    setS3FileList(newFileList)
-    if (newFileList.length > 0) {
-      // let x = JSON.parse(JSON.stringify(newFileList[0]))
-      let x = newFileList[0]
-      console.log('newFileList',x)
-      getS3SignedUrl({
-        variables: {
-          bucketName: 'mananml',
-          Key: x.name,
-          ContentType: x.type
-        }
-      })
-      // uploadOne({
-      //   variables: {
-      //     name: x.name,
-      //     file: newFileList[0].originFileObj
-      //   }
-      // })
-      console.log('x.originFileObj',newFileList[0].originFileObj)
-    }
-  };
-
   // additional charges to set in config
   // cart limitation to place order: total weight/price/quantity
   return (
-    <Page_01
+    <Page01
       title={"Configuration"}
     >
       <Form form={form} onFinish={handleSubmit} layout="vertical">
+        <Divider orientation="left">Profile</Divider>
+
+        <Row gutter={24}>
+          <Col>
+            <Form.Item label="Logo" name="logo">
+              <Upload
+                action={(file) => {}}
+                accept="image/*"
+                beforeUpload={ (file) => {
+                  console.log("beforeUpload",file)
+                  return false;
+                }}
+                listType="picture-card"
+                fileList={logoFileList}
+                onChange={({ fileList }) => {
+                  handleOnImageChange(fileList,setLogoFileList)
+                }}
+              >
+                {logoFileList.length < 1 ? uploadButton : null}
+              </Upload>
+            </Form.Item>
+          </Col>
+          <Col>
+            <Form.Item label="Avatar" name="avatar">
+              <Upload
+                action={(file) => {}}
+                accept="image/*"
+                beforeUpload={ (file) => {
+                  console.log("beforeUpload",file)
+                  return false;
+                }}
+                listType="picture-card"
+                fileList={avatarFileList}
+                onChange={({ fileList }) => {
+                  handleOnImageChange(fileList,setAvatarFileList)
+                }}
+              >
+                {avatarFileList.length < 1 ? uploadButton : null}
+              </Upload>
+            </Form.Item>
+          </Col>
+        </Row>
+
+        <Divider orientation="left">Payment</Divider>
+        <Row gutter={24}>
+          <Col>
+            <Form.Item label="Payment QR" name="paymentQRImage">
+              {/* <ImgCrop rotate> */}
+                <Upload
+                  accept="image/*"
+                  beforeUpload={ (file) => {
+                    console.log("beforeUpload",file)
+                    return false;
+                  }}
+                  listType="picture-card"
+                  fileList={fileList}
+                  onPreview={handlePreviewOpen}
+                  onChange={({ fileList }) => {
+                    handleOnImageChange(fileList,setFileList)
+                  }}
+                >
+                  {fileList.length < 1 ? uploadButton : null}
+                </Upload>
+              {/* </ImgCrop> */}
+            </Form.Item>
+          </Col>
+          <Col>
+            <Form.Item label="Shipping Fee (Fixed)" name="delivery">
+              <InputNumber/>
+            </Form.Item>
+          </Col>
+        </Row>
+
+        <Divider orientation="left">Others</Divider>
+
         <Form.Item label="Notice" name="notice">
           <Input.TextArea/>
         </Form.Item>
-        <Form.Item label="Delivery Fee (Fixed)" name="delivery">
-          <InputNumber/>
-        </Form.Item>
-        <ImageUpload fileList={fileList} setFileList={setFileList} label="Payment QR" name="paymentQRImage"/>
-        <ImageUpload fileList={logoFileList} setFileList={setLogoFileList} label="Logo" name="logo"/>
+
+        
+        
+        
         <Form.Item>
           <Button type="primary" onClick={()=>{form.submit()}}>Save</Button>
         </Form.Item>
       </Form>
-
-      {/* <Button onClick={()=>{}}>Test AWS</Button> */}
-      <Upload
-        accept="image/*"
-        beforeUpload={ (file) => {
-          console.log("beforeUpload",file)
-          return false;
-        }}
-        //multiple={true}
-        listType="picture-card"
-        fileList={s3FileList}
-        onChange={handleFileListChange2}
-      >
-        {s3FileList.length < fileLimit2 ? uploadButton2 : null}
-      </Upload>
-
-
-<Button onClick={()=>{console.log('AWSS3API',AWSS3API.getImages())}}>Test AWS API</Button>
-
-      <ImageUpload2 label="AWS" name={"aws"} />
+      {/* <ImageCropper imageFile={fileList.length > 0 ? fileList[0] : null} /> */}
       {/* <Form>
         
         Shipping Section
@@ -347,7 +472,7 @@ const Configuration = (props) => {
       {
         updateLoading ? <Loading/> : null
       }
-    </Page_01>
+    </Page01>
   )
 }
 

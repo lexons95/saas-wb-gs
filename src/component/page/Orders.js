@@ -2,10 +2,10 @@ import React, {useState} from 'react';
 import { Tabs, Table, Button, Input, Popconfirm } from 'antd';
 import { format, differenceInBusinessDays } from 'date-fns';
 import gql from "graphql-tag";
-import { useMutation } from "@apollo/react-hooks";
+import { useQuery, useMutation } from '@apollo/client';
 import { CheckOutlined, RedoOutlined } from '@ant-design/icons';
 
-import Page_01 from './component/Page_01';
+import Page01 from './component/Page01';
 import OrderInfo from './component/OrderInfo';
 import OrderInvoice from './component/OrderInvoice';
 
@@ -14,6 +14,28 @@ import Loading from '../../utils/component/Loading';
 
 const { TabPane } = Tabs;
 const { Search } = Input;
+
+const GET_ORDERS_QUERY = gql`
+  query orders($filter: JSONObject, $configId: String) {
+    orders(filter: $filter, configId: $configId) {
+      _id
+      createdAt
+      updatedAt
+      items
+      total
+      type
+      charges
+      customer
+      remark
+      sellerRemark
+      paid
+      sentOut
+      trackingNum
+      deliveryFee
+      status
+    }
+  }
+`;
 
 const UPDATE_ORDER_PAYMENT_QUERY = gql`
   mutation updateOrderPayment($_id: String!, $paid: Boolean!) {
@@ -71,13 +93,26 @@ const Orders = (props) => {
   const [ orderModalDisplay, setOrderModalDisplay ] = useState(false);
   const [ selectedOrder, setSelectedOrder ] = useState(null);
 
-  const { data, loading: loadingOrders, error, refetch: refetchOrders } = useOrdersQuery({
-    filter: {
-      sorter: {
-        createdAt: -1
-      }
-    },
-    configId: configCache.configId
+  // const { data, loading: loadingOrders, error, refetch: refetchOrders } = useOrdersQuery({
+  //   variables: {
+  //     filter: {
+  //       sorter: {
+  //         createdAt: -1
+  //       }
+  //     },
+  //     configId: configCache ? configCache.configId : configCache
+  //   }
+  // });
+
+  const { data, loading: loadingOrders, error, refetch: refetchOrders } = useQuery(GET_ORDERS_QUERY,{
+    variables: {
+      filter: {
+        sorter: {
+          createdAt: -1
+        }
+      },
+      configId: configCache ? configCache.configId : configCache
+    }
   });
 
   const [ updateOrderPayment , updateOrderPaymentResult ] = useMutation(UPDATE_ORDER_PAYMENT_QUERY,{
@@ -435,7 +470,7 @@ const Orders = (props) => {
       preparedOrders: [...tableCol6, sellerRemarkCol]
     }
   }
-console.log('userCache',userCache)
+
   const getFilteredOrders = () => {
     let allOrders = data ? data.orders : [];
     let orderList1 = [];
@@ -513,7 +548,7 @@ console.log('userCache',userCache)
     }
   }
   return (
-    <Page_01
+    <Page01
       title={"Orders"}
       extra={[
         <Button key="refresh" type="primary" icon={<RedoOutlined />} onClick={()=>{refetchOrders()}}/>
@@ -632,7 +667,7 @@ console.log('userCache',userCache)
       {
         isLoading ? <Loading/> : null
       }
-    </Page_01>
+    </Page01>
   )
 }
 

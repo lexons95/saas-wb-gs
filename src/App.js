@@ -5,9 +5,7 @@ import {
   Switch
 } from 'react-router-dom';
 import { Button } from "antd";
-
-import logo from './logo.svg';
-
+import { gql, useQuery, useLazyQuery, useApolloClient } from '@apollo/client';
 import './css/index.css';
 
 import * as Component from './component/index.js';
@@ -18,77 +16,140 @@ import Orders from './component/page/Orders';
 import Promotions from './component/page/Promotions';
 import Dashboard from './component/page/Dashboard';
 import Configuration from './component/page/Configuration';
-import Page_01 from './component/page/component/Page_01';
+import Page01 from './component/page/component/Page01';
 
+import { AuthContext } from "./utils/context/authContext";
 import PrivateRoute from './utils/component/PrivateRoute';
 import PublicRoute from './utils/component/PublicRoute';
 import PageNotFound from './utils/component/PageNotFound';
 import Loading from './utils/component/Loading';
-import { useConfigCache, useUserCache } from './utils/customHook';
+import { DefaultClientAPI, useUserQuery, useConfigQuery, useConfigCache, useUserCache, setUserCache, setConfigCache, clearCache, useUserLazyQuery} from './utils/customHook';
+import { userVar, configVar } from './utils/ApolloClient/cache';
+// import { generateMigration } from './utils/hooks/generateMigration';
+let Component_Layout = Component['Layout01'];
+let Component_Header = Component['Header01'];
 
+const GET_LOGGED_IN_USER = gql`
+  query loggedInUser{
+    loggedInUser{
+        success
+        message
+        data
+    }
+  }
+`
 
-let Component_Layout = Component['Layout_01'];
-let Component_Header = Component['Header_01'];
-// let Component_Footer = Component['Header_01'];
+const GET_USER_CONFIG = gql`
+  query userConfig($configId: String!) {
+    userConfig(configId: $configId) {
+        success
+        message
+        data
+    }
+  }
+`
+
+const GET_CONFIG_CACHE_QUERY = gql`
+  query config {
+    config @client {
+      _id
+      configId
+      defaultImage
+      defaultImage_system
+      imageSrc
+      paymentQRImage
+      server
+      currencyUnit
+      profile
+      delivery
+      productImageLimit
+      inventoryPerProductLimit
+      productTypes
+    }
+  }
+`
+const GET_USER_CACHE_QUERY = gql`
+  query user {
+    user @client {
+      success
+      message
+      data {
+        _id
+        username
+        configId
+        role
+      } 
+    }
+  }
+`
 
 const App = (props) => {
-  const [ loggedIn, setLoggedIn ] = useState(false);
-  const [ userRole, setUserRole ] = useState(null);
-  const configCache = useConfigCache();
   const userCache = useUserCache();
+  const configCache = useConfigCache();
+  const [ isAuthenticated, setIsAuthenticated ] = useState(false); 
+
+  const [ getLoggedInUser, { data: loggedInUser, loading: loadingLoggedUser }] = useUserLazyQuery();
 
   useEffect(()=>{
-    if (configCache) {
-      setLoggedIn(true)
-    }
-    else {
-      setLoggedIn(false)
-    }
+    getLoggedInUser()
+  },[])
 
-    if (userCache && userCache.success) {
-      setUserRole(userCache.data.role)
+  useEffect(() => {
+    if (!loadingLoggedUser) {
+      if (userCache && configCache) {
+        setIsAuthenticated(true)
+      }
+      else {
+        setIsAuthenticated(false)
+      }
     }
-    else {
-      setUserRole(null)
-    }
-  },[configCache, userCache]);
-  
-  const Main = () => {
-    return (
-      <div>
-        Main
-      </div>
-    )
+  }, [userCache,configCache])
+
+  const handleAuth = (value) => {
+    getLoggedInUser()
+    setIsAuthenticated(value)
   }
+
+  let isLoading = loadingLoggedUser;
+  let userRole = userCache && userCache.success ? userCache.data.role : null;
+
+  if (isLoading) {
+    return <Loading/>
+  }
+
   return (
-    <Router>
-      <Component_Layout
-        header={loggedIn ? (<Component_Header/>) : null}
-        footer={loggedIn ? "2020" : null}
-      >
-        {
-          userRole == 'SUBTENANT' ? (
-            <Switch>
-              <PrivateRoute exact path={'/'} component={Orders} />
-              <PublicRoute restricted={true} exact path={'/login'} component={Login} />
-              <Route component={PageNotFound} />
-            </Switch>
-          ) : (
-            <Switch>
-              {/* <PrivateRoute exact path={'/products'} component={Products}/> */}
-              <PrivateRoute exact path={'/dashboard'} component={Dashboard} />
-              <PrivateRoute exact path={'/'} component={Inventory} />
-              <PrivateRoute exact path={'/main'} component={Main} />
-              <PrivateRoute exact path={'/orders'} component={Orders} />   
-              <PrivateRoute exact path={'/promotions'} component={Promotions} />
-              <PrivateRoute exact path={'/configuration'} component={Configuration} />
-              <PublicRoute restricted={true} exact path={'/login'} component={Login} />
-              <Route component={PageNotFound} />
-            </Switch>
-          )
-        }
-      </Component_Layout>
-    </Router>
+    <AuthContext.Provider value={{isAuthenticated: isAuthenticated, setIsAuthenticated: handleAuth, userCache, configCache, fetchUser: getLoggedInUser}}>
+      <Router>
+        <Component_Layout
+          header={isAuthenticated ? (<Component_Header/>) : null}
+          //header={<Component_Header/>}
+          footer={isAuthenticated ? "2020" : null}
+        >
+          {
+            userRole == 'SUBTENANT' ? (
+              <Switch>
+                <PrivateRoute exact={true} path={'/'} component={Orders} />
+                <PublicRoute restricted={true} exact={true} path={'/login'} component={Login} />
+                <Route component={PageNotFound} />
+              </Switch>
+            ) : null
+          }
+          {
+            userRole != 'SUBTENANT' ? (
+              <Switch>
+                <PrivateRoute exact={true} path={'/'} component={Dashboard} />
+                <PrivateRoute exact={true} path={'/inventory'} component={Inventory} />
+                <PrivateRoute exact={true} path={'/orders'} component={Orders} />   
+                <PrivateRoute exact={true} path={'/promotions'} component={Promotions} />
+                <PrivateRoute exact={true} path={'/configuration'} component={Configuration} />
+                <PublicRoute restricted={true} exact={true} path={'/login'} component={Login} />
+                <Route component={PageNotFound} />
+              </Switch>
+            ) : null
+          }
+        </Component_Layout>
+      </Router>
+    </AuthContext.Provider>
   )
 
 }

@@ -1,0 +1,5331 @@
+{
+  "data": {
+    "modules": [
+      {
+        "name": "Credit Position",
+        "id": "14bfe08a-9afe-4ea8-bf8b-f55cb0f2a0f1",
+        "base": null,
+        "code": "creditPosition",
+        "type": "SILVER",
+        "properties": [
+          {
+            "id": "d2fa514f-afb4-48e8-baf1-343fa7f06ab7",
+            "type": "float",
+            "code": "loanGrowth",
+            "name": "Loan Growth"
+          },
+          {
+            "id": "762c7e83-96d1-4aa5-b7b6-b6e935afd832",
+            "type": "float",
+            "code": "netDisbursed",
+            "name": "Net Disbursed"
+          },
+          {
+            "id": "b9a8714d-cdf2-4ec4-9ffe-fc48ca296465",
+            "type": "float",
+            "code": "loanMovement",
+            "name": "Loan Movement"
+          },
+          {
+            "id": "b181f61c-42f2-4166-b801-7ac788d8b1b9",
+            "type": "float",
+            "code": "totalOutstanding",
+            "name": "Total Outstanding (RM)"
+          },
+          {
+            "id": "ae5daee0-e01f-4a2d-ab3d-efddc84c5b93",
+            "type": "float",
+            "code": "amountRepaid",
+            "name": "Amount Repaid during the Month "
+          },
+          {
+            "id": "75db7b6b-731a-44ec-858a-72b7253b32a8",
+            "type": "datetime",
+            "code": "deletedDate",
+            "name": "Deleted Date"
+          },
+          {
+            "id": "4085c3c0-f94b-41b6-8200-d9600c3eb7c6",
+            "type": "float",
+            "code": "latePaymentChargesCompensation",
+            "name": "Late of Payment Charges for Ta'widh (Compensation) During the Month (RM)"
+          },
+          {
+            "id": "ddb5bc03-6300-4b54-9a41-36ac0926ca1d",
+            "type": "integer",
+            "code": "monthsInArrears",
+            "name": "Months in arrears"
+          },
+          {
+            "id": "694372b8-dd05-4c62-9f26-182edfecfb0b",
+            "type": "integer",
+            "code": "numberOfInstalmentInArrears",
+            "name": "Number of instalment in arrears"
+          },
+          {
+            "id": "121b0f8c-fb9e-4502-a942-db0628735166",
+            "type": "float",
+            "code": "instalmentAmount",
+            "name": "Instalment Amount"
+          },
+          {
+            "id": "204aa194-669a-4981-9417-95ed3e82a8b7",
+            "type": "string",
+            "code": "sourceSystemCode",
+            "name": "Source System Code"
+          },
+          {
+            "id": "312bc803-14c0-40bd-b619-e6ca2dddb8c6",
+            "type": "float",
+            "code": "amountUndrawn",
+            "name": "Amount Undrawn (RM)"
+          },
+          {
+            "id": "31627f98-9b4c-450a-be2c-54e47181d0ae",
+            "type": "integer",
+            "code": "sourceSystemRecordID",
+            "name": "Source System Record ID"
+          },
+          {
+            "id": "1f5e3b32-5d6f-4fff-a9fd-e124978538f7",
+            "type": "integer",
+            "code": "recordDataID",
+            "name": "Record Data ID"
+          },
+          {
+            "id": "3fac1643-7997-4854-9939-c4d818eb56c1",
+            "type": "module",
+            "code": "positionDate",
+            "name": "Position Date"
+          },
+          {
+            "id": "8bde86ca-87e9-42c9-aaa9-56b797364b7d",
+            "type": "listgroup",
+            "code": "accountStatus",
+            "name": "Account Status"
+          },
+          {
+            "id": "5eff7cee-9cd2-434f-9c49-81b4df9c0ba2",
+            "type": "module",
+            "code": "dateOfAccountStatus",
+            "name": "Date of Account Status"
+          },
+          {
+            "id": "9daa4a04-5c7b-4e06-8a4f-91fb8a5d7368",
+            "type": "float",
+            "code": "latePaymentChargesPenalty",
+            "name": "Late of Payment Charges for Gharamah (Penalty) During the Month (RM)"
+          },
+          {
+            "id": "42991bee-85d9-40ea-9479-b9fa5a8a8061",
+            "type": "module",
+            "code": "masterAccount",
+            "name": "Master Account Number "
+          },
+          {
+            "id": "0e5c8780-5052-42e3-b449-e63e463050c9",
+            "type": "float",
+            "code": "loanSoldToSecondaryMarketUnderSBBA",
+            "name": "Loan Sold to Secondary Market under SBBA (RM)"
+          },
+          {
+            "id": "f028b022-876e-4a3c-bc4d-ad9d218c5ed0",
+            "type": "datetime",
+            "code": "createdDate",
+            "name": "Created Date"
+          },
+          {
+            "id": "aa77ab8f-2062-454e-9ad5-1e82453f680c",
+            "type": "module",
+            "code": "batch",
+            "name": "Batch"
+          },
+          {
+            "id": "5ab2d617-9d8a-4f24-8c3d-d9c48761df01",
+            "type": "module",
+            "code": "subAccount",
+            "name": "Sub Account Number"
+          },
+          {
+            "id": "a6ad5db4-18cd-427e-a5b3-499541b99c1a",
+            "type": "float",
+            "code": "amountDisbursed",
+            "name": "Amount Disbursed During the Month"
+          },
+          {
+            "id": "ddb687e1-0d63-4d19-9eaa-f545d33761cb",
+            "type": "datetime",
+            "code": "updatedDate",
+            "name": "Updated Date"
+          }
+        ]
+      },
+      {
+        "name": "Application",
+        "id": "c973ec12-503b-47e4-85d5-6a78234dc620",
+        "base": null,
+        "code": "application",
+        "type": "SILVER",
+        "properties": [
+          {
+            "id": "f45c9d94-dda3-445b-b90d-e133bc8f7b9d",
+            "type": "listgroup",
+            "code": "smeStatus",
+            "name": "SME Status Codee "
+          },
+          {
+            "id": "383fa711-5cea-4665-93ea-a225cdedf6bf",
+            "type": "listgroup",
+            "code": "startupFinancing",
+            "name": "Start-up Financing Code"
+          },
+          {
+            "id": "45f4d307-90c5-4f1f-be04-e5b8525ecfc7",
+            "type": "listgroup",
+            "code": "specialFundScheme",
+            "name": "Special Fund Scheme Code"
+          },
+          {
+            "id": "c27a9107-14ee-4ef8-8053-2e06ef42455c",
+            "type": "float",
+            "code": "debtServiceRatio",
+            "name": "Debt Service Ratio (%) "
+          },
+          {
+            "id": "b07ba703-cc4c-401b-aec5-b40c99f5cc09",
+            "type": "float",
+            "code": "valueOfAssetPurchaseRM",
+            "name": "Value of Asset Purchase (RM) "
+          },
+          {
+            "id": "f5bcd56d-685b-4f53-9ab1-5d839e0d6cb2",
+            "type": "listgroup",
+            "code": "valueOfAssetPurchase",
+            "name": "Value of Asset Purchase Code "
+          },
+          {
+            "id": "4061e9d3-7370-4fbe-97cb-29a5c46ba37a",
+            "type": "integer",
+            "code": "applicationAmount",
+            "name": "Application Amount"
+          },
+          {
+            "id": "57d983c1-1dbf-4123-9bc3-a0c99b10e2ea",
+            "type": "listgroup",
+            "code": "loanSize",
+            "name": "Loan Size Code "
+          },
+          {
+            "id": "bf352c03-9028-46c6-8c1a-528cb4f0cf80",
+            "type": "integer",
+            "code": "ageOfYearsInOperation",
+            "name": "Age of Years in Operation"
+          },
+          {
+            "id": "ac89951d-2e32-431d-a612-cd564aec74de",
+            "type": "module",
+            "code": "applicationDate",
+            "name": "Application Date"
+          },
+          {
+            "id": "6495230d-632c-4f08-b264-7ea154e53a0d",
+            "type": "listgroup",
+            "code": "applicationType",
+            "name": "Application Type Code"
+          },
+          {
+            "id": "9b4dd783-79ac-4f6a-98b4-e138cd32990a",
+            "type": "listgroup",
+            "code": "locationOfLoanUtilisation",
+            "name": "Location of Loan Utilisation Code"
+          },
+          {
+            "id": "e3d1b78a-14d3-4fbe-86cb-c2857b220656",
+            "type": "date",
+            "code": "createdDate",
+            "name": "Created Date"
+          },
+          {
+            "id": "0652ee06-b2de-4249-bc7e-f0eeeb888ac5",
+            "type": "date",
+            "code": "updatedDate",
+            "name": "Updated Date"
+          },
+          {
+            "id": "30892d2b-71f9-4bbf-a470-711319e1e457",
+            "type": "date",
+            "code": "deletedDate",
+            "name": "Deleted Date"
+          },
+          {
+            "id": "357652a0-2600-4148-b8f7-70eac1d45364",
+            "type": "string",
+            "code": "sourceSystem",
+            "name": "Source System Code"
+          },
+          {
+            "id": "24bb0e16-21e3-4bea-9289-d80613b2ca37",
+            "type": "integer",
+            "code": "sourceSystemRecordID",
+            "name": "Source System Record ID"
+          },
+          {
+            "id": "fcf0fae1-30bb-456f-98d8-d439652d3088",
+            "type": "integer",
+            "code": "recordDataID",
+            "name": "Record Data ID"
+          },
+          {
+            "id": "cf349a70-5d62-495f-90ba-63ec5df6d4d0",
+            "type": "module",
+            "code": "batch",
+            "name": "Batch"
+          },
+          {
+            "id": "0da1a3db-836a-4b92-90c0-4a9901b9c29a",
+            "type": "string",
+            "code": "code",
+            "name": "Application Reference Number"
+          },
+          {
+            "id": "07a1532c-b0fd-403e-bd46-70d44d11f84c",
+            "type": "listgroup",
+            "code": "applicationCurrency",
+            "name": "Application Currency Code"
+          },
+          {
+            "id": "0ef534f5-6442-45b4-8d18-bfb505a35331",
+            "type": "listgroup",
+            "code": "facilityType",
+            "name": "Facility Type Code "
+          },
+          {
+            "id": "54bf6f79-cbd4-4bef-9f9b-b57291a202ef",
+            "type": "listgroup",
+            "code": "purposeOfLoan",
+            "name": "Purpose of Loan Code"
+          },
+          {
+            "id": "f3bccdbb-a2a2-4c29-a99d-bc3292c90053",
+            "type": "listgroup",
+            "code": "financingConcept",
+            "name": "Financing Concept Code"
+          },
+          {
+            "id": "7bdfa511-3cb2-4f51-98d9-ff959e7a2e4c",
+            "type": "listgroup",
+            "code": "prioritySector",
+            "name": "Priority Sector Code"
+          }
+        ]
+      },
+      {
+        "name": "Repayment Source",
+        "id": "99f0a38d-372c-4124-b2e6-5d3a828a364c",
+        "base": null,
+        "code": "repaymentSource",
+        "type": "SILVER",
+        "properties": [
+          {
+            "id": "b491b537-32ef-48a4-9055-ba0c40ff383f",
+            "type": "listgroup",
+            "code": "sourceOfFundForRepayment",
+            "name": "Source of Fund for Repayment "
+          },
+          {
+            "id": "6576fa4e-45b5-4d59-950b-618908b833a8",
+            "type": "listgroup",
+            "code": "typeOfRepayment",
+            "name": "Type of Repayment "
+          },
+          {
+            "id": "a32d70f5-e662-4375-83a9-bc22c7be066e",
+            "type": "float",
+            "code": "amountRepaidDuringTheMonth",
+            "name": "Amount Repaid During the Month (RM) "
+          },
+          {
+            "id": "ee3882a3-bb77-4240-8082-44770fe0d89a",
+            "type": "date",
+            "code": "createdDate",
+            "name": "Created Date"
+          },
+          {
+            "id": "db0bdb3d-54bc-49f1-ad4d-37f6f0d607ae",
+            "type": "date",
+            "code": "updatedDate",
+            "name": "Updated Date"
+          },
+          {
+            "id": "122455af-ba3e-4f68-a782-16c1f33b27e4",
+            "type": "date",
+            "code": "deletedDate",
+            "name": "Deleted Date"
+          },
+          {
+            "id": "83584af7-bb75-4ac8-b924-04fd40d57458",
+            "type": "string",
+            "code": "sourceSystemCode",
+            "name": "Source System Code"
+          },
+          {
+            "id": "940f68d4-4517-44b6-adb9-37c13c6891f7",
+            "type": "integer",
+            "code": "sourceSystemRecordID",
+            "name": "Source System Record ID"
+          },
+          {
+            "id": "26d21b28-24cf-4004-a6d4-c9a525e914a5",
+            "type": "integer",
+            "code": "recordDataID",
+            "name": "Record Data ID"
+          },
+          {
+            "id": "beb6084a-a125-476f-93df-ad4b8820c9c0",
+            "type": "module",
+            "code": "batch",
+            "name": "Batch"
+          },
+          {
+            "id": "10f0c623-2a95-4541-8cac-287b18e2d88a",
+            "type": "string",
+            "code": "masterAccount",
+            "name": "Master Account Number "
+          },
+          {
+            "id": "f3c7e86b-9083-4c6d-b5f2-445726a78cdd",
+            "type": "string",
+            "code": "subAccount",
+            "name": "Sub Account Number "
+          },
+          {
+            "id": "8d378f45-4cb4-48e5-bdc1-6afdbeddc738",
+            "type": "module",
+            "code": "positionDate",
+            "name": "Position Date "
+          }
+        ]
+      },
+      {
+        "name": "Data Source Environment",
+        "id": "023c957f-ee99-40b5-b90b-220f46156cca",
+        "base": null,
+        "code": "dataSourceEnvironment",
+        "type": "NORMAL",
+        "properties": [
+          {
+            "id": "cb39085b-1ec9-4521-a94b-1cef72460872",
+            "type": "string",
+            "code": "url",
+            "name": "URL"
+          },
+          {
+            "id": "11a7bd76-23ea-4a9a-b523-2e218dc67d0a",
+            "type": "uuid",
+            "code": "id",
+            "name": "Id"
+          },
+          {
+            "id": "db591da4-3652-4f82-8bb8-ada7a953fcd2",
+            "type": "string",
+            "code": "host",
+            "name": "Host"
+          },
+          {
+            "id": "4b197fd4-ba34-4e2d-a502-b3c3d62d7d08",
+            "type": "string",
+            "code": "port",
+            "name": "Port"
+          },
+          {
+            "id": "1c323788-f05c-4e79-9cab-81d696a235cc",
+            "type": "string",
+            "code": "user",
+            "name": "User"
+          },
+          {
+            "id": "dd38af98-b612-470f-bb17-8679e742c1f1",
+            "type": "string",
+            "code": "password",
+            "name": "Password"
+          },
+          {
+            "id": "90d313ab-6610-4ba3-bf5c-04074f396160",
+            "type": "string",
+            "code": "database",
+            "name": "Database"
+          },
+          {
+            "id": "48b6020a-6fc3-401d-ac04-9c9d46530bdf",
+            "type": "module",
+            "code": "environment",
+            "name": "Environment"
+          },
+          {
+            "id": "d54e5eab-aaf1-4dfe-aaf1-400613ef28dc",
+            "type": "module",
+            "code": "dataSource",
+            "name": "Data Source"
+          },
+          {
+            "id": "c073ac22-a1b6-4e21-96fa-845b3fd4c789",
+            "type": "datetime",
+            "code": "updatedAt",
+            "name": "Updated At"
+          },
+          {
+            "id": "9bc7c365-e594-4f41-b523-618cedae2c9f",
+            "type": "module",
+            "code": "updatedBy",
+            "name": "Updated By"
+          },
+          {
+            "id": "fca6069e-d483-4f60-8947-5d8cfcdcb271",
+            "type": "datetime",
+            "code": "createdAt",
+            "name": "Created At"
+          },
+          {
+            "id": "99213e45-c7f9-426d-acf4-89d2ac6feef1",
+            "type": "module",
+            "code": "createdBy",
+            "name": "Created By"
+          },
+          {
+            "id": "31428bc1-10a4-4c45-a5e2-9d3ddea2243c",
+            "type": "integer",
+            "code": "updateCtr",
+            "name": "Update Ctr"
+          }
+        ]
+      },
+      {
+        "name": "Project Rule",
+        "id": "bd90592f-37ae-4bea-8606-8e1a0ebe4411",
+        "base": null,
+        "code": "projectRule",
+        "type": "NORMAL",
+        "properties": [
+          {
+            "id": "3f9c8e7b-a78a-417f-b8e3-1f8887b395cb",
+            "type": "integer",
+            "code": "threshold",
+            "name": "Threshold"
+          },
+          {
+            "id": "c473ae9f-a723-4936-b955-ae2366217439",
+            "type": "module",
+            "code": "dataItem",
+            "name": "Data Item"
+          },
+          {
+            "id": "fb905d43-04a9-4b2f-b8c4-a36d338ef6bb",
+            "type": "integer",
+            "code": "period",
+            "name": "Period"
+          },
+          {
+            "id": "c573139c-5374-4c99-89e8-16f24d129658",
+            "type": "listgroup",
+            "code": "type",
+            "name": "Type"
+          },
+          {
+            "id": "88661144-3a7e-41f2-bb39-a82c423a44a4",
+            "type": "json",
+            "code": "etlJobs",
+            "name": "ETL Jobs"
+          },
+          {
+            "id": "610cd02a-8c77-46d8-b063-06c42475cce3",
+            "type": "jsonlist",
+            "code": "groupBy",
+            "name": "Group By"
+          },
+          {
+            "id": "eb44afbc-5867-44ba-94f8-1e3103afd79c",
+            "type": "uuid",
+            "code": "id",
+            "name": "ID"
+          },
+          {
+            "id": "2f40a3e4-5247-4eed-b41d-9098711e7923",
+            "type": "string",
+            "code": "name",
+            "name": "Name"
+          },
+          {
+            "id": "29b66c80-4f69-4f47-8a4b-de97874191cf",
+            "type": "integer",
+            "code": "updateCtr",
+            "name": "Update Counter"
+          },
+          {
+            "id": "59fe1470-c612-4c2e-b1ef-0f7d69bc55d0",
+            "type": "listgroup",
+            "code": "status",
+            "name": "Status"
+          },
+          {
+            "id": "9cde66a3-1aa7-4209-b5bd-db5da6888a73",
+            "type": "module",
+            "code": "project",
+            "name": "Project"
+          }
+        ]
+      },
+      {
+        "name": "Module Relation",
+        "id": "30018135-6268-4d38-a323-91859af6e57b",
+        "base": "",
+        "code": "moduleRelation",
+        "type": "NORMAL",
+        "properties": [
+          {
+            "id": "1d11032b-5b88-455d-a465-a1c61fcaf49b",
+            "type": "string",
+            "code": "foreignKey",
+            "name": "Foreign Key"
+          },
+          {
+            "id": "b9aee5ce-5f84-44c9-9a31-73c42054956f",
+            "type": "text",
+            "code": "description",
+            "name": "Description"
+          },
+          {
+            "id": "ff9fd741-6662-478f-964d-aae800996a83",
+            "type": "string",
+            "code": "type",
+            "name": "Type"
+          },
+          {
+            "id": "ef9cd790-8596-4326-b40c-8ce3dbf50e64",
+            "type": "string",
+            "code": "name",
+            "name": "Name"
+          },
+          {
+            "id": "0f2e0c31-98b8-4536-b45a-c33d41ea6cd7",
+            "type": "uuid",
+            "code": "id",
+            "name": "Id"
+          },
+          {
+            "id": "91bea962-0d04-4cb2-88f8-34f157118df8",
+            "type": "integer",
+            "code": "updateCtr",
+            "name": "Update Ctr"
+          },
+          {
+            "id": "b6c66e3b-b9c6-440d-9288-5cf10464668f",
+            "type": "module",
+            "code": "module",
+            "name": "Module"
+          },
+          {
+            "id": "ca893167-c02f-4c89-8ee2-3709a928b79b",
+            "type": "string",
+            "code": "code",
+            "name": "Code"
+          },
+          {
+            "id": "1b17a43b-5a61-4254-b6c9-f767103f62e4",
+            "type": "module",
+            "code": "targetModule",
+            "name": "Target Module"
+          }
+        ]
+      },
+      {
+        "name": "Engine Service Type",
+        "id": "d863201a-e6eb-4c32-9d06-b8298831f96f",
+        "base": null,
+        "code": "engineServiceType",
+        "type": "NORMAL",
+        "properties": [
+          {
+            "id": "ec6e1f40-25f4-4cdc-9535-a69808a206de",
+            "type": "datetime",
+            "code": "createdAt",
+            "name": "Created At"
+          },
+          {
+            "id": "24e970f4-2945-4f75-994f-cccc698e31dc",
+            "type": "listgroup",
+            "code": "serviceType",
+            "name": "Service Type"
+          },
+          {
+            "id": "a37c1fec-20af-47da-9201-c2b9b3c392db",
+            "type": "string",
+            "code": "host",
+            "name": "Host"
+          },
+          {
+            "id": "f5f2c0da-91c7-4fc2-b997-72597d3f074c",
+            "type": "boolean",
+            "code": "isDefault",
+            "name": "Is Default"
+          },
+          {
+            "id": "56c0cc45-c9a8-4138-8222-bafc2b7b582a",
+            "type": "datetime",
+            "code": "updatedAt",
+            "name": "Updated At"
+          },
+          {
+            "id": "8afe4a8c-e77e-4714-9845-cdf0e4cef37b",
+            "type": "uuid",
+            "code": "id",
+            "name": "Id"
+          },
+          {
+            "id": "2eb30cdb-6eb3-45bd-bfda-98fa9f61792a",
+            "type": "module",
+            "code": "createdBy",
+            "name": "Created By"
+          },
+          {
+            "id": "082d3d84-43fe-4990-bf39-501ef221328b",
+            "type": "module",
+            "code": "engine",
+            "name": "Engine"
+          },
+          {
+            "id": "fd0e88ab-df88-4e6b-8546-e937f25150fb",
+            "type": "module",
+            "code": "updatedBy",
+            "name": "Updated By"
+          },
+          {
+            "id": "79b489a2-03f2-482a-bd08-8e66d4d68e15",
+            "type": "jsonlist",
+            "code": "params",
+            "name": "Parameters"
+          },
+          {
+            "id": "2dc38eda-13f7-4bd7-a80d-4dff8515a852",
+            "type": "text",
+            "code": "commandStr",
+            "name": "Command"
+          },
+          {
+            "id": "962a36ae-ad2b-4597-89c3-dc7894954686",
+            "type": "integer",
+            "code": "updateCtr",
+            "name": "Update Ctr"
+          }
+        ]
+      },
+      {
+        "name": "Global Variable",
+        "id": "51ca03ef-3d55-45eb-b8b7-3b75aaaa30e9",
+        "base": null,
+        "code": "globalVariable",
+        "type": "NORMAL",
+        "properties": [
+          {
+            "id": "6028aa13-ce6f-4413-badf-52225bdd8d50",
+            "type": "string",
+            "code": "description",
+            "name": "Description"
+          },
+          {
+            "id": "8c3c1ee8-c2b0-4600-8c9a-14498c2b212c",
+            "type": "string",
+            "code": "eval",
+            "name": "Eval"
+          },
+          {
+            "id": "19366c4d-81fe-4c7b-b949-813431e6099f",
+            "type": "listgroup",
+            "code": "type",
+            "name": "Type"
+          },
+          {
+            "id": "92eea1c7-76af-497b-8a53-0ecea2bfc3ea",
+            "type": "string",
+            "code": "name",
+            "name": "Name"
+          },
+          {
+            "id": "c527b9ad-ce25-49cc-a362-b56d22491b8a",
+            "type": "integer",
+            "code": "updateCtr",
+            "name": "Update Ctr"
+          },
+          {
+            "id": "8c627d8a-bf73-4bce-afda-09628577dac3",
+            "type": "string",
+            "code": "code",
+            "name": "Code"
+          },
+          {
+            "id": "d7823927-3acd-493e-9f20-e4204243af3c",
+            "type": "string",
+            "code": "value",
+            "name": "Value"
+          }
+        ]
+      },
+      {
+        "name": "Master Account",
+        "id": "7d521788-7cf3-4e66-bc44-ebe059690d45",
+        "base": null,
+        "code": "masterAccount",
+        "type": "SILVER",
+        "properties": [
+          {
+            "id": "78a3f50a-c09e-45b3-9ba0-626adb4726af",
+            "type": "listgroup",
+            "code": "branch",
+            "name": "Branch"
+          },
+          {
+            "id": "8b1c0f8a-208b-4a99-ad46-29a4b4c830b3",
+            "type": "float",
+            "code": "approvedLimitInActualCurrency",
+            "name": "Approved Limit in Actual Currency"
+          },
+          {
+            "id": "d2801668-32a7-45ce-9c8c-563f1d574997",
+            "type": "date",
+            "code": "createdDate",
+            "name": "Created Date"
+          },
+          {
+            "id": "7201aea4-6ac9-4496-b13f-65414268f8ce",
+            "type": "date",
+            "code": "deletedDate",
+            "name": "Deleted Date"
+          },
+          {
+            "id": "9dda8bd5-4603-40fe-ba0d-88dfcdc1ea8f",
+            "type": "listgroup",
+            "code": "approvedLimitCurrency",
+            "name": "Approved Limit Currency"
+          },
+          {
+            "id": "a5bd6914-7a89-47bf-bb7c-18d4e075d44a",
+            "type": "integer",
+            "code": "recordDataID",
+            "name": "Record Data ID"
+          },
+          {
+            "id": "09bd09b1-6e68-4108-9f04-1b1725affbb6",
+            "type": "string",
+            "code": "code",
+            "name": "Master Account Number"
+          },
+          {
+            "id": "8a0160a3-1b50-4adf-9e51-3385c520cc6f",
+            "type": "float",
+            "code": "approvedLimitRM",
+            "name": "Approved Limit (RM equivalent) "
+          },
+          {
+            "id": "f2259161-ee97-4c44-b904-2345f518c989",
+            "type": "module",
+            "code": "approvalDate",
+            "name": "Approval Date"
+          },
+          {
+            "id": "dfb44fbc-038d-4e52-aac5-3932367e9f75",
+            "type": "date",
+            "code": "updatedDate",
+            "name": "Updated Date"
+          },
+          {
+            "id": "f6db644a-1a87-41f9-8da4-a340f1d96654",
+            "type": "integer",
+            "code": "sourceSystem",
+            "name": "Source System Code"
+          },
+          {
+            "id": "fafe0b9b-5c00-40c8-8c8c-11b98e99292b",
+            "type": "integer",
+            "code": "sourceSystemRecordID",
+            "name": "Source System Record ID"
+          },
+          {
+            "id": "ae8ca291-39ae-410b-8e5d-cae48ad05877",
+            "type": "module",
+            "code": "batch",
+            "name": "Batch"
+          }
+        ]
+      },
+      {
+        "name": "Handlebar Template",
+        "id": "a7ddb484-abba-4f80-abc5-bef75cadd6d1",
+        "base": null,
+        "code": "handlebarTemplate",
+        "type": "NORMAL",
+        "properties": [
+          {
+            "id": "3c524faf-a90b-4b02-b8c3-7c37b223ffdf",
+            "type": "string",
+            "code": "url",
+            "name": "URL"
+          },
+          {
+            "id": "5259da22-1db6-43ef-b282-7e8925130806",
+            "type": "boolean",
+            "code": "hasParamTransform",
+            "name": "Has Params - Transform"
+          },
+          {
+            "id": "3cc3f1cc-ab65-487a-ab0b-a0fdc918b073",
+            "type": "string",
+            "code": "name",
+            "name": "Name"
+          },
+          {
+            "id": "2c060402-be1c-429e-8538-0a170421bf01",
+            "type": "datetime",
+            "code": "createdAt",
+            "name": "Created At"
+          },
+          {
+            "id": "7e0aaeb5-91bf-4e0e-b763-4ea2e8acfea1",
+            "type": "datetime",
+            "code": "updatedAt",
+            "name": "Updated At"
+          },
+          {
+            "id": "02061e51-daff-4bf7-8acd-f1cbe2f3edaf",
+            "type": "boolean",
+            "code": "hasParamSource",
+            "name": "Has Params - Source"
+          },
+          {
+            "id": "52b39770-6306-43e9-ad81-e622ecffd529",
+            "type": "module",
+            "code": "createdBy",
+            "name": "Created By"
+          },
+          {
+            "id": "8b5770af-c7dd-4e24-9167-83779aca5ac7",
+            "type": "boolean",
+            "code": "hasParamTarget",
+            "name": "Has Params - Target"
+          },
+          {
+            "id": "7f80728b-50b1-47ad-bb05-72b87f6f8da1",
+            "type": "string",
+            "code": "code",
+            "name": "Code"
+          },
+          {
+            "id": "d9740570-58d9-490c-a4c9-cffd35f7ef05",
+            "type": "module",
+            "code": "updatedBy",
+            "name": "Updated By"
+          },
+          {
+            "id": "db4b9473-42f1-44be-8e3c-a0f2583b5d73",
+            "type": "integer",
+            "code": "updateCtr",
+            "name": "Update Ctr"
+          },
+          {
+            "id": "7000f2f0-5178-4210-9ec0-aef8d3a070c9",
+            "type": "boolean",
+            "code": "hasParamModule",
+            "name": "Has Params - Module"
+          },
+          {
+            "id": "3d04d087-fdd9-4695-8bbd-87cca4b4edfd",
+            "type": "boolean",
+            "code": "hasParamAggregate",
+            "name": "Has Params - Aggregate"
+          },
+          {
+            "id": "274820ff-de1c-4942-b942-f21b9a3b96b1",
+            "type": "boolean",
+            "code": "hasParamExtraction",
+            "name": "Has params - Output"
+          }
+        ]
+      },
+      {
+        "name": "Individual Telephone",
+        "id": "8255f5a8-3452-4743-a8dc-307bb2bc69fd",
+        "base": null,
+        "code": "individualTelephone",
+        "type": "SILVER",
+        "properties": [
+          {
+            "id": "a216f1fa-3abf-46dc-93d1-e02cce56e77b",
+            "type": "date",
+            "code": "createdDate",
+            "name": "Created Date"
+          },
+          {
+            "id": "f515ce88-75ea-471b-8754-91e34259914b",
+            "type": "date",
+            "code": "updatedDate",
+            "name": "Updated Date"
+          },
+          {
+            "id": "80f316f6-9817-4a4c-a745-7ce6520ba8e1",
+            "type": "date",
+            "code": "deletedDate",
+            "name": "Deleted Date"
+          },
+          {
+            "id": "8be3e17e-bb36-4903-927c-5772bd539591",
+            "type": "string",
+            "code": "sourceSystem",
+            "name": "Source System Code"
+          },
+          {
+            "id": "4cacc8bc-7688-4e4b-9db4-5f80108efe0d",
+            "type": "integer",
+            "code": "sourceSystemRecordID",
+            "name": "Source System Record ID"
+          },
+          {
+            "id": "3ca77bef-0d6b-4eff-9de3-0d1737c8b835",
+            "type": "integer",
+            "code": "recordDataID",
+            "name": "Record Data ID"
+          },
+          {
+            "id": "28eb52fd-0227-43e6-8a02-59c725c785a6",
+            "type": "module",
+            "code": "batch",
+            "name": "Batch"
+          },
+          {
+            "id": "5fdb8460-5907-4314-af9e-7fa797665b73",
+            "type": "string",
+            "code": "individual",
+            "name": "Customer Number"
+          },
+          {
+            "id": "4cc63a00-f6fc-4af5-be81-2206c2e871be",
+            "type": "listgroup",
+            "code": "entityType",
+            "name": "Entity Type Code"
+          },
+          {
+            "id": "f83ac081-2ef8-4779-937e-fe64f8be9f77",
+            "type": "listgroup",
+            "code": "typeOfTelephone",
+            "name": "Type of Telephone Code"
+          }
+        ]
+      },
+      {
+        "name": "Batch",
+        "id": "e87bebce-d1d6-45d5-a3c4-c332c3f1d659",
+        "base": null,
+        "code": "batch",
+        "type": "NORMAL",
+        "properties": [
+          {
+            "id": "7c05d887-4dfa-44b1-af32-519f8958776d",
+            "type": "module",
+            "code": "updatedBy",
+            "name": "Updated By"
+          },
+          {
+            "id": "046b1eda-cf5c-49fa-acd3-08f5043d3ad0",
+            "type": "datetime",
+            "code": "updatedAt",
+            "name": "Updated At"
+          },
+          {
+            "id": "e97f7775-870b-49dd-89a6-d38147396a6d",
+            "type": "seqnum",
+            "code": "id",
+            "name": "Id"
+          },
+          {
+            "id": "a7018f78-2273-4f64-9b0b-96b8ab9b3bf7",
+            "type": "module",
+            "code": "project",
+            "name": "Project"
+          },
+          {
+            "id": "7664d03d-06a0-4aa1-a618-aa2d93a6eda3",
+            "type": "datetime",
+            "code": "createdAt",
+            "name": "Created At"
+          },
+          {
+            "id": "dda92875-39a7-4e9d-8cd3-62e18098ecdb",
+            "type": "module",
+            "code": "createdBy",
+            "name": "Created By"
+          },
+          {
+            "id": "f11fb920-7114-4a84-b3b0-f44b309d01e2",
+            "type": "module",
+            "code": "workflow",
+            "name": "Workflow"
+          },
+          {
+            "id": "dac71382-2280-4f25-8dca-de44883c00bb",
+            "type": "string",
+            "code": "processId",
+            "name": "Process ID"
+          },
+          {
+            "id": "a24673ac-1550-4b89-b307-d296abb0eff5",
+            "type": "integer",
+            "code": "updateCtr",
+            "name": "Update Ctr"
+          },
+          {
+            "id": "adfbd225-2a75-4409-9cc9-e5dc4f697f1b",
+            "type": "listgroup",
+            "code": "batchStatus",
+            "name": "Status"
+          }
+        ]
+      },
+      {
+        "name": "Module Form",
+        "id": "eab7e71d-0ef3-4aa7-bd81-f983f784b9b7",
+        "base": "",
+        "code": "moduleForm",
+        "type": "NORMAL",
+        "properties": [
+          {
+            "id": "4bbbfb49-158c-4bec-bf8b-324c30d2df59",
+            "type": "module",
+            "code": "module",
+            "name": "Module"
+          },
+          {
+            "id": "28735c50-7511-4355-86ee-db02b2d855c3",
+            "type": "text",
+            "code": "onPreSave",
+            "name": "OnPreSave"
+          },
+          {
+            "id": "8a1679b7-db35-4915-a323-0f918552e358",
+            "type": "jsonlist",
+            "code": "customAction",
+            "name": "Custom Action"
+          },
+          {
+            "id": "23321a03-0194-4cf1-9cd7-7fd37b2d28c5",
+            "type": "text",
+            "code": "onPostSave",
+            "name": "OnPostSave"
+          },
+          {
+            "id": "ad04e484-06db-437e-aa7a-235842b5cecc",
+            "type": "text",
+            "code": "onChange",
+            "name": "OnChange"
+          },
+          {
+            "id": "cfbdda39-e20f-4db6-b683-4489df425c42",
+            "type": "uuid",
+            "code": "id",
+            "name": "Id"
+          },
+          {
+            "id": "c777655a-d4a9-4ea3-9d18-6dbaf94656f5",
+            "type": "string",
+            "code": "type",
+            "name": "Type"
+          },
+          {
+            "id": "053dcf41-75c5-4de0-a308-83737a5e7a95",
+            "type": "jsonlist",
+            "code": "relationships",
+            "name": "Relationships"
+          },
+          {
+            "id": "8ee57839-4fbb-41f0-b2aa-6bbcfa71d7da",
+            "type": "text",
+            "code": "onLoad",
+            "name": "OnLoad"
+          },
+          {
+            "id": "e613bd7e-7f5f-4274-8ba8-152a95860afb",
+            "type": "text",
+            "code": "properties",
+            "name": "Properties"
+          },
+          {
+            "id": "86b246f0-2224-4663-b544-b9a0a27e9863",
+            "type": "string",
+            "code": "owner",
+            "name": "Owner"
+          },
+          {
+            "id": "80426414-f619-423d-af8c-782d8464e3b9",
+            "type": "integer",
+            "code": "updateCtr",
+            "name": "Update Ctr"
+          }
+        ]
+      },
+      {
+        "name": "Job",
+        "id": "671700ae-d64d-4049-a696-54f69ead50ad",
+        "base": null,
+        "code": "job",
+        "type": "NORMAL",
+        "properties": [
+          {
+            "id": "5c4a4ef4-2786-477e-925b-ad2f36653836",
+            "type": "datetime",
+            "code": "createdAt",
+            "name": "Created At"
+          },
+          {
+            "id": "b7b6db28-93a7-4099-b86a-0b3f5c08de06",
+            "type": "jsonlist",
+            "code": "params",
+            "name": "Params"
+          },
+          {
+            "id": "e426c552-a09d-4b23-a4ab-40a64fe03d55",
+            "type": "string",
+            "code": "id",
+            "name": "ID"
+          },
+          {
+            "id": "773a4b53-c6cf-4983-b6eb-7b591c4a17fd",
+            "type": "datetime",
+            "code": "updatedAt",
+            "name": "Updated At"
+          },
+          {
+            "id": "2e4f1157-54a4-49a1-b507-9a5b2fef284e",
+            "type": "string",
+            "code": "code",
+            "name": "Code"
+          },
+          {
+            "id": "75adc60d-fd42-4e25-8d76-1152ae1da736",
+            "type": "module",
+            "code": "createdBy",
+            "name": "Created By"
+          },
+          {
+            "id": "b6ae8388-880d-4b05-bc30-5e42efb5fb7b",
+            "type": "module",
+            "code": "engine",
+            "name": "Engine"
+          },
+          {
+            "id": "6ee53b23-de69-4ce7-a54b-1865a10f2317",
+            "type": "module",
+            "code": "updatedBy",
+            "name": "Updated By"
+          },
+          {
+            "id": "c91e1e85-0a1f-42dd-ab7d-e002cadc5980",
+            "type": "module",
+            "code": "jobTemplate",
+            "name": "Job Template"
+          },
+          {
+            "id": "198e3b9c-4a1c-4127-937c-c744556a0c16",
+            "type": "string",
+            "code": "name",
+            "name": "Name"
+          },
+          {
+            "id": "4f6f8c4b-70df-4272-90ee-5bbff9c00243",
+            "type": "integer",
+            "code": "updateCtr",
+            "name": "Update Ctr"
+          }
+        ]
+      },
+      {
+        "name": "Expected Credit Loss",
+        "id": "f7045b07-0a34-4ce4-8947-1d1a5c2ceaef",
+        "base": null,
+        "code": "expectedCreditLoss",
+        "type": "SILVER",
+        "properties": [
+          {
+            "id": "38948a18-0c09-4004-8438-b7e41bf54e00",
+            "type": "module",
+            "code": "batch",
+            "name": "Batch"
+          },
+          {
+            "id": "7ac9160a-bc7f-4afd-a8cf-70d0c0d677f0",
+            "type": "module",
+            "code": "positionDate",
+            "name": "Position Date"
+          },
+          {
+            "id": "b26fae07-4d4a-47da-8d6c-5a66ff305940",
+            "type": "module",
+            "code": "masterAccount",
+            "name": "Master Account Number "
+          },
+          {
+            "id": "16b598d0-2e6d-4c85-ba18-3061ee46c9ea",
+            "type": "module",
+            "code": "subAccount",
+            "name": "Sub Account Number "
+          },
+          {
+            "id": "98187420-8a05-47f1-bdad-0435bf6d4eb1",
+            "type": "listgroup",
+            "code": "typeOfEstimates",
+            "name": "Type of Estimates"
+          },
+          {
+            "id": "7d7b8e13-bf8d-446e-97c1-a602e95387d4",
+            "type": "float",
+            "code": "probabilityOfDefault",
+            "name": "Probability of Default (%) "
+          },
+          {
+            "id": "d276800a-c97a-40f2-bae9-48a6e3fb1bea",
+            "type": "float",
+            "code": "lossGivenDefault",
+            "name": "Loss Given Default (%) "
+          },
+          {
+            "id": "fe6b1c56-4943-4721-88b4-1c5c283984d8",
+            "type": "date",
+            "code": "createdDate",
+            "name": "Created Date"
+          },
+          {
+            "id": "1ff1be43-8a94-4fb4-a9e4-85cb999ccf52",
+            "type": "date",
+            "code": "updatedDate",
+            "name": "Updated Date"
+          },
+          {
+            "id": "c6eb0470-009e-40ad-85b4-8ffba808a326",
+            "type": "date",
+            "code": "deletedDate",
+            "name": "Deleted Date"
+          },
+          {
+            "id": "c42312e5-65d4-445d-82b2-b2b6607e4c11",
+            "type": "string",
+            "code": "sourceSystem",
+            "name": "Source System Code"
+          }
+        ]
+      },
+      {
+        "name": "Job Run",
+        "id": "35441a96-7200-4aec-960c-a63877a92219",
+        "base": null,
+        "code": "jobRun",
+        "type": "NORMAL",
+        "properties": [
+          {
+            "id": "239de820-2fb4-47c1-a565-98b79eab6443",
+            "type": "datetime",
+            "code": "startTime",
+            "name": "Start Time"
+          },
+          {
+            "id": "3043c0c8-f389-48e1-b58f-6fffc2d19d51",
+            "type": "string",
+            "code": "id",
+            "name": "ID"
+          },
+          {
+            "id": "a6b5d68d-6ffd-4ce3-8022-12f460fd4ea4",
+            "type": "text",
+            "code": "returnValue",
+            "name": "Return Value"
+          },
+          {
+            "id": "aaadf8b3-fe6b-419b-a8fa-006dc41b7276",
+            "type": "module",
+            "code": "batch",
+            "name": "Batch"
+          },
+          {
+            "id": "612c1299-2d7a-4edf-88c1-32adea5eab94",
+            "type": "datetime",
+            "code": "endTime",
+            "name": "End Time"
+          },
+          {
+            "id": "ef8e1905-58ff-4aba-b419-97ae565352b0",
+            "type": "integer",
+            "code": "stage",
+            "name": "Stage"
+          },
+          {
+            "id": "0562aa2c-33c6-40be-bafe-12bc670497db",
+            "type": "text",
+            "code": "params",
+            "name": "Params"
+          },
+          {
+            "id": "25459acf-4ceb-4a8c-bdc2-c0eb41508a06",
+            "type": "listgroup",
+            "code": "status",
+            "name": "Status"
+          },
+          {
+            "id": "aaa4452f-83b9-47e2-9bd7-0e57a83491b6",
+            "type": "integer",
+            "code": "updateCtr",
+            "name": "Update Ctr"
+          },
+          {
+            "id": "9897fca4-a5c1-4508-b9d7-f5b942b26e86",
+            "type": "module",
+            "code": "jobTemplate",
+            "name": "Job Template"
+          },
+          {
+            "id": "71e421ff-cdc3-4751-999b-fddacda805a1",
+            "type": "listgroup",
+            "code": "serviceType",
+            "name": "Service Type"
+          },
+          {
+            "id": "d2d6138d-ef36-4ca2-9f70-673c8b0a1c30",
+            "type": "module",
+            "code": "environment",
+            "name": "Environment"
+          }
+        ]
+      },
+      {
+        "name": "Workflow",
+        "id": "92a08bf2-15a5-477b-882a-b86793f39eb3",
+        "base": null,
+        "code": "workflow",
+        "type": "NORMAL",
+        "properties": [
+          {
+            "id": "60a8d517-6568-4e72-b5b2-3d4332cbd0da",
+            "type": "integer",
+            "code": "updateCtr",
+            "name": "Update Counter"
+          },
+          {
+            "id": "030fcd49-a713-4a2b-8a3a-6839a3233c9b",
+            "type": "text",
+            "code": "description",
+            "name": "Description"
+          },
+          {
+            "id": "1a3e7fab-6566-4623-bf2b-66df80bc35cf",
+            "type": "listgroup",
+            "code": "status",
+            "name": "Status"
+          },
+          {
+            "id": "5720f753-1079-4f1f-8f80-da76399653a5",
+            "type": "string",
+            "code": "cron",
+            "name": "Cron"
+          },
+          {
+            "id": "bbb426be-abac-4f5a-8c16-5cb0af55888c",
+            "type": "string",
+            "code": "code",
+            "name": "Code"
+          },
+          {
+            "id": "ef964977-3e67-4ffa-8cdd-5a8b052bbc27",
+            "type": "string",
+            "code": "name",
+            "name": "Name"
+          },
+          {
+            "id": "ad0959f9-fc42-438b-a006-3fd7ea7bb54d",
+            "type": "jsonlist",
+            "code": "tasks",
+            "name": "Task"
+          },
+          {
+            "id": "05aaeb98-49e8-4692-ad53-b7dcbd22b7df",
+            "type": "listgroup",
+            "code": "trigger",
+            "name": "Trigger"
+          },
+          {
+            "id": "2726ee2f-a75d-4386-a015-9febd4dd8991",
+            "type": "listgroup",
+            "code": "serviceType",
+            "name": "Service Type"
+          },
+          {
+            "id": "e660323a-ac5b-4910-a5eb-5c34e3250b48",
+            "type": "module",
+            "code": "environment",
+            "name": "Environment"
+          },
+          {
+            "id": "afdb6c6f-1fd6-4326-a8a0-b10fb33257e5",
+            "type": "boolean",
+            "code": "onlyOne",
+            "name": "Only 1 Active Version"
+          },
+          {
+            "id": "610aef83-7bc1-4ec2-8b1b-00cfdff3f79d",
+            "type": "jsonlist",
+            "code": "params",
+            "name": "Global Parameters"
+          }
+        ]
+      },
+      {
+        "name": "rptFissLonTmp",
+        "id": "1f8631e6-95ac-408a-851d-a832dc2fafc9",
+        "base": null,
+        "code": "rptFissLonTmp",
+        "type": "BRONZE",
+        "properties": [
+          {
+            "id": "7e797971-7840-42a2-b350-ff014268789f",
+            "type": "string",
+            "code": "sys_code",
+            "name": "System Code"
+          },
+          {
+            "id": "69023920-2fb5-43b0-8707-45b9c794616b",
+            "type": "listgroup",
+            "code": "accountStatus",
+            "name": "Account Status"
+          },
+          {
+            "id": "f808e711-0939-423e-8a90-1204c9000d22",
+            "type": "listgroup",
+            "code": "corporateStatus",
+            "name": "Corporate Status"
+          },
+          {
+            "id": "9237edf1-6c09-4e52-8480-d72c05ec4eb9",
+            "type": "module",
+            "code": "batch",
+            "name": "Batch"
+          },
+          {
+            "id": "2f277db2-2888-452e-8a66-0542546cd852",
+            "type": "string",
+            "code": "cust_no",
+            "name": "cust_no"
+          },
+          {
+            "id": "140b662a-1f9f-4e5d-a5ef-6647cd7630c4",
+            "type": "string",
+            "code": "cust_name",
+            "name": "cust_name"
+          },
+          {
+            "id": "d9f04017-342a-4e40-9324-e0215571ff84",
+            "type": "string",
+            "code": "data_list",
+            "name": "data_list"
+          },
+          {
+            "id": "0e272d75-b485-4607-b9b0-568e9117a42b",
+            "type": "string",
+            "code": "cust_type",
+            "name": "cust_type"
+          },
+          {
+            "id": "8a48f103-dc53-444d-b0d2-e2c3cc6c046c",
+            "type": "string",
+            "code": "acc_typ",
+            "name": "acc_typ"
+          },
+          {
+            "id": "75483945-4a15-41a3-bb12-70f7c89d8021",
+            "type": "string",
+            "code": "data_date",
+            "name": "data_date"
+          },
+          {
+            "id": "fffc756a-f067-440d-9a2e-62964566ceb3",
+            "type": "float",
+            "code": "amt_disbursed_rm",
+            "name": "amt_disbursed_rm"
+          },
+          {
+            "id": "a4ee8162-d01d-4f76-a21e-90ac9ea89556",
+            "type": "string",
+            "code": "sub_acc_no",
+            "name": "Sub Account Number"
+          },
+          {
+            "id": "4d77e9e1-d900-4520-a626-167880d33811",
+            "type": "listgroup",
+            "code": "sector",
+            "name": "Sector"
+          },
+          {
+            "id": "8fa7ef77-2238-40f1-a7d0-9b14bd87a74b",
+            "type": "string",
+            "code": "mst_acc_no",
+            "name": "Master Account Number"
+          },
+          {
+            "id": "9648624a-1088-436f-8786-7b48e826aaea",
+            "type": "float",
+            "code": "os_balance_rm",
+            "name": "os_balance_rm"
+          },
+          {
+            "id": "4808d343-2afb-4e34-808d-06145a14b9c1",
+            "type": "float",
+            "code": "amt_repaid_rm",
+            "name": "amt_repaid_rm"
+          },
+          {
+            "id": "1c06b599-b8b9-4920-be7d-577e9e36b219",
+            "type": "string",
+            "code": "acct_no_17",
+            "name": "acct_no_17"
+          }
+        ]
+      },
+      {
+        "name": "Borrower ID",
+        "id": "fd394e47-b198-4acc-aefb-b4146c170dcb",
+        "base": null,
+        "code": "borrowerID",
+        "type": "SILVER",
+        "properties": [
+          {
+            "id": "31394be8-02ee-4393-b368-8c6540fc02d5",
+            "type": "string",
+            "code": "id",
+            "name": "Id"
+          },
+          {
+            "id": "4c133b4b-5136-473f-8891-f5b9865a6d0d",
+            "type": "module",
+            "code": "borrower",
+            "name": "Customer Number"
+          },
+          {
+            "id": "036a254e-405e-4a98-a93f-7054e1f565d1",
+            "type": "datetime",
+            "code": "createdDate",
+            "name": "Created Date"
+          },
+          {
+            "id": "139c3767-3955-473e-9fdd-d860871e0bbe",
+            "type": "datetime",
+            "code": "updatedDate",
+            "name": "Updated Date"
+          },
+          {
+            "id": "627c510e-db08-43c6-8b3f-5a5242915bac",
+            "type": "listgroup",
+            "code": "entityType",
+            "name": "Entity Type Code"
+          },
+          {
+            "id": "3ef539ff-bc17-4ed6-bc54-9d79f312ace9",
+            "type": "datetime",
+            "code": "deletedDate",
+            "name": "Deleted Date"
+          },
+          {
+            "id": "fe1e70ac-1318-4bf1-80f2-ac4a7c0cf635",
+            "type": "listgroup",
+            "code": "idType",
+            "name": "ID Type Code"
+          },
+          {
+            "id": "43578aa4-70bb-45ab-9312-a437b543aec8",
+            "type": "string",
+            "code": "sourceSystem",
+            "name": "Source System Code"
+          },
+          {
+            "id": "841cfca4-2a51-4c39-8527-fd6726583663",
+            "type": "string",
+            "code": "idNumber",
+            "name": "ID Number"
+          },
+          {
+            "id": "3b8e07e3-3094-4d5d-925c-f90d5d3ff1d8",
+            "type": "string",
+            "code": "registrationNumber",
+            "name": "Registration Number"
+          },
+          {
+            "id": "0e517b32-21de-40ce-a31b-1266f8ffaf3a",
+            "type": "integer",
+            "code": "sourceSystemRecordID",
+            "name": "Source System Record ID"
+          },
+          {
+            "id": "1c0ab688-b31a-496a-ae85-5ffee5c590a9",
+            "type": "module",
+            "code": "batch",
+            "name": "Batch"
+          },
+          {
+            "id": "6d4f1fc2-646e-412b-8aee-8f0fa62c3b88",
+            "type": "integer",
+            "code": "recordDataID",
+            "name": "Record Data ID"
+          }
+        ]
+      },
+      {
+        "name": "Borrower Tel",
+        "id": "c98b3573-a301-42de-bf46-4bcbfd95f134",
+        "base": null,
+        "code": "borrowerTel",
+        "type": "SILVER",
+        "properties": [
+          {
+            "id": "0488badb-34fd-4672-9e5d-b1ea26276f38",
+            "type": "listgroup",
+            "code": "typeOfTelephone",
+            "name": "Type of Telephone Code"
+          },
+          {
+            "id": "b26c4eb0-e265-45f5-a500-69be696ea885",
+            "type": "string",
+            "code": "id",
+            "name": "Id"
+          },
+          {
+            "id": "962189c4-abaa-4ca9-8045-7cc13605413a",
+            "type": "datetime",
+            "code": "deletedDate",
+            "name": "Deleted Date"
+          },
+          {
+            "id": "f7245720-2597-420a-ad83-b655f9f8c5a5",
+            "type": "module",
+            "code": "batch",
+            "name": "Batch"
+          },
+          {
+            "id": "437bca19-fc4d-4cb1-b0ae-b5254b3ebca0",
+            "type": "listgroup",
+            "code": "entityType",
+            "name": "Entity Type Code"
+          },
+          {
+            "id": "82c05bf9-bef4-4eb9-98c7-16e727e011b3",
+            "type": "integer",
+            "code": "sourceSystemRecordID",
+            "name": "Source System Record ID"
+          },
+          {
+            "id": "db52fa54-c786-4374-812c-9692d3744c4e",
+            "type": "module",
+            "code": "borrower",
+            "name": "Customer Number"
+          },
+          {
+            "id": "1932bcfe-c067-497f-aace-0fedbafd7856",
+            "type": "integer",
+            "code": "sourceSystem",
+            "name": "Source System Code"
+          },
+          {
+            "id": "b0fea867-67fd-4dd7-9091-d627a93f7b6a",
+            "type": "integer",
+            "code": "recordDataID",
+            "name": "Record Data ID"
+          },
+          {
+            "id": "90a4f373-cb38-4dfd-990d-e507bd3c61e4",
+            "type": "string",
+            "code": "telephoneNumber",
+            "name": "Telephone Number"
+          },
+          {
+            "id": "b53db081-fc23-4223-85cd-552bd721c266",
+            "type": "datetime",
+            "code": "createdDate",
+            "name": "Created Date"
+          },
+          {
+            "id": "1631df4c-d66d-41fc-9d8f-7e24b0dc977f",
+            "type": "datetime",
+            "code": "updatedDate",
+            "name": "Updated Date"
+          }
+        ]
+      },
+      {
+        "name": "Corporate ID",
+        "id": "90930d49-cedc-4dd0-a31c-b0374c2b5dc2",
+        "base": null,
+        "code": "corporateID",
+        "type": "SILVER",
+        "properties": [
+          {
+            "id": "c5a0088c-9800-43e3-9c04-a1828cd0f535",
+            "type": "date",
+            "code": "updatedDate",
+            "name": "Updated Date"
+          },
+          {
+            "id": "f8dfdf79-8e57-42b1-ac0a-75aaa4e81f64",
+            "type": "module",
+            "code": "batch",
+            "name": "Batch"
+          },
+          {
+            "id": "9d0ae71b-eaa8-45ca-987c-cccb1944619f",
+            "type": "module",
+            "code": "corporate",
+            "name": "Customer Number"
+          },
+          {
+            "id": "7f84ac90-e148-495f-947b-2c9cab4fdeaa",
+            "type": "string",
+            "code": "id",
+            "name": "Id"
+          },
+          {
+            "id": "d03b4179-d272-4d41-9f31-a2252b6462be",
+            "type": "listgroup",
+            "code": "entityType",
+            "name": "Entity Type Code"
+          },
+          {
+            "id": "19c2e904-ea97-4567-944e-219c70a2cf45",
+            "type": "string",
+            "code": "registrationNumber",
+            "name": "Registration Number "
+          },
+          {
+            "id": "419fe3b3-4798-4561-a143-78e94b408a57",
+            "type": "date",
+            "code": "createdDate",
+            "name": "Created Date"
+          },
+          {
+            "id": "bc481447-02f9-476a-82b0-8e4bcb349dbb",
+            "type": "date",
+            "code": "deletedDate",
+            "name": "Deleted Date"
+          },
+          {
+            "id": "4a696252-4b98-4f00-bb49-52c0cde8f954",
+            "type": "string",
+            "code": "sourceSystem",
+            "name": "Source System Code"
+          },
+          {
+            "id": "3c6e8aa3-9516-4b7f-b957-a9bf1d771f72",
+            "type": "integer",
+            "code": "sourceSystemRecordID",
+            "name": "Source System Record ID"
+          },
+          {
+            "id": "0a57bca8-5443-4f20-a078-99279ed19eb0",
+            "type": "integer",
+            "code": "recordDataID",
+            "name": "Record Data ID"
+          }
+        ]
+      },
+      {
+        "name": "Borrower Address",
+        "id": "155e023a-4cd0-4815-ab00-de51a2275f97",
+        "base": null,
+        "code": "borrowerAddress",
+        "type": "SILVER",
+        "properties": [
+          {
+            "id": "10d385d5-94fd-4dee-8c3e-157f799cefbc",
+            "type": "string",
+            "code": "id",
+            "name": "Id"
+          },
+          {
+            "id": "dcb842dd-795b-4ec6-854b-e65775dff7fe",
+            "type": "listgroup",
+            "code": "entityType",
+            "name": "Entity Type"
+          },
+          {
+            "id": "30520a5a-4ee6-4b9a-8a4d-cc9de603e662",
+            "type": "listgroup",
+            "code": "typeOfAddress",
+            "name": "Type of Address Code"
+          },
+          {
+            "id": "8c319c24-9fcb-4745-952f-c3765d150e10",
+            "type": "string",
+            "code": "districtCityTown",
+            "name": "District/City/Town"
+          },
+          {
+            "id": "840468d1-29f3-447c-831e-6c67ae57babd",
+            "type": "integer",
+            "code": "recordDataID",
+            "name": "Record Data ID"
+          },
+          {
+            "id": "d1f6bc27-bd32-48be-a216-1a675ea49708",
+            "type": "listgroup",
+            "code": "state",
+            "name": "State Code"
+          },
+          {
+            "id": "ae6add06-941b-4506-9db3-a459e71178c7",
+            "type": "string",
+            "code": "addressLine1",
+            "name": "Address Line 1"
+          },
+          {
+            "id": "f45d8efc-7591-4dff-9a64-6439f8f20cf6",
+            "type": "string",
+            "code": "addressLine2",
+            "name": "Address Line 2"
+          },
+          {
+            "id": "8d0388b4-fc09-4c92-87cd-fd8d2fb9b60e",
+            "type": "datetime",
+            "code": "createdDate",
+            "name": "Created Date"
+          },
+          {
+            "id": "587949f8-cec8-4083-8a6b-af477debb653",
+            "type": "datetime",
+            "code": "updatedDate",
+            "name": "Updated Date"
+          },
+          {
+            "id": "2c54afc6-5daf-4e7f-8d76-424a16c70180",
+            "type": "string",
+            "code": "addressLine3",
+            "name": "Address Line 3"
+          },
+          {
+            "id": "d4a72a85-42b8-44cf-b5d2-4678c264138b",
+            "type": "string",
+            "code": "addressLine4",
+            "name": "Address Line 4"
+          },
+          {
+            "id": "647a4d5d-cee1-46e6-8cec-b0629fde1271",
+            "type": "datetime",
+            "code": "deletedDate",
+            "name": "Deleted Date"
+          },
+          {
+            "id": "48f7257d-5b00-4055-8ec8-b681138e947f",
+            "type": "listgroup",
+            "code": "countryCode",
+            "name": "Country Code"
+          },
+          {
+            "id": "0e2b2008-528f-4e62-8b1d-c264d6d17dcf",
+            "type": "string",
+            "code": "sourceSystem",
+            "name": "Source System Code"
+          },
+          {
+            "id": "f2c5b285-2fe3-4f5e-bdf7-a9831b3ff129",
+            "type": "module",
+            "code": "batch",
+            "name": "Batch"
+          },
+          {
+            "id": "2cdd0759-fe8b-48a8-b281-c699b7b755a0",
+            "type": "module",
+            "code": "borrower",
+            "name": "Customer Number"
+          },
+          {
+            "id": "6f8c1f03-3d0a-4022-9937-5bd4a6908e09",
+            "type": "listgroup",
+            "code": "postcode",
+            "name": "Postcode"
+          },
+          {
+            "id": "a9e7ab45-63f5-453d-af4b-1d6c82545c52",
+            "type": "integer",
+            "code": "sourceSystemRecordID",
+            "name": "Source System Record ID"
+          }
+        ]
+      },
+      {
+        "name": "Submission",
+        "id": "51dcdd77-c3c1-4afb-afac-54058922685d",
+        "base": null,
+        "code": "submission",
+        "type": "NORMAL",
+        "properties": [
+          {
+            "id": "cf0e77bd-d4bc-4075-8bb3-d076db15aa23",
+            "type": "date",
+            "code": "dueDate",
+            "name": "Due Date"
+          },
+          {
+            "id": "a14068a5-2f27-4b0b-a5b0-5a4a5dc26ef7",
+            "type": "date",
+            "code": "reportingDate",
+            "name": "Reporting Date"
+          },
+          {
+            "id": "d24360ce-611b-4be7-8bdd-832531f5fecc",
+            "type": "uuid",
+            "code": "id",
+            "name": "ID"
+          },
+          {
+            "id": "8a7838a1-e4a2-4217-857d-baa557e1045b",
+            "type": "string",
+            "code": "name",
+            "name": "Name"
+          },
+          {
+            "id": "1104a271-ca55-4e91-8da7-6bc7174b813c",
+            "type": "integer",
+            "code": "updateCtr",
+            "name": "Update Counter"
+          },
+          {
+            "id": "75f3ad7a-69bb-42ea-8f26-dce7c4f962fd",
+            "type": "listgroup",
+            "code": "status",
+            "name": "Status"
+          },
+          {
+            "id": "16f9f8ec-5141-429f-929e-8ce85ecdc13c",
+            "type": "module",
+            "code": "project",
+            "name": "Project"
+          },
+          {
+            "id": "936a9a70-cb58-4c91-bb54-0738588d8d18",
+            "type": "string",
+            "code": "code",
+            "name": "Code"
+          },
+          {
+            "id": "5e426227-3f17-44c3-b140-dcf5f0c3329f",
+            "type": "string",
+            "code": "link",
+            "name": "Link"
+          }
+        ]
+      },
+      {
+        "name": "Corporate",
+        "id": "c09fab78-ce04-42fd-9da2-79ed0312b1d5",
+        "base": null,
+        "code": "corporate",
+        "type": "SILVER",
+        "properties": [
+          {
+            "id": "44327abb-9859-41f1-9dfd-881026c939a5",
+            "type": "date",
+            "code": "createdDate",
+            "name": "Created Date"
+          },
+          {
+            "id": "cfded585-12ad-4ad2-a34e-f0ca9671b6cb",
+            "type": "date",
+            "code": "updatedDate",
+            "name": "Updated Date"
+          },
+          {
+            "id": "92bfc50b-a515-490a-ad9c-224cdc80bc09",
+            "type": "string",
+            "code": "code",
+            "name": "Customer Number"
+          },
+          {
+            "id": "16374081-f7ce-4da7-8e98-895099c27f71",
+            "type": "integer",
+            "code": "recordDataID",
+            "name": "Record Data ID"
+          },
+          {
+            "id": "63002074-d71b-448d-8a2e-17be9494f407",
+            "type": "listgroup",
+            "code": "entityType",
+            "name": "Entity Type Code"
+          },
+          {
+            "id": "b563b353-1c19-4cc7-8d51-ed0d164edd03",
+            "type": "string",
+            "code": "name",
+            "name": "Customer Name"
+          },
+          {
+            "id": "3d647e32-725a-48ba-ad8b-08e5fd222225",
+            "type": "module",
+            "code": "registrationDate",
+            "name": "Date of Registration (DOR)"
+          },
+          {
+            "id": "d598a9f0-9165-42f4-b58d-82438b3cd96c",
+            "type": "listgroup",
+            "code": "countryOfOperation",
+            "name": "Country Of Operation"
+          },
+          {
+            "id": "9add5663-bf41-4471-8bfe-83f6ea79a845",
+            "type": "listgroup",
+            "code": "residencyStatus",
+            "name": "Residency Status Code"
+          },
+          {
+            "id": "1cd498f0-eebf-45e8-8e47-e2764c8c2312",
+            "type": "listgroup",
+            "code": "corporateStatus",
+            "name": "Corporate Status Code"
+          },
+          {
+            "id": "260ba9b0-d9f4-45e6-8581-748e39523ce7",
+            "type": "listgroup",
+            "code": "sector",
+            "name": "Industrial Sector Code"
+          },
+          {
+            "id": "544a2bc4-7b02-4378-9139-c5b2d7fb9f41",
+            "type": "date",
+            "code": "deletedDate",
+            "name": "Deleted Date"
+          },
+          {
+            "id": "d99cb59f-5dc0-4eda-8adb-2d8b4c3ffca8",
+            "type": "string",
+            "code": "sourceSystemCode",
+            "name": "Source System"
+          },
+          {
+            "id": "c44a2dda-1408-4fb6-8efd-70b0a3947cb5",
+            "type": "module",
+            "code": "batch",
+            "name": "Batch"
+          },
+          {
+            "id": "48bb3c30-df48-4e3d-8afd-15d0338c5b35",
+            "type": "integer",
+            "code": "sourceSystemRecordID",
+            "name": "Source System Record ID"
+          }
+        ]
+      },
+      {
+        "name": "Project Data Item",
+        "id": "3a1f458c-89a3-4ac2-b6ae-2ab5d54ff622",
+        "base": null,
+        "code": "projectDataItem",
+        "type": "NORMAL",
+        "properties": [
+          {
+            "id": "f9c06da0-2610-4f6d-8791-c0aecab0b571",
+            "type": "uuid",
+            "code": "id",
+            "name": "ID"
+          },
+          {
+            "id": "3c07b1c2-5eb8-42f2-84e2-944f3180e803",
+            "type": "integer",
+            "code": "updateCtr",
+            "name": "Update Counter"
+          },
+          {
+            "id": "7ff32899-502a-45ed-ab8e-689510ca0e53",
+            "type": "string",
+            "code": "code",
+            "name": "Code"
+          },
+          {
+            "id": "ed837857-5005-43fe-be93-c0b7d452910a",
+            "type": "listgroup",
+            "code": "status",
+            "name": "Status"
+          },
+          {
+            "id": "94036efe-2857-49b5-881a-e51dc1fba27b",
+            "type": "module",
+            "code": "project",
+            "name": "Project"
+          },
+          {
+            "id": "bddceba0-c62d-45ad-ba8a-b3bbcc6aab90",
+            "type": "listgroup",
+            "code": "frequency",
+            "name": "Frequency"
+          },
+          {
+            "id": "052d68c5-8461-4602-a5d7-aa7f7fc74fac",
+            "type": "module",
+            "code": "dataItem",
+            "name": "Data Item"
+          },
+          {
+            "id": "33bfefb8-4adf-4a98-8dc0-86ba64c79e0a",
+            "type": "json",
+            "code": "filter",
+            "name": "Filter"
+          },
+          {
+            "id": "6e3fad98-0ffc-46e8-b808-97e9cdc126bf",
+            "type": "module",
+            "code": "measure",
+            "name": "Measure"
+          },
+          {
+            "id": "18308602-223f-4e2b-959c-bc0e1efe6383",
+            "type": "module",
+            "code": "module",
+            "name": "Module"
+          }
+        ]
+      },
+      {
+        "name": "Sub Account",
+        "id": "6c29b0d2-2454-42da-8e2a-0fcd1fd33b99",
+        "base": null,
+        "code": "subAccount",
+        "type": "SILVER",
+        "properties": [
+          {
+            "id": "cabc789c-58ab-4945-ba3d-85581a3c2911",
+            "type": "listgroup",
+            "code": "facilityType",
+            "name": "Facility Type"
+          },
+          {
+            "id": "1fb39710-1b26-4dbd-bbba-1cc8bc4e774c",
+            "type": "listgroup",
+            "code": "financingConcept",
+            "name": "Financing Concept"
+          },
+          {
+            "id": "85ddf08e-43d4-4627-a943-cff88a44fd2f",
+            "type": "string",
+            "code": "oldSubAccountNumber",
+            "name": "Old Sub Account Number "
+          },
+          {
+            "id": "5da342f0-060b-4c6f-9fd6-a960ce70a97b",
+            "type": "listgroup",
+            "code": "principalRepaymentTerm",
+            "name": "Principal Repayment Term"
+          },
+          {
+            "id": "c12f3fc1-f70d-4512-aca5-c181535c9dea",
+            "type": "module",
+            "code": "firstDisbursementDate",
+            "name": "First Disbursement Date"
+          },
+          {
+            "id": "d4140bc5-102c-4903-84ca-fb643b11bb45",
+            "type": "float",
+            "code": "interestFinancingRateEIR",
+            "name": "Interest / Financing Rate (%) - EIR "
+          },
+          {
+            "id": "8c074f33-6d2c-4caa-9311-10b9cdcc4410",
+            "type": "string",
+            "code": "soldToCagamasWithRecourse",
+            "name": "Sold to Cagamas with Recourse"
+          },
+          {
+            "id": "c5642753-8db2-4a1a-adf1-7f4304a33a1f",
+            "type": "listgroup",
+            "code": "prioritySector",
+            "name": "Priority Sector "
+          },
+          {
+            "id": "feff1f0c-3c67-4d7f-a580-5eb6dcb00d58",
+            "type": "listgroup",
+            "code": "locationOfLoanUtilisation",
+            "name": "Location of Loan Utilisation "
+          },
+          {
+            "id": "f6c4646b-7829-4f73-a8b7-82599c6b304c",
+            "type": "float",
+            "code": "probabilityOfDefaultAtOrigination",
+            "name": "Probability of Default at Origination (%) "
+          },
+          {
+            "id": "9a8cfb63-7f02-4f5f-a79c-cb236813c197",
+            "type": "string",
+            "code": "applicationReferenceNumber",
+            "name": "Application Reference Number "
+          },
+          {
+            "id": "3dd39686-bb25-460d-8909-4ea6391e6268",
+            "type": "float",
+            "code": "interestFinancingRateCIR",
+            "name": "Interest / Financing Rate (%) - CIR"
+          },
+          {
+            "id": "6eba843f-9ac2-40e1-ae29-e7ed7d13e49d",
+            "type": "date",
+            "code": "createdDate",
+            "name": "Created Date"
+          },
+          {
+            "id": "1e0bc1bc-d7d0-44a3-9f10-ac5934ff4ea8",
+            "type": "listgroup",
+            "code": "accountStatus",
+            "name": "Account Status"
+          },
+          {
+            "id": "7079dc08-56b4-4c96-afef-4b9de882dd7e",
+            "type": "float",
+            "code": "debtServiceRatio",
+            "name": "Debt Service Ratio (%) "
+          },
+          {
+            "id": "2523b5ec-60c4-4fa5-8e2e-c3caf5057d98",
+            "type": "integer",
+            "code": "refinancingLoanFinancing",
+            "name": "Refinanced Loan/Financing "
+          },
+          {
+            "id": "b6428a58-8d8f-43d2-8ec1-0d1e29847617",
+            "type": "date",
+            "code": "deletedDate",
+            "name": "Deleted Date"
+          },
+          {
+            "id": "39d5f5b0-e94a-489f-bcab-2722a7e63559",
+            "type": "listgroup",
+            "code": "loanCurrency",
+            "name": "Loan Currency"
+          },
+          {
+            "id": "f8dbbe9c-1542-462f-9a36-a1de7a2c8311",
+            "type": "string",
+            "code": "subAccount",
+            "name": "Sub Account Number "
+          },
+          {
+            "id": "86d22c19-5736-4915-84c6-1c11d793bc7a",
+            "type": "module",
+            "code": "dateOfAccountStatus",
+            "name": "Date of Account Status"
+          },
+          {
+            "id": "2c4ed2b2-e2ba-4fe3-a977-0f136c19c09e",
+            "type": "float",
+            "code": "valueOfAssetPurchaseRM",
+            "name": "Value of Asset Purchase (RM)"
+          },
+          {
+            "id": "e0fc7c4c-bd37-4861-a02a-90ecb808c82c",
+            "type": "listgroup",
+            "code": "specialFundScheme",
+            "name": "Special Fund Scheme"
+          },
+          {
+            "id": "89b90f3b-0cf9-4084-b041-0c477591cc8f",
+            "type": "module",
+            "code": "maturityDate",
+            "name": "Maturity Date"
+          },
+          {
+            "id": "3b27ea16-7d56-44f0-8015-2285d5ddb2a9",
+            "type": "float",
+            "code": "refinancingValue",
+            "name": "Refinancing Value (RM) "
+          },
+          {
+            "id": "ecce9b46-3b7a-439f-b866-ab18d5ab203e",
+            "type": "listgroup",
+            "code": "purposeOfLoan",
+            "name": "Purpose of Loan"
+          },
+          {
+            "id": "5d4bf15e-12f9-45bb-aa7b-e6852418ed44",
+            "type": "string",
+            "code": "oldMasterAccountNumber",
+            "name": "Old Master Account Number "
+          },
+          {
+            "id": "7e14d302-bc9c-4422-a139-4aaaf64a084f",
+            "type": "listgroup",
+            "code": "typeOfPricing",
+            "name": "Type of Pricing"
+          },
+          {
+            "id": "9d3c58cd-9ed6-4be8-96ee-569e218b9be5",
+            "type": "string",
+            "code": "sourceSystem",
+            "name": "Source System Code"
+          },
+          {
+            "id": "bc5f54f3-3961-4796-a8a0-55ef56d8b94c",
+            "type": "integer",
+            "code": "sourceSystemRecordID",
+            "name": "Source System Record ID"
+          },
+          {
+            "id": "ca8f5d4a-15fe-4d63-aabc-84b25f08ded2",
+            "type": "integer",
+            "code": "recordDataID",
+            "name": "Record Data ID"
+          },
+          {
+            "id": "c1d6af87-63d6-47c2-aaed-0fb9eb00bb29",
+            "type": "integer",
+            "code": "originalTenure",
+            "name": "Original Tenure"
+          },
+          {
+            "id": "aefea478-9c48-440c-835c-9fc35ead8304",
+            "type": "string",
+            "code": "restructuredRescheduled",
+            "name": "Restructured / Rescheduled "
+          },
+          {
+            "id": "bf2283f8-cff3-47e1-bece-f86ea32570ea",
+            "type": "module",
+            "code": "dateSoldToCagamas",
+            "name": "Date Sold to Cagamas"
+          },
+          {
+            "id": "31b6580a-f9cc-4dc1-9627-9aca89dafbe9",
+            "type": "module",
+            "code": "batch",
+            "name": "Batch"
+          },
+          {
+            "id": "2ce4f2db-eb35-49b4-bd36-292f211e852e",
+            "type": "module",
+            "code": "masterAccount",
+            "name": "Master Account Number"
+          },
+          {
+            "id": "f43cbbac-ef59-4666-98a3-7c05c043dbf9",
+            "type": "module",
+            "code": "dateSoldToDanaharta",
+            "name": "Date Sold to Danaharta"
+          },
+          {
+            "id": "ccffc116-5a0c-4a5a-b7a8-43bf7ada7e63",
+            "type": "listgroup",
+            "code": "startupFinancing",
+            "name": "Start-up Financing "
+          },
+          {
+            "id": "f9700b64-3dc3-4256-a24b-2ae66f27417c",
+            "type": "date",
+            "code": "updatedDate",
+            "name": "Updated Date"
+          },
+          {
+            "id": "25d274bd-5d0b-43c7-bf00-97cd9ca89850",
+            "type": "string",
+            "code": "oldFICode",
+            "name": "Old FI Code "
+          }
+        ]
+      },
+      {
+        "name": "Data Flow Items",
+        "id": "622df496-1c81-430f-aab8-981ca046bc66",
+        "base": null,
+        "code": "dataFlowItem",
+        "type": "NORMAL",
+        "properties": [
+          {
+            "id": "e20d275c-9650-41f0-9e1a-d17907e17b3b",
+            "type": "uuid",
+            "code": "id",
+            "name": "ID"
+          },
+          {
+            "id": "eee5dc74-5e29-481f-a764-7edda9a32aa1",
+            "type": "jsonlist",
+            "code": "sources",
+            "name": "Sources"
+          },
+          {
+            "id": "c052f2c9-08a4-424e-a0c7-c834d858b9fd",
+            "type": "jsonlist",
+            "code": "joins",
+            "name": "Joins"
+          },
+          {
+            "id": "199aa116-655d-4caa-8a84-29b33e986d59",
+            "type": "module",
+            "code": "dataFlow",
+            "name": "Data Flow"
+          },
+          {
+            "id": "9eda82cc-aaff-4da3-b57d-3dc536797867",
+            "type": "string",
+            "code": "base",
+            "name": "Base"
+          },
+          {
+            "id": "ef737972-9a6f-4498-9319-2fb8765a2eb0",
+            "type": "listgroup",
+            "code": "outputType",
+            "name": "Output Type"
+          },
+          {
+            "id": "d51b454a-1dfb-45f6-b197-a6dbe557c3e1",
+            "type": "json",
+            "code": "etlJobs",
+            "name": "ETL Jobs"
+          },
+          {
+            "id": "62f5eaee-1a31-412c-8462-b93513ce02eb",
+            "type": "text",
+            "code": "groups",
+            "name": "Groups"
+          },
+          {
+            "id": "f507605e-6701-4338-affd-16ffe5548ac5",
+            "type": "text",
+            "code": "where",
+            "name": "Where"
+          },
+          {
+            "id": "c45e8db8-66e9-4f90-a2a5-0df9434a56e7",
+            "type": "integer",
+            "code": "updateCtr",
+            "name": "Update Counter"
+          },
+          {
+            "id": "fbe80d6e-7d1f-4bf3-9fd8-71cfd9e78451",
+            "type": "listgroup",
+            "code": "status",
+            "name": "Status"
+          },
+          {
+            "id": "f5176ee5-f8d3-415e-b5b6-79539cd5089e",
+            "type": "json",
+            "code": "writes",
+            "name": "Writes"
+          },
+          {
+            "id": "dd863815-18b2-4e87-becf-c688d002d9d0",
+            "type": "json",
+            "code": "outputs",
+            "name": "Outputs"
+          },
+          {
+            "id": "72da0842-b9ef-4793-82b9-a9812c68481d",
+            "type": "jsonlist",
+            "code": "select",
+            "name": "Select"
+          },
+          {
+            "id": "8baf0a9f-57ec-4d84-aaa6-0f3d13bf16b5",
+            "type": "string",
+            "code": "name",
+            "name": "Name"
+          }
+        ]
+      },
+      {
+        "name": "Application Holder",
+        "id": "b083703f-a4bd-47a5-aeba-200d4ceaf9b2",
+        "base": null,
+        "code": "applicationHolder",
+        "type": "SILVER",
+        "properties": [
+          {
+            "id": "7b080c99-66ab-4605-a556-bf1997b1a4dd",
+            "type": "string",
+            "code": "code",
+            "name": "Customer Number "
+          },
+          {
+            "id": "63ca30df-bdd5-4e84-94cc-5c1a36b21306",
+            "type": "module",
+            "code": "batch",
+            "name": "Batch"
+          },
+          {
+            "id": "57a523b6-c562-4a1c-be08-ba49ccabe1af",
+            "type": "listgroup",
+            "code": "reasonUpdateFlag",
+            "name": "Reason Update Flag "
+          },
+          {
+            "id": "4d87b26b-f382-46c3-a8d5-9a1ff538f708",
+            "type": "date",
+            "code": "createdDate",
+            "name": "Created Date"
+          },
+          {
+            "id": "1fca4e61-5642-423f-b5e5-85614a514aa4",
+            "type": "module",
+            "code": "application",
+            "name": "Application Reference Number"
+          },
+          {
+            "id": "4d3e6b3a-174a-4b38-ae11-6acddaa8a43e",
+            "type": "date",
+            "code": "updatedDate",
+            "name": "Updated Date"
+          },
+          {
+            "id": "9229e1fd-6541-4b08-a1ab-d437a493d48d",
+            "type": "date",
+            "code": "deletedDate",
+            "name": "Deleted Date"
+          },
+          {
+            "id": "b8164391-9e11-4001-a262-4dd3a1f58fc5",
+            "type": "string",
+            "code": "sourceSystem",
+            "name": "Source System Code"
+          },
+          {
+            "id": "2f10053f-fb81-40f6-8045-018cf6cd6298",
+            "type": "integer",
+            "code": "sourceSystemRecordID",
+            "name": "Source System Record ID"
+          },
+          {
+            "id": "bc8db318-577b-4504-bb60-099676002dd9",
+            "type": "integer",
+            "code": "recordDataID",
+            "name": "Record Data ID"
+          }
+        ]
+      },
+      {
+        "name": "Owner Partner",
+        "id": "19758108-0144-405a-8500-e1b04c062936",
+        "base": null,
+        "code": "ownerPartner",
+        "type": "SILVER",
+        "properties": [
+          {
+            "id": "10acf342-0c44-4bbc-9fe1-072861955c08",
+            "type": "module",
+            "code": "batch",
+            "name": "Batch"
+          },
+          {
+            "id": "15b8afb8-412c-4571-91d3-e2dfb74004a5",
+            "type": "string",
+            "code": "code",
+            "name": "Customer Number "
+          },
+          {
+            "id": "046da14f-6532-49a5-8aad-27c54107cb3b",
+            "type": "listgroup",
+            "code": "entityType",
+            "name": "Entity Type"
+          },
+          {
+            "id": "ffadead4-719b-43c4-9571-8855be726ada",
+            "type": "string",
+            "code": "ownerName",
+            "name": "Owner Name "
+          },
+          {
+            "id": "cd1a0da5-be26-4626-8e92-455164414d19",
+            "type": "string",
+            "code": "ownerID1",
+            "name": "Owner ID Number 1 "
+          },
+          {
+            "id": "c475a17e-12dd-4f11-930d-526f06a1db0c",
+            "type": "string",
+            "code": "ownerID2",
+            "name": "Owner ID Number 2"
+          },
+          {
+            "id": "4fffc6e8-9e65-4cb0-82fe-b029953e2e50",
+            "type": "string",
+            "code": "ownerIDType1",
+            "name": "Owner ID Type Code 1"
+          },
+          {
+            "id": "ec4ce7a5-99f5-4c87-b15e-c4e1ec8ebee6",
+            "type": "string",
+            "code": "ownerIDType2",
+            "name": "Owner ID Type Code 2"
+          },
+          {
+            "id": "0f589e12-de56-4b6c-8959-6fa1b3d2f57f",
+            "type": "listgroup",
+            "code": "reasonUpdateFlag",
+            "name": "Reason Update Flag"
+          },
+          {
+            "id": "af90c950-c7c1-4b6d-9d43-58f4f04bebcd",
+            "type": "date",
+            "code": "createdDate",
+            "name": "Created Date"
+          },
+          {
+            "id": "8a34460d-6207-410a-9d77-138843699b89",
+            "type": "date",
+            "code": "updatedDate",
+            "name": "Updated Date"
+          },
+          {
+            "id": "80a1316e-5624-4db7-abca-6b2f40be90ff",
+            "type": "date",
+            "code": "deletedDate",
+            "name": "Deleted Date"
+          },
+          {
+            "id": "f4d71598-1fcc-4096-925a-0cbd3a0cfc2f",
+            "type": "string",
+            "code": "sourceSystem",
+            "name": "Source System Code"
+          },
+          {
+            "id": "4df256cf-6b8e-497e-9592-c902cd8b8378",
+            "type": "integer",
+            "code": "sourceSystemRecordID",
+            "name": "Source System Record ID"
+          },
+          {
+            "id": "d0a25f4f-3f2a-4e82-b4dc-83e46890c370",
+            "type": "integer",
+            "code": "recordDataID",
+            "name": "Record Data ID"
+          }
+        ]
+      },
+      {
+        "name": "Data Flow",
+        "id": "4eee8e18-14e0-459b-afd5-a0609b42a601",
+        "base": null,
+        "code": "dataFlow",
+        "type": "NORMAL",
+        "properties": [
+          {
+            "id": "9f99f80b-3abe-44c1-a25c-70512da35465",
+            "type": "jsonlist",
+            "code": "order",
+            "name": "Steps"
+          },
+          {
+            "id": "0e5fc0d8-e061-4c4d-8c7c-6ba8fbca8ab3",
+            "type": "integer",
+            "code": "updateCtr",
+            "name": "Update Counter"
+          },
+          {
+            "id": "84b5cc6a-451f-4d1d-8ddd-b0abfeeda87b",
+            "type": "listgroup",
+            "code": "status",
+            "name": "Status"
+          },
+          {
+            "id": "4cc40442-ffc7-42a9-8a2f-9a93f01538c5",
+            "type": "string",
+            "code": "code",
+            "name": "Code"
+          },
+          {
+            "id": "6f199b0d-5253-4502-bfa3-134a30c7f50a",
+            "type": "string",
+            "code": "name",
+            "name": "Name"
+          },
+          {
+            "id": "54ed06e1-5189-4ea6-93ed-b7f3add4a25a",
+            "type": "module",
+            "code": "project",
+            "name": "Project"
+          }
+        ]
+      },
+      {
+        "name": "Borrower",
+        "id": "20b03f33-64b9-4985-8a0e-35f0fae58eb2",
+        "base": null,
+        "code": "borrower",
+        "type": "SILVER",
+        "properties": [
+          {
+            "id": "0067ad59-aeb1-4423-ba5b-283808a34722",
+            "type": "string",
+            "code": "code",
+            "name": "Customer Number"
+          },
+          {
+            "id": "2e65440a-6277-4d53-80b7-4129a259aeda",
+            "type": "float",
+            "code": "incomeAmount",
+            "name": "Income Amount (RM)"
+          },
+          {
+            "id": "d1c81494-4219-41a3-bf8c-743993f203f4",
+            "type": "datetime",
+            "code": "updatedDate",
+            "name": "Updated Date"
+          },
+          {
+            "id": "1ad6c4cc-ff12-42a2-9caa-c13324b25843",
+            "type": "integer",
+            "code": "maritalStatus",
+            "name": "Marital Status"
+          },
+          {
+            "id": "a0b731d8-45f9-4a10-96ab-9e17656f61c1",
+            "type": "listgroup",
+            "code": "corporateStatus",
+            "name": "Corporate Status Code"
+          },
+          {
+            "id": "f41ad308-8b22-4a1b-bab3-136e4b3874da",
+            "type": "module",
+            "code": "batch",
+            "name": "Batch"
+          },
+          {
+            "id": "4e6937ad-2f35-44f0-8ff1-247771fa0b0b",
+            "type": "listgroup",
+            "code": "gender",
+            "name": "Gender Code"
+          },
+          {
+            "id": "7992eecf-bf56-49d9-aa26-2fc9f8369c36",
+            "type": "string",
+            "code": "employerName",
+            "name": "Name of Employer"
+          },
+          {
+            "id": "d9ad725b-0b68-4263-91b7-bb220d8f4612",
+            "type": "datetime",
+            "code": "createdDate",
+            "name": "Created Date"
+          },
+          {
+            "id": "60ce5877-7e86-4510-b81f-0c6b07137417",
+            "type": "string",
+            "code": "name",
+            "name": "Customer Name "
+          },
+          {
+            "id": "70c9ee8f-92f0-4428-b4c2-d5c1ad7d2133",
+            "type": "listgroup",
+            "code": "industrialSector",
+            "name": "Industrial Sector Code"
+          },
+          {
+            "id": "5a447fed-7d1b-4f16-9513-031c2a0eef10",
+            "type": "datetime",
+            "code": "deletedDate",
+            "name": "Deleted Date"
+          },
+          {
+            "id": "a54963cd-f60d-4fd9-b488-b9e5998b1207",
+            "type": "integer",
+            "code": "controlledCompany",
+            "name": "Bumi/ Non-Bumi/ Government Controlled Company"
+          },
+          {
+            "id": "8dd9dee8-8b63-4a89-ae09-0687d85d7c5b",
+            "type": "listgroup",
+            "code": "countryOfOperationResidence",
+            "name": "Country of Operation / Residence"
+          },
+          {
+            "id": "6eccac9a-3de1-4a65-869b-fa5ea868de9d",
+            "type": "string",
+            "code": "sourceSystem",
+            "name": "Source System Code"
+          },
+          {
+            "id": "ce27b590-d7bc-421e-8191-f70e5b64d91f",
+            "type": "integer",
+            "code": "sourceSystemRecordID",
+            "name": "Source System Record ID"
+          },
+          {
+            "id": "e45d94b0-1b50-4d8c-a7be-a45e4d4e5eab",
+            "type": "string",
+            "code": "memberOfBankRakyat",
+            "name": "Member of Bank Rakyat"
+          },
+          {
+            "id": "f284e1b5-3271-4675-8ebd-93af7b069fef",
+            "type": "module",
+            "code": "dateOfBirthRegistration",
+            "name": "Date of Birth / Registration"
+          },
+          {
+            "id": "608e188a-339b-4676-ad87-787f9e0db3f7",
+            "type": "listgroup",
+            "code": "employmentSector",
+            "name": "Employment Sector Code"
+          },
+          {
+            "id": "5c4beae9-5ee6-469c-9b27-171965345f40",
+            "type": "integer",
+            "code": "recordDataID",
+            "name": "Record Data ID"
+          },
+          {
+            "id": "a9668a29-43fe-40d2-a380-3e057cac514d",
+            "type": "listgroup",
+            "code": "occupation",
+            "name": "Occupation Code"
+          },
+          {
+            "id": "9a2bbf0b-fbae-4d04-a4fc-abe87eebb667",
+            "type": "listgroup",
+            "code": "employmentType",
+            "name": "Employment Type Code"
+          },
+          {
+            "id": "d9965898-c749-493d-ada4-0be4305a90f8",
+            "type": "integer",
+            "code": "rccNrccStatus",
+            "name": "RCC/NRCC Status  (Resident Controlled Companies)"
+          },
+          {
+            "id": "46e9cb9c-21ab-494a-ab20-edefd20f56a3",
+            "type": "listgroup",
+            "code": "entityType",
+            "name": "Entity Type Code"
+          },
+          {
+            "id": "d35d3e22-c4d7-435a-acb5-5477bb526e4d",
+            "type": "listgroup",
+            "code": "residencyStatus",
+            "name": "Residency Status Code"
+          }
+        ]
+      },
+      {
+        "name": "External Source",
+        "id": "52982e74-5f72-439d-bf45-559e11f57374",
+        "base": null,
+        "code": "externalSource",
+        "type": "NORMAL",
+        "properties": [
+          {
+            "id": "b17f0798-01a0-4976-a156-ae6336e15997",
+            "type": "text",
+            "code": "sql",
+            "name": "SQL/Filename"
+          },
+          {
+            "id": "ffa2fb70-3fbd-44ee-a9df-67b17657e4c8",
+            "type": "boolean",
+            "code": "allowPartial",
+            "name": "Allow Partial Load"
+          },
+          {
+            "id": "9360c0df-5ef7-46ac-9486-7f94bdd8197e",
+            "type": "module",
+            "code": "module",
+            "name": "Target Module"
+          },
+          {
+            "id": "8a891812-3840-467b-905a-39be98bf2090",
+            "type": "jsonlist",
+            "code": "schema",
+            "name": "Schema"
+          },
+          {
+            "id": "6fdd39e4-3913-4790-bd56-d787895e153b",
+            "type": "string",
+            "code": "name",
+            "name": "Name"
+          },
+          {
+            "id": "ec6448b1-5779-4655-b278-a59caa5ad51b",
+            "type": "integer",
+            "code": "updateCtr",
+            "name": "Update Counter"
+          },
+          {
+            "id": "2c109702-797a-446b-9699-b9f7d288caee",
+            "type": "listgroup",
+            "code": "status",
+            "name": "Status"
+          },
+          {
+            "id": "b0633710-0be0-4d62-afbf-024559f3d8f9",
+            "type": "module",
+            "code": "project",
+            "name": "Project"
+          },
+          {
+            "id": "15f8adee-9008-4bdb-94a9-07347d6487a2",
+            "type": "string",
+            "code": "code",
+            "name": "Code"
+          },
+          {
+            "id": "87b472f6-54a7-4061-9b93-1cbaf7cbf1b8",
+            "type": "module",
+            "code": "dataSource",
+            "name": "Data Source"
+          },
+          {
+            "id": "0a2b149e-1fa3-45e2-a812-3321ac17e80d",
+            "type": "json",
+            "code": "etlJobs",
+            "name": "ETL Jobs"
+          },
+          {
+            "id": "cedbd6c1-3ec3-45c0-bc0d-9cbacb92ba86",
+            "type": "jsonlist",
+            "code": "mappings",
+            "name": "Mapping"
+          }
+        ]
+      },
+      {
+        "name": "Module View",
+        "id": "696a1559-e0bb-48e1-b7cc-c6ecffff7fab",
+        "base": "",
+        "code": "moduleView",
+        "type": "NORMAL",
+        "properties": [
+          {
+            "id": "b6096142-2c7c-479c-9333-b266891e5f62",
+            "type": "text",
+            "code": "properties",
+            "name": "Properties"
+          },
+          {
+            "id": "1c06cdee-70bc-44ab-92cc-5240b891157c",
+            "type": "module",
+            "code": "module",
+            "name": "Module"
+          },
+          {
+            "id": "2a5fbcc7-d1c1-47c3-99bd-5460051cdefc",
+            "type": "uuid",
+            "code": "id",
+            "name": "Id"
+          },
+          {
+            "id": "615ec883-dc6c-4c98-8475-0ab7e75e74ca",
+            "type": "string",
+            "code": "type",
+            "name": "Type"
+          },
+          {
+            "id": "1820db9a-16c4-4206-8a70-12a10653b504",
+            "type": "string",
+            "code": "owner",
+            "name": "Owner"
+          },
+          {
+            "id": "075ee862-f8e6-45b7-ab79-b20d81b853a9",
+            "type": "integer",
+            "code": "updateCtr",
+            "name": "Update Ctr"
+          },
+          {
+            "id": "0c9a3a11-84e8-4288-90eb-f419414a17e4",
+            "type": "boolean",
+            "code": "showTreeTable",
+            "name": "Show Tree Table"
+          }
+        ]
+      },
+      {
+        "name": "Module Property",
+        "id": "f82c24ee-50c0-45bc-9e34-e1e654dd7473",
+        "base": "",
+        "code": "moduleField",
+        "type": "NORMAL",
+        "properties": [
+          {
+            "id": "b963d9ba-da9c-4f5a-9015-b7615c3939d6",
+            "type": "string",
+            "code": "pattern",
+            "name": "Pattern"
+          },
+          {
+            "id": "338fff4b-8804-49c4-be6b-d2127563a2fe",
+            "type": "integer",
+            "code": "updateCtr",
+            "name": "Update Ctr"
+          },
+          {
+            "id": "f0a037ce-4be6-437e-803a-8e7e898b6461",
+            "type": "string",
+            "code": "customComponent",
+            "name": "Custom Component"
+          },
+          {
+            "id": "3fce3b7d-7920-43d9-9275-8f0f768a9889",
+            "type": "module",
+            "code": "module",
+            "name": "Module"
+          },
+          {
+            "id": "ac10d5df-d20d-4537-91ad-1f5825af5724",
+            "type": "text",
+            "code": "reference",
+            "name": "Reference"
+          },
+          {
+            "id": "2d1d3d92-c329-42be-86bb-11ee2161c7e6",
+            "type": "uuid",
+            "code": "id",
+            "name": "Id"
+          },
+          {
+            "id": "2e24618a-ec8e-4848-ae13-7382f9466346",
+            "type": "listgroup",
+            "code": "type",
+            "name": "Type"
+          },
+          {
+            "id": "f16227c2-1f1c-475b-90e7-665f8a6c4c8a",
+            "type": "integer",
+            "code": "max",
+            "name": "Maximum"
+          },
+          {
+            "id": "2fb92721-6796-4b08-835b-3e947581716c",
+            "type": "text",
+            "code": "description",
+            "name": "Description"
+          },
+          {
+            "id": "1205dd32-ea64-4748-aa31-7267eb9b0cef",
+            "type": "listgroup",
+            "code": "attribute",
+            "name": "Attribute"
+          },
+          {
+            "id": "a9b35d08-a7a4-41f9-8523-435863cf4005",
+            "type": "integer",
+            "code": "length",
+            "name": "Length"
+          },
+          {
+            "id": "cd8f1bdd-9c1f-41b0-aade-c17edf65ff6f",
+            "type": "string",
+            "code": "unique",
+            "name": "Unique"
+          },
+          {
+            "id": "2bd0456e-a68b-4bb7-9e19-9a0010e1ef67",
+            "type": "integer",
+            "code": "min",
+            "name": "Minimum"
+          },
+          {
+            "id": "78337536-0f7a-4041-8208-28ecd39ea59d",
+            "type": "boolean",
+            "code": "readOnly",
+            "name": "Read Only"
+          },
+          {
+            "id": "3a742406-3166-4b60-ba85-331484a572fc",
+            "type": "boolean",
+            "code": "isLabel",
+            "name": "Is Label"
+          },
+          {
+            "id": "ae3dd101-40da-43b2-9f24-4c64dfff8495",
+            "type": "boolean",
+            "code": "canFilterInView",
+            "name": "Can filter"
+          },
+          {
+            "id": "502bf33e-d032-4d26-b271-952122227b72",
+            "type": "boolean",
+            "code": "alwayShowInView",
+            "name": "Always show in view"
+          },
+          {
+            "id": "dcb09021-87f5-4fed-8b89-6a65fc385fbf",
+            "type": "boolean",
+            "code": "hidden",
+            "name": "Hidden"
+          },
+          {
+            "id": "edfafd57-1842-47f0-aeae-69be02ed3ff8",
+            "type": "boolean",
+            "code": "isId",
+            "name": "Is Id"
+          },
+          {
+            "id": "c691defe-d50d-4965-94bd-047cb1387e01",
+            "type": "boolean",
+            "code": "isUnique",
+            "name": "Is Unique"
+          },
+          {
+            "id": "08999b9f-d30e-4398-89cc-9c0d1b86fabf",
+            "type": "boolean",
+            "code": "required",
+            "name": "Required"
+          },
+          {
+            "id": "31f8ddbb-1576-49b9-8396-d9b3c41f6a5a",
+            "type": "boolean",
+            "code": "isSystem",
+            "name": "Is System"
+          },
+          {
+            "id": "e2a83a56-e0fd-41f4-bd8c-5b313a861fcf",
+            "type": "string",
+            "code": "code",
+            "name": "Code"
+          },
+          {
+            "id": "91d9ea58-93bc-471c-bdd9-e1e9c3745423",
+            "type": "string",
+            "code": "name",
+            "name": "Name"
+          },
+          {
+            "id": "94ecd32c-f568-447c-bb69-bb3084729a68",
+            "type": "string",
+            "code": "defaultValue",
+            "name": "Default Value"
+          },
+          {
+            "id": "1b7ad911-c2e6-4e77-9c66-7d44a9cc06de",
+            "type": "text",
+            "code": "onChange",
+            "name": "On Change Function"
+          }
+        ]
+      },
+      {
+        "name": "Module",
+        "id": "3c0e71f8-2eef-4d18-8631-df1c2cb15c0b",
+        "base": "",
+        "code": "module",
+        "type": "NORMAL",
+        "properties": [
+          {
+            "id": "30cecd9e-ce5b-4f50-967c-27d08965fb6e",
+            "type": "boolean",
+            "code": "showInMenu",
+            "name": "Show In Menu"
+          },
+          {
+            "id": "4ac06ee2-0e93-4bd5-a709-6e0c35b556f3",
+            "type": "module",
+            "code": "stateGroup",
+            "name": "State Group"
+          },
+          {
+            "id": "0bf9246e-c3d9-4e42-b63e-0ac5830833ec",
+            "type": "string",
+            "code": "name",
+            "name": "Name"
+          },
+          {
+            "id": "1f06eb9c-ee34-48b6-8387-edecd9a4e35b",
+            "type": "jsonlist",
+            "code": "mutations",
+            "name": "Mutations"
+          },
+          {
+            "id": "0f7b24b5-3c66-4da2-a790-2a6c257af3b0",
+            "type": "text",
+            "code": "description",
+            "name": "Description"
+          },
+          {
+            "id": "0082fae7-2648-4ae1-8326-623e783dd915",
+            "type": "boolean",
+            "code": "isSync",
+            "name": "Is Synced"
+          },
+          {
+            "id": "a5f05eb8-97c6-401c-8d0e-52d8f1da57c9",
+            "type": "jsonlist",
+            "code": "hooks",
+            "name": "Hooks"
+          },
+          {
+            "id": "cb93d217-10e4-4f9c-8af9-1435da02fe1a",
+            "type": "jsonlist",
+            "code": "instanceMethods",
+            "name": "Instance Methods"
+          },
+          {
+            "id": "27c9f248-3e69-44c5-a647-2ed039043226",
+            "type": "integer",
+            "code": "updateCtr",
+            "name": "Update Ctr"
+          },
+          {
+            "id": "56a57486-575e-4073-80c0-0f182615ba23",
+            "type": "uuid",
+            "code": "id",
+            "name": "Id"
+          },
+          {
+            "id": "7f97a305-48bd-426d-b4df-0c83a595e323",
+            "type": "jsonlist",
+            "code": "scd",
+            "name": "Slow Changing Dimension"
+          },
+          {
+            "id": "ac65d695-5860-4047-b551-a946bfd3aa70",
+            "type": "string",
+            "code": "base",
+            "name": "Base"
+          },
+          {
+            "id": "1c427d5f-6f74-4538-8086-4aa8e7048d6e",
+            "type": "jsonlist",
+            "code": "classMethods",
+            "name": "Class Methods"
+          },
+          {
+            "id": "8e1a7720-4534-4ed0-844b-d117c931fd93",
+            "type": "string",
+            "code": "plural",
+            "name": "Plural"
+          },
+          {
+            "id": "d5cc5511-9902-441c-a8c0-774db452ea71",
+            "type": "listgroup",
+            "code": "type",
+            "name": "Type"
+          },
+          {
+            "id": "bf5ea327-dab9-4d17-a0af-d79baab681f7",
+            "type": "string",
+            "code": "code",
+            "name": "Code"
+          }
+        ]
+      },
+      {
+        "name": "List",
+        "id": "75ef7d0b-1d0f-4483-a49c-b73c62c3ea93",
+        "base": "",
+        "code": "list",
+        "type": "NORMAL",
+        "properties": [
+          {
+            "id": "57a19c54-5d7e-49dc-8873-4dbb1007e327",
+            "type": "uuid",
+            "code": "id",
+            "name": "Id"
+          },
+          {
+            "id": "f2e1d9e0-1553-40a9-87bc-984be828f717",
+            "type": "module",
+            "code": "parent",
+            "name": "Parent"
+          },
+          {
+            "id": "d6f567fc-40a4-4a68-b1ba-f59facb142ae",
+            "type": "string",
+            "code": "value",
+            "name": "Value"
+          },
+          {
+            "id": "95bbeee5-6a89-4f95-a31a-89b070d8653d",
+            "type": "module",
+            "code": "listGroup",
+            "name": "List Group"
+          },
+          {
+            "id": "62e78c90-03b8-4958-8da1-1de8069615d1",
+            "type": "string",
+            "code": "name",
+            "name": "Name"
+          },
+          {
+            "id": "d287647f-7f10-4c14-a1b1-93778c3933c2",
+            "type": "integer",
+            "code": "updateCtr",
+            "name": "Update Ctr"
+          },
+          {
+            "id": "5709feca-7047-427b-8e55-96be9be6c602",
+            "type": "integer",
+            "code": "order",
+            "name": "Order"
+          },
+          {
+            "id": "225d450e-bc11-4358-94fc-2b6c0fbd77ae",
+            "type": "boolean",
+            "code": "selectable",
+            "name": "Selectable"
+          }
+        ]
+      },
+      {
+        "name": "Individual",
+        "id": "f9a782b2-59ef-432b-a0e2-7424674c0250",
+        "base": null,
+        "code": "individual",
+        "type": "SILVER",
+        "properties": [
+          {
+            "id": "dfc2c36d-d137-4386-b977-4657d835d5fe",
+            "type": "integer",
+            "code": "sourceSystemRecordID",
+            "name": "Source System Record ID"
+          },
+          {
+            "id": "1eeb5f81-1914-4629-9b01-a56fe55f424a",
+            "type": "string",
+            "code": "sourceSystem",
+            "name": "Source System Code"
+          },
+          {
+            "id": "09c0e789-0b55-4124-befc-2ee80d3fcb83",
+            "type": "integer",
+            "code": "recordDataID",
+            "name": "Record Data ID"
+          },
+          {
+            "id": "6aa54d13-a8df-4d76-9f39-11e2d6627f9f",
+            "type": "string",
+            "code": "name",
+            "name": "Customer Name "
+          },
+          {
+            "id": "682f0779-6b57-45c1-920b-9322e45fa0b1",
+            "type": "listgroup",
+            "code": "residencyStatus",
+            "name": "Residency Status Code"
+          },
+          {
+            "id": "66ed94b4-50c4-4d55-8c39-223256b770a7",
+            "type": "listgroup",
+            "code": "incomeGroup",
+            "name": "Income Group"
+          },
+          {
+            "id": "3a4f0ae5-8050-41aa-bd54-f84b5f4bda45",
+            "type": "date",
+            "code": "createdDate",
+            "name": "Created Date"
+          },
+          {
+            "id": "3dcde7dd-327f-4a9b-ba62-15785e1bf9d1",
+            "type": "module",
+            "code": "dateOfBirth",
+            "name": "Date of Birth (DOB) "
+          },
+          {
+            "id": "577f4c5d-197d-45e0-be1a-8d3c37dc4cf8",
+            "type": "string",
+            "code": "nameOfEmployer",
+            "name": "Name of Employer "
+          },
+          {
+            "id": "3b7c63d3-f63d-4f30-b2d4-c6edf75152c0",
+            "type": "listgroup",
+            "code": "gender",
+            "name": "Gender Code"
+          },
+          {
+            "id": "fb2c802f-8f53-402c-9daa-6470e1a63cf8",
+            "type": "listgroup",
+            "code": "employmentSector",
+            "name": "Employment Sector Code"
+          },
+          {
+            "id": "d3a53e18-2f28-497a-893b-3f12ed8743aa",
+            "type": "date",
+            "code": "updatedDate",
+            "name": "Updated Date"
+          },
+          {
+            "id": "9ebe74e7-2487-47b4-8db9-17ec1374ce93",
+            "type": "date",
+            "code": "deletedDate",
+            "name": "Deleted Date"
+          },
+          {
+            "id": "45281bc0-9fea-4e51-bd3d-a71149a2ac97",
+            "type": "module",
+            "code": "batch",
+            "name": "Batch"
+          },
+          {
+            "id": "d27e3692-daa9-4c32-b921-2c335e04dc50",
+            "type": "string",
+            "code": "code",
+            "name": "Customer Number"
+          },
+          {
+            "id": "37403b0c-8031-4f0c-8755-69b527e44f6d",
+            "type": "listgroup",
+            "code": "countryOfResidence",
+            "name": "Country of Residence Code"
+          },
+          {
+            "id": "e261e93f-ad01-491f-865a-784ccb8c9499",
+            "type": "listgroup",
+            "code": "occupation",
+            "name": "Occupation Code "
+          },
+          {
+            "id": "e556992b-5168-4419-a8c5-9b8a0c8ee6d0",
+            "type": "listgroup",
+            "code": "entityType",
+            "name": "Entity Type Code"
+          },
+          {
+            "id": "bba956d1-f1b9-4415-b297-c39f1084aa8a",
+            "type": "float",
+            "code": "incomeAmount",
+            "name": "Income Amount (RM) "
+          },
+          {
+            "id": "cbb5d91a-cad9-47fe-9cec-8b4a31b3282a",
+            "type": "listgroup",
+            "code": "employmentType",
+            "name": "Employment Type Code "
+          }
+        ]
+      },
+      {
+        "name": "State",
+        "id": "9b9b5e8c-efed-4a8d-92af-d9c97ab17cfb",
+        "base": null,
+        "code": "state",
+        "type": "NORMAL",
+        "properties": [
+          {
+            "id": "94e680bf-4747-4760-b10e-c75217a61e16",
+            "type": "listgroup",
+            "code": "fromState",
+            "name": "From State"
+          },
+          {
+            "id": "e99bd7bb-2bdb-4dfb-bbe3-fb177d0f77c8",
+            "type": "listgroup",
+            "code": "toState",
+            "name": "To State"
+          },
+          {
+            "id": "c91ef39b-8982-471f-a5f0-88d905706ef6",
+            "type": "module",
+            "code": "stateGroup",
+            "name": "State Group"
+          },
+          {
+            "id": "2df239f4-c366-4a58-9d3d-4d47d726e42e",
+            "type": "uuid",
+            "code": "id",
+            "name": "ID"
+          },
+          {
+            "id": "f5208083-8eb6-4691-b0c2-709bddb4a08a",
+            "type": "integer",
+            "code": "updateCtr",
+            "name": "Update Counter"
+          }
+        ]
+      },
+      {
+        "name": "Value Mapping",
+        "id": "d56f749c-d7f2-43b6-9a3a-7292969ceea0",
+        "base": null,
+        "code": "valueMapping",
+        "type": "NORMAL",
+        "properties": [
+          {
+            "id": "8e075c12-d16a-46c0-93a6-d9d9f1fe3ef1",
+            "type": "string",
+            "code": "name",
+            "name": "Name"
+          },
+          {
+            "id": "d841681b-c49e-4b1d-bb01-3949987198ea",
+            "type": "datetime",
+            "code": "updatedAt",
+            "name": "Updated At"
+          },
+          {
+            "id": "c19d1670-8418-4b5d-9460-e126e333d9c9",
+            "type": "text",
+            "code": "value",
+            "name": "Value"
+          },
+          {
+            "id": "f710ca32-662c-4c7b-aabe-19d23a59caf0",
+            "type": "module",
+            "code": "updatedBy",
+            "name": "Updated By"
+          },
+          {
+            "id": "844f0519-ac6a-4e9a-9ad9-b2364d12be51",
+            "type": "module",
+            "code": "createdBy",
+            "name": "Created By"
+          },
+          {
+            "id": "ef88962f-15a5-4831-840d-864b33f1f097",
+            "type": "datetime",
+            "code": "createdAt",
+            "name": "Created At"
+          },
+          {
+            "id": "3d89bd41-735b-41b4-8cc3-3983b184d94c",
+            "type": "integer",
+            "code": "updateCtr",
+            "name": "Update Counter"
+          }
+        ]
+      },
+      {
+        "name": "Job Template",
+        "id": "c5423f84-4a4d-4ac1-b4d2-2e1e2d49d9d7",
+        "base": null,
+        "code": "jobTemplate",
+        "type": "NORMAL",
+        "properties": [
+          {
+            "id": "f75997c4-4530-4bae-81c8-22cc29aeb2f2",
+            "type": "module",
+            "code": "engine",
+            "name": "Engine"
+          },
+          {
+            "id": "7ff6db39-f04f-4c7a-9c35-23a9aeb4ceeb",
+            "type": "json",
+            "code": "paramExtraction",
+            "name": "Output"
+          },
+          {
+            "id": "5f659570-d248-48d1-93b8-d400cef4be9a",
+            "type": "string",
+            "code": "name",
+            "name": "Name"
+          },
+          {
+            "id": "ec524f64-c8f6-41fe-bc5b-1a9ccafefb4b",
+            "type": "datetime",
+            "code": "updatedAt",
+            "name": "Updated At"
+          },
+          {
+            "id": "9e6c4a04-dbe8-4e5b-8113-2ec3957af0e9",
+            "type": "string",
+            "code": "code",
+            "name": "Code"
+          },
+          {
+            "id": "5d748dcf-08b9-4377-8076-c4a3383ec31d",
+            "type": "module",
+            "code": "createdBy",
+            "name": "Created By"
+          },
+          {
+            "id": "92211db3-8579-4e30-9bcb-91a51f5d1479",
+            "type": "module",
+            "code": "updatedBy",
+            "name": "Updated By"
+          },
+          {
+            "id": "345b14cf-0c5f-4fbb-b04b-8499d7d48b3f",
+            "type": "datetime",
+            "code": "createdAt",
+            "name": "Created At"
+          },
+          {
+            "id": "ef86e2bf-0161-4004-b2d9-a9ef4d661420",
+            "type": "jsonlist",
+            "code": "params",
+            "name": "Parameters"
+          },
+          {
+            "id": "4c29aed5-16e4-461f-9892-685c8fcc7403",
+            "type": "module",
+            "code": "handlebarTemplate",
+            "name": "Handlebar Template"
+          },
+          {
+            "id": "a8331458-f0d1-4118-8b18-121c14a4c77a",
+            "type": "json",
+            "code": "paramSource",
+            "name": "Source"
+          },
+          {
+            "id": "cc4c46a0-c1ed-4eef-8bd3-f3a8335eca0a",
+            "type": "json",
+            "code": "paramsTarget",
+            "name": "Target"
+          },
+          {
+            "id": "4dea4b44-e30d-4a03-9e13-b470b77e338e",
+            "type": "jsonlist",
+            "code": "config",
+            "name": "Configurations"
+          },
+          {
+            "id": "11faec50-f8b9-4597-ae2d-e2f1186d3c3e",
+            "type": "json",
+            "code": "paramAggregate",
+            "name": "Aggregate"
+          },
+          {
+            "id": "3a85895b-8a39-4c88-9e4e-18588823fc93",
+            "type": "integer",
+            "code": "updateCtr",
+            "name": "Update Ctr"
+          },
+          {
+            "id": "ab22d7f0-bb1b-4652-952b-686653f3af89",
+            "type": "jsonlist",
+            "code": "paramTransform",
+            "name": "Transform"
+          },
+          {
+            "id": "1c6d19e2-3ca9-4dd3-83c3-55f9c33258c7",
+            "type": "jsonlist",
+            "code": "paramModule",
+            "name": "Sources"
+          }
+        ]
+      },
+      {
+        "name": "User",
+        "id": "24de9b76-1310-40ab-ba1e-f49feffd9a51",
+        "base": "",
+        "code": "user",
+        "type": "NORMAL",
+        "properties": [
+          {
+            "id": "d770b3a6-eb9a-4707-8bdb-ef85ecf38459",
+            "type": "module",
+            "code": "reportTo",
+            "name": "Report To"
+          },
+          {
+            "id": "1306d1ad-b02c-4e60-a4f1-589bb8bcc866",
+            "type": "string",
+            "code": "email",
+            "name": "Email"
+          },
+          {
+            "id": "d884efe2-4fa2-4c4d-bbad-e3ac7a5e2209",
+            "type": "text",
+            "code": "password",
+            "name": "Password"
+          },
+          {
+            "id": "b7299e91-12ef-4613-821f-144208d19fe1",
+            "type": "module",
+            "code": "businessUnit",
+            "name": "Business Unit"
+          },
+          {
+            "id": "ca562982-7efc-4290-9324-03b134c0d4b2",
+            "type": "string",
+            "code": "name",
+            "name": "Name"
+          },
+          {
+            "id": "1bee9095-7894-4702-8424-26efbb4b9847",
+            "type": "integer",
+            "code": "updateCtr",
+            "name": "Update Ctr"
+          },
+          {
+            "id": "a4f52568-bf6d-42b0-9d20-f94b6927884b",
+            "type": "string",
+            "code": "username",
+            "name": "Username"
+          },
+          {
+            "id": "12a8cdc8-6baf-438f-b7bc-4adf6fb5b506",
+            "type": "string",
+            "code": "salt",
+            "name": "Salt"
+          }
+        ]
+      },
+      {
+        "name": "Environment",
+        "id": "f5668025-84ef-435b-9f87-41824d68885a",
+        "base": null,
+        "code": "environment",
+        "type": "NORMAL",
+        "properties": [
+          {
+            "id": "e0bbe124-8187-4aa3-a8ba-7169bcf8a38d",
+            "type": "boolean",
+            "code": "isDefault",
+            "name": "Is Default"
+          },
+          {
+            "id": "3a227815-da1b-430b-880d-7556ab4ff483",
+            "type": "string",
+            "code": "name",
+            "name": "Name"
+          },
+          {
+            "id": "251e3d93-18b3-4ef5-a6fb-73ac845b61d3",
+            "type": "string",
+            "code": "code",
+            "name": "Code"
+          },
+          {
+            "id": "6cf7c080-fba7-4b34-b774-c491fb8ade66",
+            "type": "string",
+            "code": "description",
+            "name": "Description"
+          },
+          {
+            "id": "23204cf8-bd04-447b-8c26-52ff58a20b41",
+            "type": "integer",
+            "code": "updateCtr",
+            "name": "Update Ctr"
+          }
+        ]
+      },
+      {
+        "name": "Data Source",
+        "id": "a52b4852-6487-406a-976b-d007686cc624",
+        "base": null,
+        "code": "dataSource",
+        "type": "NORMAL",
+        "properties": [
+          {
+            "id": "098046dd-b688-46fa-9869-f182cbfa8c06",
+            "type": "integer",
+            "code": "updateCtr",
+            "name": "Update Ctr"
+          },
+          {
+            "id": "969e0f8b-96c3-48dd-943a-d8ba8ce966f7",
+            "type": "listgroup",
+            "code": "connector",
+            "name": "Connector"
+          },
+          {
+            "id": "d9d6f708-8868-45c8-94dd-ec38ca93bf0c",
+            "type": "string",
+            "code": "code",
+            "name": "Code"
+          },
+          {
+            "id": "46825470-c258-4d71-922b-6c3a17207c62",
+            "type": "jsonlist",
+            "code": "options",
+            "name": "Options"
+          },
+          {
+            "id": "e9b79baa-0078-48d2-8408-aca979a2df09",
+            "type": "listgroup",
+            "code": "type",
+            "name": "Type"
+          },
+          {
+            "id": "a239df6d-a325-4512-a3b7-fe0737ffaded",
+            "type": "string",
+            "code": "name",
+            "name": "Name"
+          },
+          {
+            "id": "ed098a0e-0963-4760-a643-43e9450344f9",
+            "type": "string",
+            "code": "description",
+            "name": "Description"
+          }
+        ]
+      },
+      {
+        "name": "Corporate Address",
+        "id": "f0115e00-1239-426e-8bc8-61271834aa2b",
+        "base": null,
+        "code": "corporateAddress",
+        "type": "SILVER",
+        "properties": [
+          {
+            "id": "d924ecec-37e3-4f92-870f-19905bd6406a",
+            "type": "string",
+            "code": "addressLine2",
+            "name": "Address Line 2"
+          },
+          {
+            "id": "71ec0b72-6317-48a9-bc8d-393ea93c4a55",
+            "type": "date",
+            "code": "updatedDate",
+            "name": "Updated Date"
+          },
+          {
+            "id": "c2f92e65-f74d-4b08-b3f7-cf1abe7be62b",
+            "type": "date",
+            "code": "deletedDate",
+            "name": "Deleted Date"
+          },
+          {
+            "id": "26dbbaaa-18a2-49e8-8e31-8e67c11137e1",
+            "type": "string",
+            "code": "addressLine3",
+            "name": "Address Line 3"
+          },
+          {
+            "id": "87d28560-18fe-49b5-83c6-88dda7e23db5",
+            "type": "string",
+            "code": "sourceSystem",
+            "name": "Source System Code"
+          },
+          {
+            "id": "c06aeba8-4041-4709-ba9a-ad8003d58244",
+            "type": "string",
+            "code": "addressLine4",
+            "name": "Address Line 4"
+          },
+          {
+            "id": "fe547c5a-53a5-433b-91ba-554d0e289e9a",
+            "type": "listgroup",
+            "code": "country",
+            "name": "Country Code"
+          },
+          {
+            "id": "c5528179-3f82-4d3d-866f-afe52b694f26",
+            "type": "integer",
+            "code": "sourceSystemRecordID",
+            "name": "Source System Record ID"
+          },
+          {
+            "id": "1bcfa48f-9d15-49c6-824b-251b8adb5cae",
+            "type": "listgroup",
+            "code": "postcode",
+            "name": "Postcode"
+          },
+          {
+            "id": "646c775a-8e8e-47fb-8525-bcfbe5410f8c",
+            "type": "integer",
+            "code": "recordDataID",
+            "name": "Record Data ID"
+          },
+          {
+            "id": "bd8890fe-2d60-4ab4-a16d-ba269dc6602f",
+            "type": "string",
+            "code": "districtCityTown",
+            "name": "District/City/Town"
+          },
+          {
+            "id": "d253b271-24bb-42ea-a921-3f1ad47e0e22",
+            "type": "listgroup",
+            "code": "state",
+            "name": "State Code"
+          },
+          {
+            "id": "5681d977-7392-40c0-a37d-9917218acf3c",
+            "type": "module",
+            "code": "corporate",
+            "name": "Customer Number"
+          },
+          {
+            "id": "0039ae9f-ca3b-4b9b-aad7-480e9253bad9",
+            "type": "module",
+            "code": "batch",
+            "name": "Batch"
+          },
+          {
+            "id": "2cde7fc7-4198-4a1a-833c-ecb3cb2741ac",
+            "type": "listgroup",
+            "code": "entityType",
+            "name": "Entity Type Code"
+          },
+          {
+            "id": "422ae1e3-78bc-43cc-a36c-31f416135278",
+            "type": "listgroup",
+            "code": "typeOfAddress",
+            "name": "Type of Address Code"
+          },
+          {
+            "id": "86ec5fe4-c521-4f4e-a488-b20492cff75c",
+            "type": "string",
+            "code": "addressLine1",
+            "name": "Address Line 1"
+          },
+          {
+            "id": "d698eabb-2eb1-4f68-9791-1178511baf7e",
+            "type": "date",
+            "code": "createdDate",
+            "name": "Created Date"
+          }
+        ]
+      },
+      {
+        "name": "List Group",
+        "id": "a3857493-bde4-4048-8d82-04ac0a5bbdf2",
+        "base": "",
+        "code": "listGroup",
+        "type": "NORMAL",
+        "properties": [
+          {
+            "id": "f0b9ffe9-09a7-4450-81fe-50a7ce3d15ce",
+            "type": "string",
+            "code": "name",
+            "name": "Name"
+          },
+          {
+            "id": "0f7e73f5-7bd2-4920-96f3-226e34ec974e",
+            "type": "integer",
+            "code": "updateCtr",
+            "name": "Update Ctr"
+          },
+          {
+            "id": "79623767-84dc-448a-92c5-4aa9c0c23b77",
+            "type": "boolean",
+            "code": "hasLevel",
+            "name": "Has Level"
+          },
+          {
+            "id": "5de0cf71-9eb9-4952-a589-ef0c405cce66",
+            "type": "string",
+            "code": "code",
+            "name": "Code"
+          },
+          {
+            "id": "ca554d61-ba3b-419d-a2e1-6ad6456bd093",
+            "type": "text",
+            "code": "description",
+            "name": "Description"
+          },
+          {
+            "id": "a9db24eb-49a0-4eb1-8c0c-8426e9a31b73",
+            "type": "datetime",
+            "code": "createdAt",
+            "name": "Created At"
+          },
+          {
+            "id": "4d174f4a-6b29-4d05-bccd-0b8cfd4e05bf",
+            "type": "datetime",
+            "code": "updatedAt",
+            "name": "Updated At"
+          }
+        ]
+      },
+      {
+        "name": "Engine",
+        "id": "a56537c9-eba4-40d0-acc8-598575edf4ae",
+        "base": null,
+        "code": "engine",
+        "type": "NORMAL",
+        "properties": [
+          {
+            "id": "085264da-aeff-4637-8b6f-0f69a973c898",
+            "type": "string",
+            "code": "name",
+            "name": "Name"
+          },
+          {
+            "id": "15cca975-78d9-497f-bad0-a4f1a85e3e98",
+            "type": "datetime",
+            "code": "updatedAt",
+            "name": "Updated At"
+          },
+          {
+            "id": "6b9f449b-82ab-4eb7-885a-8cbbbe92a884",
+            "type": "module",
+            "code": "updatedBy",
+            "name": "Updated By"
+          },
+          {
+            "id": "0fd0ba21-e8cc-45d5-b6e1-969c11a45701",
+            "type": "module",
+            "code": "createdBy",
+            "name": "Created By"
+          },
+          {
+            "id": "23c03394-c2e3-4bff-b499-9fc2e9b1bf59",
+            "type": "string",
+            "code": "code",
+            "name": "Code"
+          },
+          {
+            "id": "62434ead-010c-411e-900e-0993886d94f6",
+            "type": "datetime",
+            "code": "createdAt",
+            "name": "Created At"
+          },
+          {
+            "id": "888100a2-e0a4-4c70-a11c-06aab70c538f",
+            "type": "integer",
+            "code": "updateCtr",
+            "name": "Update Ctr"
+          }
+        ]
+      },
+      {
+        "name": "Roles",
+        "id": "de8ff02d-46e9-459a-97b9-68972bf1db17",
+        "base": null,
+        "code": "role",
+        "type": "NORMAL",
+        "properties": [
+          {
+            "id": "2de5a683-648a-40e0-b8f8-df40efe7cf57",
+            "type": "string",
+            "code": "name",
+            "name": "Name"
+          },
+          {
+            "id": "452a3dd3-28ec-4d9a-b96e-21110a8fc0be",
+            "type": "json",
+            "code": "privilege",
+            "name": "Privilege"
+          },
+          {
+            "id": "975caaca-b080-48a0-9219-945efde2b932",
+            "type": "string",
+            "code": "code",
+            "name": "Code"
+          },
+          {
+            "id": "f1dcd7ce-efb5-4374-8c41-acbbad5f03bc",
+            "type": "datetime",
+            "code": "createdAt",
+            "name": "Created At"
+          },
+          {
+            "id": "d0a81692-4e6d-4346-9d24-c131bcb874b5",
+            "type": "integer",
+            "code": "updateCtr",
+            "name": "Update Ctr"
+          },
+          {
+            "id": "9efe1da7-aa22-4cfe-94d9-ef7f0463a67d",
+            "type": "module",
+            "code": "createdBy",
+            "name": "Created By"
+          },
+          {
+            "id": "6cdedcd9-054b-4997-91b8-77c6081e2b01",
+            "type": "datetime",
+            "code": "updatedAt",
+            "name": "Updated At"
+          },
+          {
+            "id": "40bebb60-7d47-473d-8663-3f95498424fe",
+            "type": "module",
+            "code": "updatedBy",
+            "name": "Updated By"
+          }
+        ]
+      },
+      {
+        "name": "Individual ID",
+        "id": "951a67fe-7adc-45f8-8f35-5fdeaec73fa2",
+        "base": null,
+        "code": "individualID",
+        "type": "SILVER",
+        "properties": [
+          {
+            "id": "af5eb868-537f-418a-909f-dbfbf4759919",
+            "type": "string",
+            "code": "individual",
+            "name": "Customer Number"
+          },
+          {
+            "id": "3a633285-4c4e-4020-bd33-0ada19b558d8",
+            "type": "listgroup",
+            "code": "entityType",
+            "name": "Entity Type Code"
+          },
+          {
+            "id": "63b79e17-eced-40eb-ac19-f206d075c113",
+            "type": "listgroup",
+            "code": "idType",
+            "name": "ID Type Code"
+          },
+          {
+            "id": "e0fe5dc0-4db5-43d5-9348-b31f31cd6ad1",
+            "type": "string",
+            "code": "idNumber",
+            "name": "ID Number"
+          },
+          {
+            "id": "bf602919-6d3f-403f-99e9-7180af683da5",
+            "type": "date",
+            "code": "createdDate",
+            "name": "Created Date"
+          },
+          {
+            "id": "2cc77942-dd9c-479d-b809-d37c39248620",
+            "type": "date",
+            "code": "updatedDate",
+            "name": "Updated Date"
+          },
+          {
+            "id": "fa305def-324a-4363-b611-d85f6148606f",
+            "type": "date",
+            "code": "deletedDate",
+            "name": "Deleted Date"
+          },
+          {
+            "id": "019aaf95-c89b-4807-8e4d-b9179e960ab5",
+            "type": "string",
+            "code": "sourceSystem",
+            "name": "Source System Code"
+          },
+          {
+            "id": "5f66ec9c-ba78-4121-814e-d81c75a70aa0",
+            "type": "integer",
+            "code": "sourceSystemRecordID",
+            "name": "Source System Record ID"
+          },
+          {
+            "id": "b07fd75f-eb96-401b-8ce1-1f68abb6dc68",
+            "type": "module",
+            "code": "batch",
+            "name": "Batch"
+          },
+          {
+            "id": "2075474e-6c13-4f24-be81-61e78ada017f",
+            "type": "integer",
+            "code": "recordDataID",
+            "name": "Record Data ID"
+          }
+        ]
+      },
+      {
+        "name": "Individual Address",
+        "id": "775cde4c-0a33-4697-a762-3a019c29ef34",
+        "base": null,
+        "code": "individualAddress",
+        "type": "SILVER",
+        "properties": [
+          {
+            "id": "84c66dcd-cef8-4bb3-9187-ee310ab153aa",
+            "type": "module",
+            "code": "batch",
+            "name": "Batch"
+          },
+          {
+            "id": "43b360d7-4179-4861-8c62-761b440711ab",
+            "type": "string",
+            "code": "individual",
+            "name": "Customer Number "
+          },
+          {
+            "id": "40dee0c3-c054-4565-bf1f-281a3cfaa22e",
+            "type": "listgroup",
+            "code": "entityType",
+            "name": "Entity Type "
+          },
+          {
+            "id": "da2b9380-151d-4468-afeb-d127061aea6d",
+            "type": "listgroup",
+            "code": "typeOfAddress",
+            "name": "Type of Address Code"
+          },
+          {
+            "id": "0d1da4da-a360-495a-8e69-fc7e2ad2ec5e",
+            "type": "string",
+            "code": "addressLine1",
+            "name": "Address Line 1 "
+          },
+          {
+            "id": "3ea1dde8-e648-4346-bc70-ae8a4ddda8e7",
+            "type": "string",
+            "code": "addressLine2",
+            "name": "Address Line 2"
+          },
+          {
+            "id": "1397f728-56c6-4ebd-8444-c3b010aaf190",
+            "type": "string",
+            "code": "addressLine3",
+            "name": "Address Line 3"
+          },
+          {
+            "id": "532b8917-1210-4cb7-be4b-46a819be128d",
+            "type": "string",
+            "code": "addressLine4",
+            "name": "Address Line 4"
+          },
+          {
+            "id": "e652bf66-7482-4d85-982a-c8157aefdc96",
+            "type": "listgroup",
+            "code": "country",
+            "name": "Country Code "
+          },
+          {
+            "id": "ce6aa3cd-264b-41f2-8a0b-5e2169f9bacb",
+            "type": "listgroup",
+            "code": "postcode",
+            "name": "Postcode "
+          },
+          {
+            "id": "a9876eaf-bad9-4b09-b096-aa4806e9f1bf",
+            "type": "string",
+            "code": "districtCityTown",
+            "name": "District/City/Town "
+          },
+          {
+            "id": "6e48cd51-51d8-4652-b1d7-2b3f7e3e4fd4",
+            "type": "listgroup",
+            "code": "state",
+            "name": "State Code"
+          },
+          {
+            "id": "8c5cb656-fa27-4d65-b19a-cfdecc024e10",
+            "type": "date",
+            "code": "createdDate",
+            "name": "Created Date"
+          },
+          {
+            "id": "80797dc8-7bdf-4587-a516-1900c0fe8bf8",
+            "type": "date",
+            "code": "updatedDate",
+            "name": "Updated Date"
+          },
+          {
+            "id": "59edbe1c-e216-4475-8794-4550f7ccc7f2",
+            "type": "date",
+            "code": "deletedDate",
+            "name": "Deleted Date"
+          },
+          {
+            "id": "154c248e-3917-4c9b-a75c-6d7c54688aad",
+            "type": "string",
+            "code": "sourceSystem",
+            "name": "Source System Code"
+          },
+          {
+            "id": "1858e923-629b-45a0-9b60-c20fb8b46e85",
+            "type": "integer",
+            "code": "sourceSystemRecordID",
+            "name": "Source System Record ID"
+          },
+          {
+            "id": "7b4ccddf-78db-408f-abfd-f2d88c6c017e",
+            "type": "integer",
+            "code": "recordDataID",
+            "name": "Record Data ID"
+          }
+        ]
+      },
+      {
+        "name": "Project",
+        "id": "9081f54d-3d9b-4e60-9992-7e10d3a321c8",
+        "base": null,
+        "code": "project",
+        "type": "NORMAL",
+        "properties": [
+          {
+            "id": "a31915b9-fd77-4898-a4e5-89eda145315c",
+            "type": "datetime",
+            "code": "updatedAt",
+            "name": "Updated At"
+          },
+          {
+            "id": "8b92b7db-f491-4840-b578-a1d84c115770",
+            "type": "datetime",
+            "code": "createdAt",
+            "name": "Created At"
+          },
+          {
+            "id": "0793356d-2370-463b-95ff-f025c6c628e5",
+            "type": "string",
+            "code": "code",
+            "name": "Code"
+          },
+          {
+            "id": "cb9d4f4d-325c-4725-be49-6928cb9f45f9",
+            "type": "string",
+            "code": "name",
+            "name": "Name"
+          },
+          {
+            "id": "84e5189d-3e56-412a-9330-f92a14f7ef7a",
+            "type": "module",
+            "code": "createdBy",
+            "name": "Created By"
+          },
+          {
+            "id": "a44c3a37-3732-4f62-9577-7f10ef184366",
+            "type": "module",
+            "code": "updatedBy",
+            "name": "Updated By"
+          },
+          {
+            "id": "4c86d818-8f6b-487d-ae92-8cba8dbcc2d1",
+            "type": "integer",
+            "code": "updateCtr",
+            "name": "Update Ctr"
+          }
+        ]
+      },
+      {
+        "name": "Source Update Counter",
+        "id": "f7c30988-8b3e-4d05-9f4b-f6e79393a4ac",
+        "base": null,
+        "code": "sourceUpdateCounter",
+        "type": "NORMAL",
+        "properties": [
+          {
+            "id": "8633f891-a97c-4b0a-a48c-2c27eb379af2",
+            "type": "string",
+            "code": "column",
+            "name": "Column"
+          },
+          {
+            "id": "f953e11a-c7d9-433e-a2f3-622a617e46f4",
+            "type": "string",
+            "code": "value",
+            "name": "Value"
+          },
+          {
+            "id": "e43527f8-0c88-49ef-8985-9c6d2fc6de11",
+            "type": "uuid",
+            "code": "id",
+            "name": "Id"
+          },
+          {
+            "id": "02468da2-4d32-4b73-bc15-7e4dc50b5950",
+            "type": "string",
+            "code": "job",
+            "name": "Job"
+          },
+          {
+            "id": "93cc35ec-440b-4ce8-b5ec-86dbbcc3fc49",
+            "type": "integer",
+            "code": "updateCtr",
+            "name": "Update Ctr"
+          },
+          {
+            "id": "5a130530-b222-4a83-a7de-55e9eb2f942d",
+            "type": "string",
+            "code": "source",
+            "name": "Source"
+          }
+        ]
+      },
+      {
+        "name": "Business Unit",
+        "id": "ccb77430-ae22-4767-af4e-42369cab2cd9",
+        "base": null,
+        "code": "businessUnit",
+        "type": "NORMAL",
+        "properties": [
+          {
+            "id": "45dcff15-2452-4e64-ab8c-1d6ee737fbd8",
+            "type": "datetime",
+            "code": "createdAt",
+            "name": "Created At"
+          },
+          {
+            "id": "1f4af720-565f-4a8f-b59f-c0605e27237c",
+            "type": "module",
+            "code": "parent",
+            "name": "Parent"
+          },
+          {
+            "id": "4c633147-b4cb-4913-82ba-aa3481f56904",
+            "type": "uuid",
+            "code": "id",
+            "name": "Id"
+          },
+          {
+            "id": "a0008374-3efc-4d61-a56b-d3992d6ef77b",
+            "type": "integer",
+            "code": "updateCtr",
+            "name": "Update Ctr"
+          },
+          {
+            "id": "701407fc-28f8-436b-a018-e304b9ab7c34",
+            "type": "datetime",
+            "code": "updatedAt",
+            "name": "Updated At"
+          },
+          {
+            "id": "f47c78fb-7dc3-49ed-9272-68b729ee2245",
+            "type": "string",
+            "code": "code",
+            "name": "Code"
+          },
+          {
+            "id": "3f722a48-7ef9-4537-98d5-b1e36bf0e241",
+            "type": "string",
+            "code": "name",
+            "name": "Name"
+          }
+        ]
+      },
+      {
+        "name": "State Group",
+        "id": "5ce0cbeb-2a8c-4b72-9142-ca1a93a8a691",
+        "base": "",
+        "code": "stateGroup",
+        "type": "NORMAL",
+        "properties": [
+          {
+            "id": "ff3a8412-7b25-4f36-a10e-0e028a26dd82",
+            "type": "string",
+            "code": "name",
+            "name": "Name"
+          },
+          {
+            "id": "9d2fe8f2-1fa6-4799-bb75-a51cf4220327",
+            "type": "module",
+            "code": "updatedBy",
+            "name": "Updated By"
+          },
+          {
+            "id": "595c9135-75d7-4364-b9c8-ccb8faa33711",
+            "type": "string",
+            "code": "code",
+            "name": "Code"
+          },
+          {
+            "id": "655f805b-ea3b-42b7-bd69-6a5ca3b274b1",
+            "type": "integer",
+            "code": "updateCtr",
+            "name": "Update Counter"
+          },
+          {
+            "id": "d0787dc6-1ad2-4841-a32a-6dfe57b16bac",
+            "type": "module",
+            "code": "createdBy",
+            "name": "Created By"
+          }
+        ]
+      },
+      {
+        "name": "Data Item",
+        "id": "287bdec4-644d-4d76-af74-933b1dcf068f",
+        "base": null,
+        "code": "dataItem",
+        "type": "NORMAL",
+        "properties": [
+          {
+            "id": "ef7c1f86-c847-4d91-9400-32921287a00a",
+            "type": "string",
+            "code": "name",
+            "name": "Name"
+          },
+          {
+            "id": "48b4060f-0cc0-43c7-9e26-f7d711497eb5",
+            "type": "string",
+            "code": "code",
+            "name": "Code"
+          },
+          {
+            "id": "a5e1215f-2509-492f-ae9b-ed3d8b20ab38",
+            "type": "integer",
+            "code": "updateCtr",
+            "name": "Update Counter"
+          },
+          {
+            "id": "6e79b2a3-e700-4343-9472-670250c36ba5",
+            "type": "listgroup",
+            "code": "status",
+            "name": "Status"
+          }
+        ]
+      },
+      {
+        "name": "Date Dimension",
+        "id": "f5a7a499-2d98-4a16-92a3-2d2f76ec7109",
+        "base": null,
+        "code": "dateDimension",
+        "type": "NORMAL",
+        "properties": [
+          {
+            "id": "7ac5afd6-f171-4314-a618-3900eec9ae3d",
+            "type": "string",
+            "code": "yearMonthName",
+            "name": "Year Month Name"
+          },
+          {
+            "id": "ce956c23-b9e5-45d8-bd5d-ff1064e86cc0",
+            "type": "string",
+            "code": "yearQuarterName",
+            "name": "Year Quarter Name"
+          },
+          {
+            "id": "92824bd2-ccee-4337-b0ac-c6dada69af0d",
+            "type": "integer",
+            "code": "dayInWeek",
+            "name": "Day In Week"
+          },
+          {
+            "id": "41eb8c7f-b34e-41fa-97f0-5bd40a71c6dc",
+            "type": "integer",
+            "code": "weekInMonth",
+            "name": "Week In Month"
+          },
+          {
+            "id": "20405236-86f5-4903-bb2e-b43a5dbf78a8",
+            "type": "boolean",
+            "code": "workDayInd",
+            "name": "Working Day Ind"
+          },
+          {
+            "id": "244b59c5-cee1-4a2b-8c56-3655d5d44112",
+            "type": "boolean",
+            "code": "holidayInd",
+            "name": "Holiday Ind"
+          },
+          {
+            "id": "7ea5d0fd-9334-4573-bf20-703ab4a88536",
+            "type": "boolean",
+            "code": "weekendInd",
+            "name": "Weekend Ind"
+          },
+          {
+            "id": "a5fdeb80-9cb0-419f-b073-b61c476156d1",
+            "type": "boolean",
+            "code": "lastDayOfMonthInd",
+            "name": "Last Day Of Month Ind"
+          },
+          {
+            "id": "ed7c3b0d-f3e1-4fac-b4cb-f15db021441e",
+            "type": "boolean",
+            "code": "lastDayOfQuarterInd",
+            "name": "Last Day Of Quarter Ind"
+          },
+          {
+            "id": "fc02ad97-26fc-4c79-a8c3-7567d292f181",
+            "type": "boolean",
+            "code": "lastDayOfHalfYearInd",
+            "name": "Last Day Of Half Year Ind"
+          },
+          {
+            "id": "5dd4f530-cc04-4687-80be-e34f1a690194",
+            "type": "boolean",
+            "code": "lastDayOfYearInd",
+            "name": "Last Day Of Year Ind"
+          },
+          {
+            "id": "5ac9395f-5dab-42b1-b373-df763c6b886a",
+            "type": "boolean",
+            "code": "lastDayOfWeekInd",
+            "name": "Last Day Of Week Ind"
+          },
+          {
+            "id": "8615759c-f595-4025-98d5-faa17c5959ef",
+            "type": "integer",
+            "code": "weekInYear",
+            "name": "Week In Year"
+          },
+          {
+            "id": "908b8229-48fe-4c15-8106-5a07deeba75e",
+            "type": "integer",
+            "code": "updateCtr",
+            "name": "Update Counter"
+          },
+          {
+            "id": "34878e4f-4e57-4c22-9621-d70666a47834",
+            "type": "listgroup",
+            "code": "status",
+            "name": "Status"
+          },
+          {
+            "id": "68140164-cd3c-4cac-98b0-06336187e05e",
+            "type": "string",
+            "code": "code",
+            "name": "Code"
+          },
+          {
+            "id": "633ee67a-9780-4149-bda7-caa276759a3b",
+            "type": "string",
+            "code": "name",
+            "name": "Name"
+          },
+          {
+            "id": "c69d4687-7fd6-425d-ab92-47418d03d279",
+            "type": "date",
+            "code": "dateValue",
+            "name": "Date Value"
+          },
+          {
+            "id": "756bdb2e-e4ea-4a4f-832e-67a151a4aa31",
+            "type": "string",
+            "code": "dayName",
+            "name": "Day Name"
+          },
+          {
+            "id": "36c76160-cfbb-417c-8abd-aaad443c2370",
+            "type": "integer",
+            "code": "dayInMonth",
+            "name": "Day in Month"
+          },
+          {
+            "id": "8bdbea74-8405-43d5-bfc5-f20277ca7c50",
+            "type": "integer",
+            "code": "dayInQuarter",
+            "name": "Day In Quarter"
+          },
+          {
+            "id": "b1eead76-599f-4cb1-a63b-2ba3a303cd1c",
+            "type": "integer",
+            "code": "dayInYear",
+            "name": "Day In Year"
+          },
+          {
+            "id": "9f2396d3-9ecb-4fd5-aaa0-93f8e82ffd45",
+            "type": "string",
+            "code": "monthName",
+            "name": "Month Name"
+          },
+          {
+            "id": "08156cd5-a509-482f-9349-62c28f498ef0",
+            "type": "integer",
+            "code": "monthNumber",
+            "name": "Month Number"
+          },
+          {
+            "id": "1c0d896e-aeb5-43e4-b8c6-5db7ac67106c",
+            "type": "string",
+            "code": "quarterName",
+            "name": "Quarter Name"
+          },
+          {
+            "id": "59eef494-10f8-45ae-aec5-b0fda2f382d3",
+            "type": "integer",
+            "code": "quarterNumber",
+            "name": "Quarter Number"
+          },
+          {
+            "id": "45b779dc-b5d9-4763-9369-a35b134d40ce",
+            "type": "string",
+            "code": "halfYearName",
+            "name": "Half Year Name"
+          },
+          {
+            "id": "ae049fcc-aef7-43f5-9fd1-a5573d11bc16",
+            "type": "integer",
+            "code": "halfYearNumber",
+            "name": "Half Year Number"
+          },
+          {
+            "id": "a14a8ab3-1c03-4ca0-b8f1-8beed02786c1",
+            "type": "string",
+            "code": "yearName",
+            "name": "Year Name"
+          },
+          {
+            "id": "c8b803c0-9a69-4dec-82d1-906b2c170bb6",
+            "type": "integer",
+            "code": "yearNumber",
+            "name": "Year Number"
+          }
+        ]
+      },
+      {
+        "name": "Corporate Telephone",
+        "id": "d9ca2efb-94e1-477c-bf5c-b88f1d227905",
+        "base": null,
+        "code": "corporateTelephone",
+        "type": "SILVER",
+        "properties": [
+          {
+            "id": "684fbbf0-578e-4a55-ad34-82eed851436d",
+            "type": "listgroup",
+            "code": "entityType",
+            "name": "Entity Type Code"
+          },
+          {
+            "id": "f200ce08-25f3-485f-aa60-595c57fdf223",
+            "type": "module",
+            "code": "batch",
+            "name": "Batch"
+          },
+          {
+            "id": "6869b79c-9b70-4e9b-8a8f-de9303257ca4",
+            "type": "module",
+            "code": "corporate",
+            "name": "Customer Number"
+          },
+          {
+            "id": "12f7cd73-a965-4149-a99f-0297b6223b00",
+            "type": "string",
+            "code": "telephoneNumber",
+            "name": "Telephone Number"
+          },
+          {
+            "id": "0ca662da-89f8-4a27-82fa-e46d09794e2b",
+            "type": "listgroup",
+            "code": "typeOfTelephone",
+            "name": "Type of Telephone Code"
+          },
+          {
+            "id": "beca3bfb-144f-49f7-9e59-44a932f190b9",
+            "type": "date",
+            "code": "createdDate",
+            "name": "Created Date"
+          },
+          {
+            "id": "dd03b9f9-00c4-42cf-98ed-42dfaf7d30e7",
+            "type": "date",
+            "code": "updatedDate",
+            "name": "Updated Date"
+          },
+          {
+            "id": "446f8277-c6a0-4d4c-8ca1-0d533effef22",
+            "type": "date",
+            "code": "deletedDate",
+            "name": "Deleted Date"
+          },
+          {
+            "id": "c877129b-2523-4712-b17f-857548b8c7c9",
+            "type": "string",
+            "code": "sourceSystem",
+            "name": "Source System Code"
+          },
+          {
+            "id": "ffc33bf2-e2d8-43f6-b6e6-6e10412aa518",
+            "type": "integer",
+            "code": "sourceSystemRecordID",
+            "name": "Source System Record ID"
+          },
+          {
+            "id": "d5799175-6a8b-446c-8030-d1fd754fd232",
+            "type": "integer",
+            "code": "recordDataID",
+            "name": "Record Data ID"
+          }
+        ]
+      },
+      {
+        "name": "Incident",
+        "id": "857f3645-367b-4aa9-aaa0-059f6cfe371f",
+        "base": null,
+        "code": "incident",
+        "type": "NORMAL",
+        "properties": [
+          {
+            "id": "7410f1ba-2d3b-442d-bc9e-e0b89374cdfd",
+            "type": "string",
+            "code": "code",
+            "name": "Code"
+          },
+          {
+            "id": "9b490370-458c-4582-bc4a-5b5e2d7d7e07",
+            "type": "uuid",
+            "code": "id",
+            "name": "ID"
+          },
+          {
+            "id": "d38ba77b-1d93-4ebd-9094-99af693ac229",
+            "type": "string",
+            "code": "name",
+            "name": "Name"
+          },
+          {
+            "id": "d38560f0-935f-42b6-a337-9ed06081b463",
+            "type": "listgroup",
+            "code": "status",
+            "name": "Status"
+          },
+          {
+            "id": "3ab3a11b-6f3a-49e0-bdbe-9731c4bc1210",
+            "type": "integer",
+            "code": "updateCtr",
+            "name": "Update Counter"
+          },
+          {
+            "id": "b52c379f-5846-44d0-842e-8f1402be778a",
+            "type": "listgroup",
+            "code": "type",
+            "name": "Type"
+          },
+          {
+            "id": "6a88b6f5-d06c-46e3-baa5-f7f18465e8eb",
+            "type": "listgroup",
+            "code": "priority",
+            "name": "Priority"
+          },
+          {
+            "id": "754dce4f-0b2f-4090-9055-ba0f54db006c",
+            "type": "text",
+            "code": "description",
+            "name": "Description"
+          },
+          {
+            "id": "9743dd7e-42c0-4903-b53d-e97b185e2d14",
+            "type": "module",
+            "code": "batch",
+            "name": "Batch"
+          },
+          {
+            "id": "a772849b-57ab-463d-8770-1cdef454fc84",
+            "type": "module",
+            "code": "jobTemplate",
+            "name": "Job Template"
+          },
+          {
+            "id": "c85b9361-e1ec-4c45-84e3-4153444725fd",
+            "type": "module",
+            "code": "project",
+            "name": "Project"
+          }
+        ]
+      },
+      {
+        "name": "Public Holiday",
+        "id": "848fc994-8008-4bcd-915a-15ac09a7663a",
+        "base": null,
+        "code": "publicHoliday",
+        "type": "NORMAL",
+        "properties": [
+          {
+            "id": "cf3bbc54-4897-4583-94b4-0977edd07e70",
+            "type": "uuid",
+            "code": "id",
+            "name": "ID"
+          },
+          {
+            "id": "e7c7bef1-fc5a-4cd6-8ef7-1659773fd573",
+            "type": "string",
+            "code": "name",
+            "name": "Name"
+          },
+          {
+            "id": "1f7b345c-ba14-48b9-ba2b-26ddf87e4279",
+            "type": "integer",
+            "code": "updateCtr",
+            "name": "Update Counter"
+          },
+          {
+            "id": "11c3aa99-5060-4202-9d4b-0f0231ac859f",
+            "type": "listgroup",
+            "code": "status",
+            "name": "Status"
+          },
+          {
+            "id": "29aefd5f-7c90-4891-a9f1-a44ea8525371",
+            "type": "date",
+            "code": "date",
+            "name": "Date"
+          },
+          {
+            "id": "2d5e3a36-38f3-47b5-8c7f-c83078a13ea6",
+            "type": "string",
+            "code": "code",
+            "name": "Code"
+          }
+        ]
+      },
+      {
+        "name": "Submission Obligation",
+        "id": "51e6bcaf-7c98-4380-b77e-3cc360670b9f",
+        "base": null,
+        "code": "submissionObligation",
+        "type": "NORMAL",
+        "properties": [
+          {
+            "id": "431597c9-9af0-4d85-b66f-76fd740ba821",
+            "type": "string",
+            "code": "name",
+            "name": "Name"
+          },
+          {
+            "id": "67124fdd-0309-4589-9fe6-2240c7502a15",
+            "type": "integer",
+            "code": "updateCtr",
+            "name": "Update Counter"
+          },
+          {
+            "id": "3416fb9b-37d6-4249-8c27-4924a4e89f81",
+            "type": "listgroup",
+            "code": "status",
+            "name": "Status"
+          },
+          {
+            "id": "6086a0e6-cfd1-4033-bc6e-837f022c4055",
+            "type": "module",
+            "code": "project",
+            "name": "Project"
+          },
+          {
+            "id": "cacdc786-cde2-4244-b6b7-4029652b4768",
+            "type": "integer",
+            "code": "dueDays",
+            "name": "Due After (Days)"
+          },
+          {
+            "id": "c719f115-2d26-4797-a76a-1053346e752c",
+            "type": "string",
+            "code": "code",
+            "name": "Code"
+          },
+          {
+            "id": "64510539-d819-47af-890b-0c4086a393dd",
+            "type": "listgroup",
+            "code": "frequency",
+            "name": "Submission Frequency"
+          }
+        ]
+      },
+      {
+        "name": "myZaieCusExtendInfo",
+        "id": "88e9e04b-0509-449d-987e-86619799073d",
+        "base": null,
+        "code": "myZaieCusExtendInfo",
+        "type": "BRONZE",
+        "properties": [
+          {
+            "id": "dcde4076-28b7-4a3b-b6e1-6b39628552db",
+            "type": "string",
+            "code": "cust_no",
+            "name": "cust_no"
+          },
+          {
+            "id": "f7e85b25-4ca7-4d13-86f4-d99ddf2d1850",
+            "type": "listgroup",
+            "code": "residency_status",
+            "name": "residency_status"
+          },
+          {
+            "id": "9af439df-634f-48f3-81cd-437d2156790d",
+            "type": "listgroup",
+            "code": "entity_type",
+            "name": "entity_type"
+          }
+        ]
+      },
+      {
+        "name": "Account Holder",
+        "id": "70f93605-fbe3-4267-b1a9-fb2257580d10",
+        "base": null,
+        "code": "accountHolder",
+        "type": "SILVER",
+        "properties": [
+          {
+            "id": "fffc2f41-7c89-4cc3-a55b-4e96d6827231",
+            "type": "module",
+            "code": "batch",
+            "name": "Batch"
+          },
+          {
+            "id": "209ef56b-a9e6-4e27-9d0c-bd22271d7285",
+            "type": "string",
+            "code": "masterAccount",
+            "name": "Master Account Number"
+          },
+          {
+            "id": "06c6a950-52f7-4280-8810-251c04136578",
+            "type": "string",
+            "code": "code",
+            "name": "Customer Number"
+          },
+          {
+            "id": "42502e84-e4a1-4c84-b843-b633f404107d",
+            "type": "listgroup",
+            "code": "entityType",
+            "name": "Entity Type Code"
+          },
+          {
+            "id": "009504a8-cfdf-400f-ae97-2930b19abaaa",
+            "type": "listgroup",
+            "code": "reasonUpdateFlag",
+            "name": "Reason Update Flag "
+          },
+          {
+            "id": "9f2fec0f-cd9e-4904-9b41-92a0dfa5a4f9",
+            "type": "date",
+            "code": "createdDate",
+            "name": "Created Date"
+          },
+          {
+            "id": "d5c50bdf-b08a-46f5-9c07-ee74878d5ba6",
+            "type": "date",
+            "code": "updatedDate",
+            "name": "Updated Date"
+          },
+          {
+            "id": "012f36ee-9c0f-47fb-9ec9-e69ce7aba40a",
+            "type": "date",
+            "code": "deletedDate",
+            "name": "Deleted Date"
+          },
+          {
+            "id": "018519a0-8b48-4b4c-9c84-c8e593e21394",
+            "type": "string",
+            "code": "sourceSystem",
+            "name": "Source System Code"
+          },
+          {
+            "id": "e1788b23-98e1-40ea-8beb-ea386163718e",
+            "type": "integer",
+            "code": "sourceSystemRecordID",
+            "name": "Source System Record ID"
+          },
+          {
+            "id": "15b9de48-a969-47e9-898a-8522095800ec",
+            "type": "integer",
+            "code": "recordDataID",
+            "name": "Record Data ID"
+          }
+        ]
+      },
+      {
+        "name": "Application Status",
+        "id": "964e625b-bf60-4bf1-a846-78b5fbc65df4",
+        "base": null,
+        "code": "applicationStatus",
+        "type": "SILVER",
+        "properties": [
+          {
+            "id": "fbf23bbf-a3b9-4be2-a8bc-a9404fd94f10",
+            "type": "module",
+            "code": "batch",
+            "name": "Batch"
+          },
+          {
+            "id": "c7c96a48-d063-4804-9d9d-e9265d3bd43b",
+            "type": "module",
+            "code": "application",
+            "name": "Application Reference Number"
+          },
+          {
+            "id": "1b209938-8885-42f9-8f05-a44e026d94bf",
+            "type": "module",
+            "code": "applicationStatusDate",
+            "name": "Application Status Date"
+          },
+          {
+            "id": "ab2aa6ed-f48e-4c0e-939c-5e7fc58ca461",
+            "type": "listgroup",
+            "code": "applicationStatus",
+            "name": "Application Status"
+          },
+          {
+            "id": "1bce7fcb-7430-41ad-8626-6280a0c34a05",
+            "type": "listgroup",
+            "code": "reasonOfRejection",
+            "name": "Reason of Rejection"
+          },
+          {
+            "id": "085c926c-c5c1-46e8-9483-102fb18a5e63",
+            "type": "float",
+            "code": "approvedAmount",
+            "name": "Approved Amount"
+          },
+          {
+            "id": "f08e1a15-e2b3-4706-940d-082e4d465aea",
+            "type": "float",
+            "code": "rejectedAmount",
+            "name": "Rejected Amount"
+          },
+          {
+            "id": "5d596f4d-d5aa-41b7-b4f3-78500429394f",
+            "type": "listgroup",
+            "code": "reasonUpdateFlag",
+            "name": "Reason Update Flag "
+          },
+          {
+            "id": "61ab8ca5-6278-4fd5-80a4-f93cf52863ef",
+            "type": "date",
+            "code": "createdDate",
+            "name": "Created Date"
+          },
+          {
+            "id": "bed265c2-bce1-4eac-bc3a-cd96a1808582",
+            "type": "date",
+            "code": "updatedDate",
+            "name": "Updated Date"
+          },
+          {
+            "id": "2c9bfd4f-34c6-41f0-afe4-d62b0e21b22b",
+            "type": "date",
+            "code": "deletedDate",
+            "name": "Deleted Date"
+          },
+          {
+            "id": "ff44e543-9f2b-4166-a7b6-f54cdca0d541",
+            "type": "string",
+            "code": "sourceSystem",
+            "name": "Source System Code"
+          },
+          {
+            "id": "aed5d270-6dbc-4afc-8804-b0208e7abe70",
+            "type": "integer",
+            "code": "sourceSystemRecordID",
+            "name": "Source System Record ID"
+          },
+          {
+            "id": "bd0d10ec-8b31-42de-a417-2ee46e48e48e",
+            "type": "integer",
+            "code": "recordDataID",
+            "name": "Record Data ID"
+          }
+        ]
+      },
+      {
+        "name": "tRrsCusCusmHis",
+        "id": "61169e5f-79c6-4755-80a0-857eb203d2c0",
+        "base": null,
+        "code": "tRrsCusCusmHis",
+        "type": "BRONZE",
+        "properties": [
+          {
+            "id": "1b9d6c95-159e-4af8-814f-50bcd7a49346",
+            "type": "string",
+            "code": "cusidt",
+            "name": "cusidt"
+          },
+          {
+            "id": "bf4b3f17-1ebf-437e-ba7e-4db3961b719a",
+            "type": "string",
+            "code": "idissdate",
+            "name": "idissdate"
+          },
+          {
+            "id": "96f3221d-5cb3-4528-b2a6-02b1c5abb724",
+            "type": "string",
+            "code": "buregdat",
+            "name": "buregdat"
+          },
+          {
+            "id": "c7662e7f-3854-47ae-9acb-eec80dd19697",
+            "type": "listgroup",
+            "code": "concde",
+            "name": "concde"
+          },
+          {
+            "id": "442bc34e-dcd3-4c78-970e-8c05ba0a8f6f",
+            "type": "string",
+            "code": "upddat",
+            "name": "upddat"
+          },
+          {
+            "id": "354979bd-bb7c-4b3e-b2c9-9409dab5dc9c",
+            "type": "string",
+            "code": "phone",
+            "name": "phone"
+          },
+          {
+            "id": "4c28a26f-49f4-4046-b86b-8938a0d3e648",
+            "type": "string",
+            "code": "phobusno",
+            "name": "phobusno"
+          },
+          {
+            "id": "6d5cc953-da99-4fa8-b0b3-2539646fcdf2",
+            "type": "string",
+            "code": "mobileno",
+            "name": "mobileno"
+          },
+          {
+            "id": "eeeb8d8d-43b2-4c35-846f-d15d3deafeb4",
+            "type": "string",
+            "code": "faxno",
+            "name": "faxno"
+          }
+        ]
+      },
+      {
+        "name": "Master Account Amount Undrawn",
+        "id": "01e0bcea-ccfd-4f37-87a2-ff5e3ff5e44a",
+        "base": null,
+        "code": "masterAccountAmountUndrawn",
+        "type": "SILVER",
+        "properties": [
+          {
+            "id": "558bed2c-2b51-4e7e-8546-bde7ef748ba7",
+            "type": "module",
+            "code": "batch",
+            "name": "Batch"
+          },
+          {
+            "id": "e6b5c105-4ab4-4688-beda-c5575a0f5422",
+            "type": "module",
+            "code": "masterAccount",
+            "name": "Master Account Number "
+          },
+          {
+            "id": "16dc4cfd-afbf-4338-bc15-35139beff1f2",
+            "type": "module",
+            "code": "positionDate",
+            "name": "Position Date"
+          },
+          {
+            "id": "63dfd740-2865-4cee-8f16-ebf292973eea",
+            "type": "float",
+            "code": "amountUndrawn",
+            "name": "Amount Undrawn (RM) "
+          },
+          {
+            "id": "2a10a470-fc06-4c91-aefd-4b591d2c7ea0",
+            "type": "date",
+            "code": "createdDate",
+            "name": "Created Date"
+          },
+          {
+            "id": "7b65d6c8-e271-44a6-8f6e-7ebf02152c5d",
+            "type": "date",
+            "code": "updatedDate",
+            "name": "Updated Date"
+          },
+          {
+            "id": "a81051a3-1142-4369-9697-6288a2ca2f1d",
+            "type": "date",
+            "code": "deletedDate",
+            "name": "Deleted Date"
+          },
+          {
+            "id": "97202f8b-964c-4ac7-af61-a5d8780294f9",
+            "type": "string",
+            "code": "sourceSystem",
+            "name": "Source System Code"
+          },
+          {
+            "id": "76b55aaf-e41b-4d17-9274-c5359fd0a508",
+            "type": "integer",
+            "code": "sourceSystemRecordID",
+            "name": "Source System Record ID"
+          },
+          {
+            "id": "1c100287-d7a6-4718-b234-9be23f12acdc",
+            "type": "integer",
+            "code": "recordDataID",
+            "name": "Record Data ID"
+          }
+        ]
+      },
+      {
+        "name": "Workflow Instance",
+        "id": "064cbfab-b525-4493-91e7-1f5879fa1cee",
+        "base": null,
+        "code": "workflowInstance",
+        "type": "NORMAL",
+        "properties": [
+          {
+            "id": "fae84fbc-3ef5-407a-8288-6807c65271fd",
+            "type": "uuid",
+            "code": "id",
+            "name": "ID"
+          },
+          {
+            "id": "bb3dcfc6-bd47-4c1a-bdd1-6b9641d5cb22",
+            "type": "string",
+            "code": "code",
+            "name": "Code"
+          },
+          {
+            "id": "8d1996bf-efce-4d30-a026-745e8e08d992",
+            "type": "string",
+            "code": "name",
+            "name": "Name"
+          },
+          {
+            "id": "690f4071-67f9-4593-a5de-56f97509ebea",
+            "type": "integer",
+            "code": "updateCtr",
+            "name": "Update Counter"
+          },
+          {
+            "id": "ec00d0c7-f07e-4075-9f02-e9de1b734204",
+            "type": "text",
+            "code": "params",
+            "name": "Params"
+          }
+        ]
+      }
+    ]
+  }
+}

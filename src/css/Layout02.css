@@ -1,17 +1,9 @@
-#layout_01 {
-  height: 100%;
+.layout02-header {
   width: 100%;
 }
 
-#layout_01 .layout_01-wrapper{
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-}
-
-#layout_01 .content {
+.layout02-content {
+  /* height: 100%; */
   width: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
@@ -21,7 +13,7 @@
   flex-direction: column;
 }
 
-#layout_01 .footer {
+.layout02-footer {
   min-height: 40px;
   width: 100%;
   margin-top: auto;

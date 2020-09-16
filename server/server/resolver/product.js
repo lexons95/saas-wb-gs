@@ -1,4 +1,4 @@
-import { AuthenticationError } from 'apollo-server-express';
+import { AuthenticationError, ApolloError } from 'apollo-server-express';
 import ProductModel from '../model/product';
 import InventoryModel from '../model/inventory';
 
@@ -15,8 +15,17 @@ const resolvers = {
 
       return await collection_product.getProducts(args);
     },
-    product: async (_, args=null, context) => {
-      return "read user"
+    product: async (_, args=null, { req }) => {
+      let loggedInUser = req.user;
+      let dbName = args.configId;
+      if (dbName) {
+        const db_base = await global.connection.useDb(dbName);
+        const collection_product = await db_base.model("Product",ProductModel.schema,'product');
+        return await collection_product.findById(args._id);
+      }
+      else {
+        return new ApolloError("Config not found");;
+      }
     }
 
 
@@ -58,6 +67,23 @@ const resolvers = {
       };
     }),
     updateProduct: editorOnly( async (_, args={}, { req }) => {
+      let loggedInUser = req.user;
+      let dbName = loggedInUser.configId;
+      if (dbName) {
+        const db_base = await global.connection.useDb(dbName);
+        const collection_product = await db_base.model("Product",ProductModel.schema,'product');
+        const productObj = args.product;
+
+        let updateResult = await collection_product.updateOne(productObj);
+        return updateResult;
+      }
+      return {
+        success: false,
+        message: "user config id not found",
+        data: {}
+      };
+    }),
+    updateProductAndInventory: editorOnly( async (_, args={}, { req }) => {
       let loggedInUser = req.user;
       let dbName = loggedInUser.configId;
       if (dbName) {

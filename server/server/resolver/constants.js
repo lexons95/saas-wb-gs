@@ -64,7 +64,20 @@ const resolvers = {
         }
       }
       return new ApolloError("Config not found");
-      
+    }),
+    getManyS3SignedUrl: editorOnly( async (_, args={}, { req }) => {
+      let loggedInUser = req.user;
+      let dbName = loggedInUser && loggedInUser.configId ? loggedInUser.configId : args.configId;
+      if (dbName) {
+        let AWSS3API = await awsS3API();
+        let urlResult = await AWSS3API.generateManyPutUrl(dbName, args.objects)
+        return {
+          success: true,
+          message: "URL generated",
+          data: urlResult
+        }
+      }
+      return new ApolloError("Config not found");
     })
   },
   Mutation: {
@@ -149,16 +162,31 @@ const resolvers = {
     }),
     s3DeleteOne: editorOnly( async (_, args={}, { req }) => {
       let loggedInUser = req.user;
+
       let dbName = loggedInUser && loggedInUser.configId ? loggedInUser.configId : args.configId;
       if (dbName) {
         let AWSS3API = await awsS3API();
-        let deleteResult = await AWSS3API.deleteOne(dbName, args.name)
-        deleteResult.then(result=>{
-          return result;
-        }).catch(err=>{
-          console.log('Delete err',err)
-          return new ApolloError("Delete failed");
-        });
+        let deleteResult = await AWSS3API.deleteOne(dbName, args.Key);
+        return {
+          success: true,
+          message: "Object deleted",
+          data: deleteResult
+        }
+      }
+      return new ApolloError("Config not found");
+    }),
+    s3DeleteMany: editorOnly( async (_, args={}, { req }) => {
+      let loggedInUser = req.user;
+
+      let dbName = loggedInUser && loggedInUser.configId ? loggedInUser.configId : args.configId;
+      if (dbName) {
+        let AWSS3API = await awsS3API();
+        let deleteResult = await AWSS3API.deleteMany(dbName, args.Keys);
+        return {
+          success: true,
+          message: "Objects deleted",
+          data: deleteResult
+        }
       }
       return new ApolloError("Config not found");
     }),

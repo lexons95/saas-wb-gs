@@ -1,29 +1,26 @@
 import React from 'react';
 import { Route, Redirect, useLocation } from 'react-router-dom';
-import { useUserCache, useConfigCache } from '../customHook';
+import { useAuth } from '../context/authContext';
 
 const PublicRoute = ({ component: Component, restricted, ...rest }) => {
   let routeLocation = useLocation();
+  const { isAuthenticated } = useAuth();
 
-  const defaultRoute = "/";
-  const userResult = useUserCache();
-  const configResult = useConfigCache();
-  
-  let loggedIn = false;
-  if (userResult && userResult.success && configResult) {
-    loggedIn = true;
+  let defaultRoute = "/";
+  if (routeLocation && routeLocation.state && routeLocation.state.from && routeLocation.state.from.pathname) {
+    defaultRoute = routeLocation.state.from.pathname;
   }
 
   return (
     // restricted = false meaning public route
     // restricted = true meaning restricted route
     <Route {...rest} render={props => (
-      loggedIn && restricted ?
+      isAuthenticated && restricted ?
         <Redirect to={{
             pathname: defaultRoute,
             state: { from: routeLocation }
         }} />
-        : <Component {...props} />
+        : <Component {...props}/>
     )} />
   );
 };

@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { useQuery, useMutation } from "@apollo/react-hooks";
-import gql from "graphql-tag";
+import { useQuery, useMutation, gql } from '@apollo/client';
 import { Button, Table, Tag, Select, Form } from 'antd';
 import {
   PlusOutlined,
@@ -8,13 +7,12 @@ import {
 } from '@ant-design/icons';
 import { format } from 'date-fns';
 
-import Page_01 from './component/Page_01';
+import Page01 from './component/Page01';
 import Loading from '../../utils/component/Loading';
 import ProductForm from './component/ProductForm';
 import ProductForm2 from './component/ProductForm2';
 import { getAllProductCategory, getAllProductTags } from '../../utils/Constants';
-import { useConfigCache, getConfigCache } from '../../utils/customHook';
-import qiniuAPI from '../../utils/qiniuAPI';
+import { useConfigCache } from '../../utils/customHook';
 
 const { Option } = Select;
 
@@ -83,7 +81,8 @@ const Inventory = (props) => {
   const [ selectedCategoryFilter, setSelectedCategoryFilter ] = useState("");
 
   const configCache = useConfigCache();
-  let productTypeOptions = configCache.productTypes ? configCache.productTypes : [];
+  const configId =  configCache && configCache.configId ? configCache.configId : null;
+  let productTypeOptions = configCache && configCache.productTypes ? configCache.productTypes : [];
 
   const { data: productsData, loading: loadingProducts, error, refetch: refetchProducts } = useQuery(GET_PRODUCTS_QUERY, {
     fetchPolicy: "cache-and-network",
@@ -93,8 +92,9 @@ const Inventory = (props) => {
           createdAt: 1
         }
       },
-      configId: configCache.configId
+      configId: configId
     },
+    skip: configId ? false : true,
     onError: (error) => {
       console.log("products error", error)
 
@@ -107,7 +107,7 @@ const Inventory = (props) => {
   const { data: inventoryData, loading: loadingInventory, error: inventoryError, refetch: refetchInventory } = useQuery(READ_PRODUCT_INVENTORY_QUERY, {
     fetchPolicy: "cache-and-network",
     variables: {
-      configId: configCache.configId
+      configId: configId
     },
     onError: (error) => {
       console.log("inventoryData error", error)
@@ -395,13 +395,19 @@ const Inventory = (props) => {
       let inventoryWithKey = inventoryData.inventory.map((anInventory)=>{ return {...anInventory, key: anInventory._id} });
       filterProducts(productsData.products).map((aProduct,index)=>{
         let productInventory = inventoryWithKey.filter((anInventory)=>anInventory.productId == aProduct._id);
-        aProduct['key'] = aProduct._id;
+        let newObj = Object.assign({},aProduct);
+        newObj['key'] = aProduct._id;
         if (productInventory.length > 0) {
-          aProduct['children'] = productInventory;
+          newObj['children'] = productInventory;
         }
-        result.push(aProduct)
+        result.push(newObj)
       });
     }
+    result.sort(function(a,b){
+      // Turn your strings into dates, and then subtract them
+      // to get a value that is either negative, positive, or zero.
+      return new Date(b.createdAt) - new Date(a.createdAt);
+    });
     return result;
   }
 
@@ -422,37 +428,13 @@ const Inventory = (props) => {
         }
       })
     }
-    // console.log('getAllImagesName',allImages)
-    const QiniuAPI = await qiniuAPI();
-
-    if (allImages.length > 0) {
-      let x = await QiniuAPI.batchCopy(allImages);
-      // console.log('copy result', x.data.qiniuBatchCopy.data.items)
-      let items = x.data.qiniuBatchCopy.data.items;
-      console.log('total length: ',items.length)
-      items.forEach((anItem,index)=>{
-        let num = index + 1;
-        if (num >= 201 && num <= 225) {
-          // var a = document.createElement('a');
-          // a.href = "http://qefdx54gk.bkt.clouddn.com/"+anItem.key+"?attname=";
-          // a.download = anItem.key;
-          // a.setAttribute('target', '_blank');
-          // document.body.appendChild(a);
-          // a.click();
-          // document.body.removeChild(a);
-          window.open("http://qefdx54gk.bkt.clouddn.com/"+anItem.key+"?attname=")
-        }
-      })
-    }
-
 
   }
 
   return (
-    <Page_01
+    <Page01
       title={"Inventory"}
       extra={[
-        <Button key="copy" onClick={getAllImagesName}>copy image</Button>,
         <Button key="refresh" type="primary" icon={<RedoOutlined />} onClick={()=>{refetchData()}}/>,
         <Button key="create" type="primary" icon={<PlusOutlined />} onClick={()=>{handleOnClickProduct(null)}} />
       ]}
@@ -527,7 +509,7 @@ const Inventory = (props) => {
         {selectionPanel()}
       </div>
 
-      <ProductForm
+      {/* <ProductForm
         // product props
         product={selectedProduct} 
         categories={allCategories}
@@ -537,24 +519,24 @@ const Inventory = (props) => {
         // modal props
         modalVisible={productFormModal}
         closeModal={handleProductFormModalClose}
-      />
+      /> */}
 
-      {/* <ProductForm2
+      <ProductForm2
         // product props
-        product={selectedProduct} 
+        productId={selectedProduct ? selectedProduct._id : null} 
         categories={allCategories}
         tags={allTags}
-        refetch={refetchData}
+        refetchList={refetchData}
 
         // modal props
         visible={productFormModal}
         onCancel={handleProductFormModalClose}
-      /> */}
+      />
 
       {
         isLoading ? <Loading/> : null
       }
-    </Page_01>
+    </Page01>
   )
 
 //   {

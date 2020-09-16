@@ -1,26 +1,43 @@
-import ApolloClient from 'apollo-client';
-import { InMemoryCache } from 'apollo-cache-inmemory';
+import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { HttpLink, createHttpLink } from 'apollo-link-http';
 import { setContext } from 'apollo-link-context';
 
-export const MIDDLETIER_URL = "http://localhost:8080/graphql";
-// export const MIDDLETIER_URL = "http://localhost:3000/graphql";
+import { configVar, userVar } from './cache';
+
+// export const MIDDLETIER_URL = "http://localhost:8080/graphql";
+export const MIDDLETIER_URL = "http://localhost:3000/graphql";
 // export const MIDDLETIER_URL = "http://15.165.150.23/graphql";
+// export const MIDDLETIER_URL = "http://8.210.145.128/graphql";
+const cache = new InMemoryCache({ 
+  addTypename: false,
+  typePolicies: {
+    Query: {
+      fields: {
+        user: {
+          read () {
+            return userVar();
+          }
+        },
+        config: {
+          read () {
+            return configVar();
+          }
+        }
+      }
+    }
+  }
+});
 
 export default function ApolloClientAPI(middletierURL = null) {
-  const cache = new InMemoryCache({ addTypename: false });
+
+
   const httpLink = createHttpLink({ 
     uri: middletierURL ? middletierURL : MIDDLETIER_URL,
-    credentials: "include",
+    credentials: "include"
     // fetchOptions: {
     //   mode: 'cors',
     // }
   });
-
-  // const httpLink2 = new HttpLink({
-  //   uri: middletierURL ? middletierURL : MIDDLETIER_URL,
-  //   credentials: "include"
-  // })
 
   const authLink = setContext((_, { headers }) => {
     return {
@@ -33,13 +50,13 @@ export default function ApolloClientAPI(middletierURL = null) {
   });
 
   const client = new ApolloClient({
-    link: authLink.concat(httpLink),
+    //link: authLink.concat(httpLink),
+    link: httpLink,
     cache
   });
 
   return {
     client: client,
-    cache: cache,
     query: async (query, params={})=>{
       return new Promise((resolve, reject) => {
         client.query({

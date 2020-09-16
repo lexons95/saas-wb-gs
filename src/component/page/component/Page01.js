@@ -1,11 +1,11 @@
 import React from 'react';
 import { PageHeader } from 'antd';
 
-const Page_01 = (props) => {
+const Page01 = (props) => {
   const {children, ...rest} = props;
   return (
     <React.Fragment>
-      <div id="page_01">
+      <div id="page01">
         <PageHeader
           {...rest}
         >
@@ -16,7 +16,7 @@ const Page_01 = (props) => {
   )
   // return (
   //   <React.Fragment>
-  //     <div id="page_01">
+  //     <div id="page01">
   //       <PageHeader
   //         {...rest}
   //       >
@@ -27,4 +27,4 @@ const Page_01 = (props) => {
   // )
 }
 
-export default Page_01;
+export default Page01;

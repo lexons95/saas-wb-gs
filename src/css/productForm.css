@@ -42,12 +42,62 @@
   width: 100%;
 }
 
-#productForm2 .ant-tabs-content{
+#productForm2 .ant-tabs-content {
   height: 100%;
 }
 
-#productForm2 .ant-tabs-tabpane {
-  overflow-y: scroll;
-  /* overflow: scroll; */
-  /* padding: 0 24px; */
+.productForm-productInfo-container {
+  /* overflow-y: scroll; */
+  height: 100%;
+  width: 100%;
+}
+
+.inventoryFormTable-container {
+  height: 100%;
+  width: 100%;
+}
+
+.inventoryFormTable-form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.inventoryFormTable-table-data {
+  overflow-y: auto;
+  width: 100%;
+  flex-grow: 1;
+}
+
+.inventoryFormTable-table-row {
+  padding-bottom: 10px;
+}
+
+.inventoryFormTable3-container {
+  height: 100%;
+  width: 100%;
+}
+
+
+.productForm-tab-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.productForm-tab-content {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.productForm-tab-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.productForm-tab-inventory-footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }

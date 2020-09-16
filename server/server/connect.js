@@ -12,7 +12,11 @@ const clientOption = {
   useNewUrlParser: true,
   autoIndex: false
 };
-const option = { useNewUrlParser: true, useUnifiedTopology: true };
+const option = { 
+  useNewUrlParser: true, 
+  useUnifiedTopology: true,
+  poolSize: 50
+};
 
 const initDbConnection = async () => {
   const db = await mongoose.createConnection(CONNECTION_URL, option);

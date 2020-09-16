@@ -5,7 +5,7 @@ import {
   ShoppingOutlined
 } from '@ant-design/icons';
 
-const Header_02 = (props) => {
+const Header02 = (props) => {
   const [ drawerStatus, setDrawerStatus ] = useState(false);
   const handleDrawerOpen = () => {
     setDrawerStatus(true)
@@ -20,7 +20,7 @@ const Header_02 = (props) => {
 
   return (
     <React.Fragment>
-      <header id="header_02">
+      <header id="header02">
         <div className="menu-item" onClick={handleDrawerOpen}>
           <MenuOutlined
             style={{fontSize:"16px"}}
@@ -50,4 +50,4 @@ const Header_02 = (props) => {
   );
 }
 
-export default Header_02;
+export default Header02;

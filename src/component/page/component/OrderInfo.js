@@ -1,6 +1,9 @@
 import React from 'react';
-import { Modal, Divider, Descriptions, List, Avatar } from 'antd';
+import { Modal, Divider, Descriptions, List, Avatar, Button } from 'antd';
 import { format } from 'date-fns';
+import {
+  RedoOutlined
+} from '@ant-design/icons';
 
 import { useConfigCache } from '../../../utils/customHook';
 
@@ -44,6 +47,13 @@ const OrderInfo = (props) => {
   let foundDutyTaxInsurance = order && order.charges && order.charges.length > 0 ? order.charges.find((aCharge)=>{return aCharge.code && aCharge.code == "dutyTaxInsurance"}) : null
   if (foundDutyTaxInsurance != null) {
     extraCharges.push(foundDutyTaxInsurance)
+  }
+
+  const refreshImage = () => {
+    let img = document.getElementById("paymentQRImage");
+    if (img) {
+      img.src = configCache.imageSrc + configCache.paymentQRImage + "?v=" + Math.random();
+    }
   }
 
   return (
@@ -119,12 +129,13 @@ const OrderInfo = (props) => {
 
         <div style = {{textAlign:'center'}}>
           <h1>扫码付款后记得备注名字，后台需要确认订单</h1>
+          <Button icon={(<RedoOutlined/>)} onClick={refreshImage} />
         </div>
 
         <div className="orderInfo-extra">
           {configCache.paymentQRImage ?
             <div style={{textAlign:'center',flexGrow:1}}>
-              <img src={configCache.imageSrc + configCache.paymentQRImage} />
+              <img id="paymentQRImage" src={configCache.imageSrc + configCache.paymentQRImage} />
             </div>
             : null
           }

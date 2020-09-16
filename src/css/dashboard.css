@@ -1,0 +1,33 @@
+.dashboard-container {
+  width: 100%;
+}
+
+.dashboard-summary > div{
+  /* display: flex; */
+  margin-bottom: 20px;
+}
+
+.dashboard-summary .dashboard-summary-part1 {
+  display: flex;
+  /* justify-content: space-around; */
+  flex-wrap: wrap;
+}
+
+.dashboard-summary-part1 > div {
+  margin-right: 10px;
+  flex-grow: 1;
+}
+
+.dashboard-summary .dashboard-summary-part2 {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.dashboard-charts-filter {
+  display: flex;
+  flex-wrap: wrap;
+}
+.dashboard-charts-container {
+  width: 100%;
+  padding-top: 20px;
+}

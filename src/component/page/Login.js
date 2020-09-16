@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react';
-import { useLazyQuery, useMutation } from "@apollo/react-hooks";
+import React from 'react';
+import { useLazyQuery, useMutation } from '@apollo/client';
 import gql from "graphql-tag";
 import { Form, Input, Button, Checkbox } from 'antd';
 import { useHistory } from "react-router-dom";
 
 import Loading from '../../utils/component/Loading';
-import { setUserCache, setConfigCache } from '../../utils/customHook';
+import { useAuth } from '../../utils/context/authContext';
+import { setUserCache, setConfigCache, useConfigQuery, useUserQuery, useUserLazyQuery } from '../../utils/customHook';
 import * as notification from '../../utils/component/notification';
 
 const LOGIN_MUTATION = gql`
@@ -17,16 +18,6 @@ const LOGIN_MUTATION = gql`
       }
     }
 `;
-
-const GET_USER_CONFIG_QUERY = gql`
-  query userConfig($configId: String!) {
-    userConfig(configId: $configId) {
-        success
-        message
-        data
-    }
-  }
-`
 
 const layout = {
   labelCol: {
@@ -44,40 +35,17 @@ const tailLayout = {
 };
 
 const Login = (props) => {
-  let routeHistory = useHistory();
-  const [login, { data, loading }] = useMutation(LOGIN_MUTATION,{
+  const { fetchUser } = useAuth();
+  const [login, { data: loginResult, loading }] = useMutation(LOGIN_MUTATION,{
     onCompleted: (result)=>{
       if (result && result.login && result.login.success) {
-        let redirectPath = '/';
-        // if (routeHistory.location.state && routeHistory.location.state.from) {
-        //   redirectPath = routeHistory.location.state.from.pathname
-        // }
-        fetchConfig({
-          variables: {
-            configId: result.login.data.configId
-          }
-        })
-        // routeHistory.push(redirectPath)
+        fetchUser()
       }
       else {
         notification.showMessage({type: 'error',message: "Failed to login"})
       }
-    } 
-  });
-
-  const [ fetchConfig ] = useLazyQuery(GET_USER_CONFIG_QUERY,{
-    fetchPolicy: 'cache-and-network',
-    onCompleted: (result2) => {
-      if (result2 && result2.userConfig && result2.userConfig.success) {
-        setConfigCache(result2.userConfig.data)
-        setUserCache(data.login)
-      }
     }
   });
-
-  // useEffect(()=>{
-
-  // },[]);
 
   const onFinish = values => {
     login({

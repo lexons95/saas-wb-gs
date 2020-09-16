@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { Button, Form, Input, Upload, Modal, Switch, Collapse, Select, Divider } from 'antd';
-import { useLazyQuery, useMutation } from "@apollo/react-hooks";
+import { useLazyQuery, useMutation } from '@apollo/client';
 import { PlusOutlined, StarOutlined, StarFilled } from '@ant-design/icons';
 import gql from "graphql-tag";
 
@@ -54,8 +54,8 @@ const DELETE_PRODUCT_QUERY = gql`
 `;
 
 const UPDATE_PRODUCT_QUERY = gql`
-  mutation updateProduct($product: JSONObject!, $inventory: [JSONObject!]) {
-    updateProduct(product: $product, inventory: $inventory) {
+  mutation updateProductAndInventory($product: JSONObject!, $inventory: [JSONObject!]) {
+    updateProductAndInventory(product: $product, inventory: $inventory) {
       success
       message
       data
@@ -282,13 +282,13 @@ const ProductInfoForm = (props) => {
   const [updateProduct, updateProductResult ] = useMutation(UPDATE_PRODUCT_QUERY,{
     onCompleted: (result) => {
       // console.log("updateProduct result",result)
-      if (result.updateProduct && result.updateProduct.success) {
+      if (result.updateProductAndInventory && result.updateProductAndInventory.success) {
         refetch();
         showMessage({type: 'success', message: 'Success: Product Updated'});
         modalProps.onCancel();
       }
       else {
-        showMessage({type: 'error', message: result.updateProduct.message });
+        showMessage({type: 'error', message: result.updateProductAndInventory.message });
       }
     }
   })

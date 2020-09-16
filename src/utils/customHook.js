@@ -1,20 +1,34 @@
+import React, { useEffect } from 'react';
+import { useQuery, useLazyQuery, makeVar, gql } from '@apollo/client';
 
-import { useQuery, useLazyQuery } from "@apollo/react-hooks";
-import gql from "graphql-tag";
+import ApolloClientAPI from './ApolloClient/ApolloClientAPI';
+import { configVar, userVar } from './ApolloClient/cache';
 
-import ApolloClientAPI from './ApolloClientAPI';
-
-// import DefaultClientAPI from '../index';
-// import { theClientAPI as DefaultClientAPI } from '../index';
 import { defaultImage_system } from './Constants'; 
+// export { DefaultClientAPI } from '../index';
 
 export const DefaultClientAPI = ApolloClientAPI();
-DefaultClientAPI.client.writeData({
-  data: {
-    user: null,
-    config: null
-  },
-})
+
+// DefaultClientAPI.client.writeQuery({
+//   query: gql`
+//     query user {
+//       user
+//     }
+//   `,
+//   data: {
+//     user: null
+//   },
+// })
+// DefaultClientAPI.client.writeQuery({
+//   query: gql`
+//     query config {
+//       config
+//     }
+//   `,
+//   data: {
+//     config: null
+//   },
+// })
 
 const handleConfigOuput = (config = null) => {
   let result = null;
@@ -35,37 +49,23 @@ const GET_USER_CACHE_QUERY = gql`
     user @client {
       success
       message
-      data {
-        _id
-        username
-        configId
-        role
-      } 
-    }
-  }
-`
-const SET_USER_CACHE_QUERY = gql`
-  query user {
-    user {
-      success
-      message
-      data {
-        _id
-        username
-        configId
-        role
-      } 
+      data
     }
   }
 `
 
-export const useUserCache = () => {
+export const useUserCache = (options={}) => {
+  const defaultOptions = {
+    fetchPolicy: 'cache-and-network'
+  }
   const  { data, error, loading } = useQuery(GET_USER_CACHE_QUERY,{
-    fetchPolicy: 'cache-only'
+    ...defaultOptions,
+    ...options
   });
 
   let result = null;
   if (loading) {
+    return result;
     // console.log('loading');
   }
   if (error) {
@@ -77,42 +77,64 @@ export const useUserCache = () => {
   return result;
 }
 
-export const setUserCache = (data, client=null) => {
-  let theClient = DefaultClientAPI.client;
-  if (client != null) {
-    theClient = client;
-  }
-  theClient.writeQuery({
-    query: SET_USER_CACHE_QUERY,
-    data: {
-      user: data
-    }
-  });
-  // theClient.writeData({
+export const setUserCache = (data) => {
+  // let theClient = DefaultClientAPI.client;
+  // theClient.writeQuery({
+  //   query: GET_USER_CACHE_QUERY,
   //   data: {
   //     user: data
   //   }
   // });
+  userVar(data)
 }
 
-// export const getUserCache = (client=null) => {
-//   let result = null;
-//   let theClient = DefaultClientAPI.client;
-//   if (client != null) {
-//     theClient = client;
-//   }
-//   try {
-//     result = theClient.readQuery({
-//       query: GET_USER_CACHE_QUERY
-//     },true)
-//   }
-//   catch (e) {
-//     result = null;
-//   }
+const GET_LOGGED_IN_USER = gql`
+  query loggedInUser{
+    loggedInUser{
+        success
+        message
+        data
+    }
+  }
+`
+export const useUserQuery = (options={}) => {
+  const defaultOptions = {
+    fetchPolicy: 'cache-and-network',
+    onCompleted: (result) => {
+      if (result && result.loggedInUser && result.loggedInUser.success) {
+        // console.log('useUserQuery',result)
+        setUserCache(result.loggedInUser.data)
+      }
+    }
+  }
 
-//   return result;
-// }
+  const queryResult = useQuery(GET_LOGGED_IN_USER,{
+    ...defaultOptions,
+    ...options
+  });
 
+  return queryResult;
+}
+
+export const useUserLazyQuery = (options={}) => {
+  const defaultOptions = {
+    fetchPolicy: 'cache-and-network',
+    onCompleted: (result) => {
+      if (result && result.loggedInUser && result.loggedInUser.success) {
+        let { config, ...rest } = result.loggedInUser.data;
+        setUserCache(result.loggedInUser)
+        setConfigCache(config)
+      }
+    }
+  }
+
+  const queryResult = useLazyQuery(GET_LOGGED_IN_USER,{
+    ...defaultOptions,
+    ...options
+  });
+
+  return queryResult;
+}
 
 // User Cache ---------------------------- end
 // Config Cache ---------------------------- start
@@ -136,11 +158,7 @@ const GET_CONFIG_CACHE_QUERY = gql`
       paymentQRImage
       server
       currencyUnit
-      profile {
-        name
-        notice
-        logo
-      }
+      profile
       delivery
       productImageLimit
       inventoryPerProductLimit
@@ -148,31 +166,11 @@ const GET_CONFIG_CACHE_QUERY = gql`
     }
   }
 `
-const SET_CONFIG_CACHE_QUERY = gql`
-  query config {
-    config {
-      _id
-      configId
-      defaultImage
-      defaultImage_system
-      imageSrc
-      paymentQRImage
-      server
-      currencyUnit
-      profile {
-        name
-        notice
-        logo
-      }
-      delivery
-      productImageLimit
-      inventoryPerProductLimit
-    }
-  }
-`
+
 export const useConfigCache = () => {
   const { data, error, loading } = useQuery(GET_CONFIG_CACHE_QUERY,{
-    fetchPolicy: 'cache-only'
+    //fetchPolicy: 'cache-only'
+    fetchPolicy: 'cache-and-network'
   });
 
   let result = null;
@@ -188,113 +186,81 @@ export const useConfigCache = () => {
   return result;
 }
 
-export const setConfigCache = (data, client=null) => {
-  let theClient = DefaultClientAPI.client;
-  if (client != null) {
-    theClient = client;
-  }
-  theClient.writeQuery({
-    query: GET_CONFIG_CACHE_QUERY,
-    data: {
-      config: handleConfigOuput(data)
-    }
-  });
-  // theClient.writeData({
+export const setConfigCache = (data) => {
+  // let theClient = DefaultClientAPI.client;
+  // theClient.writeQuery({
+  //   query: GET_CONFIG_CACHE_QUERY,
   //   data: {
   //     config: handleConfigOuput(data)
   //   }
   // });
+  configVar(handleConfigOuput(data))
 }
 
-// export const getConfigCache = (client=null) => {
-//   let result = null;
-//   let theClient = DefaultClientAPI.client;
-//   if (client != null) {
-//     theClient = client;
-//   }
-//   try {
-//     result = theClient.readQuery({
-//       query: SET_CONFIG_CACHE_QUERY
-//     },true) 
-//   }
-//   catch (e) {
-//     result = null;
-//   }
-
-//   return result;
-// }
-
-export const useConfigQuery = (input) => {
-  // const [ getConfig, { data, error, loading } ] = useLazyQuery(GET_USER_CONFIG_QUERY,{
-  const { data, error, loading } = useQuery(GET_USER_CONFIG_QUERY,{
+export const useConfigQuery = (options={}) => {
+  const defaultOptions = {
     fetchPolicy: 'cache-and-network',
-    variables: {
-      configId: input
-    },
     onCompleted: (result) => {
       if (result && result.userConfig && result.userConfig.success) {
+        // console.log('useConfigQuery2',result)
         setConfigCache(result.userConfig.data)
       }
     }
+  }
+
+  const queryResult = useQuery(GET_USER_CONFIG_QUERY,{
+    ...defaultOptions,
+    ...options
   });
-  let result = null;
-  if (loading) {
-    // console.log('loading');
-  }
-  if (error) {
-    console.log('useConfigQuery',error);
-  }
-  if (data && data.userConfig) {
-    result = handleConfigOuput(data.userConfig);
-  }
-  return result;
+
+  return queryResult;
 }
 
-export const getConfigCache = () => {
-  const result = DefaultClientAPI.client.readQuery({
-    query: GET_CONFIG_CACHE_QUERY,
-    fetchPolicy: 'cache-only'
+export const useConfigLazyQuery = (options={}) => {
+  const defaultOptions = {
+    fetchPolicy: 'cache-and-network',
+    onCompleted: (result) => {
+      if (result && result.userConfig && result.userConfig.success) {
+        // console.log('useConfigQuery2',result)
+        setConfigCache(result.userConfig.data)
+      }
+    }
+  }
+
+  const queryResult = useLazyQuery(GET_USER_CONFIG_QUERY,{
+    ...defaultOptions,
+    ...options
   });
-  return result;
+
+  return queryResult;
 }
 
 export const clearCache = () => {
-  DefaultClientAPI.client.writeData({
-    data: {
-      user: null,
-      config: null
-    },
-  })
+  // DefaultClientAPI.client.writeQuery({
+  //   query: gql`
+  //     query user {
+  //       user
+  //     }
+  //   `,
+  //   data: {
+  //     user: null
+  //   },
+  // })
+  // DefaultClientAPI.client.writeQuery({
+  //   query: gql`
+  //     query config {
+  //       config
+  //     }
+  //   `,
+  //   data: {
+  //     config: null
+  //   },
+  // })
+  configVar(null);
+  userVar(null)
 }
+
 // Config Cache ---------------------------- end
-
-
-// const GET_LOGGED_IN_USER = gql`
-//   query loggedInUser{
-//     loggedInUser{
-//         success
-//         message
-//         data
-//     }
-//   }
-// `
-// export const useUserQuery = () => {
-//   const [getUser, { data, error, loading }] = useLazyQuery(GET_LOGGED_IN_USER,{
-//     //fetchPolicy: 'cache-and-network'
-//   });
-
-//   let result = null;
-//   if (loading) {
-//     console.log('loading');
-//   }
-//   if (error) {
-//     console.log(error);
-//   }
-//   if (data && data.user) {
-//     result = data.user;
-//   }
-//   return result;
-// }
 
 
 // Orders ---------------------------- start
@@ -323,9 +289,8 @@ const GET_ORDERS_QUERY = gql`
 
 export const useOrdersQuery = (options) => {
 
-  const ordersResult = useQuery(GET_ORDERS_QUERY, {
+  let defaultOptions = {
     fetchPolicy: "cache-and-network",
-    variables: options,
     onError: (error) => {
       console.log("orders error", error)
   
@@ -333,6 +298,10 @@ export const useOrdersQuery = (options) => {
     onCompleted: (result) => {
       // console.log('Orders', result.orders)
     }
+  }
+  const ordersResult = useQuery(GET_ORDERS_QUERY, {
+    ...defaultOptions,
+    ...options
   });
 
   const { loading, error } = ordersResult;
@@ -398,3 +367,4 @@ export const useInventoryQuery = (options) => {
 }
 
 // Inventory ---------------------------- end
+

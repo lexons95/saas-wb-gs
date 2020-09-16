@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Layout_01 = (props) => {
+const Layout01 = (props) => {
 
   return (
-    <div id="layout_01">
-      <div className="wrapper layout_01-wrapper">
+    <div id="layout01">
+      <div className="wrapper layout01-wrapper">
         <div className="header">
           {props.header ? props.header : null}
         </div>
@@ -19,4 +19,4 @@ const Layout_01 = (props) => {
   );
 }
 
-export default Layout_01;
+export default Layout01;

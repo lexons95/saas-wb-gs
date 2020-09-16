@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
-import { useMutation, useApolloClient } from "@apollo/react-hooks";
+import { useMutation, useApolloClient } from '@apollo/client';
 import gql from "graphql-tag";
-import { useHistory } from "react-router-dom";
+import { useHistory, NavLink } from "react-router-dom";
 import { Button, Tooltip } from 'antd';
 import {
   ArrowLeftOutlined,
   LogoutOutlined
 } from '@ant-design/icons';
 import confirmation from '../../utils/component/confirmation';
+import Loading from '../../utils/component/Loading';
 import { useConfigCache, clearCache, useUserCache } from '../../utils/customHook';
+import { useAuth } from '../../utils/context/authContext';
 
 const LOGOUT_MUTATION = gql`
     mutation logout {
@@ -20,18 +22,14 @@ const LOGOUT_MUTATION = gql`
     }
 `;
 
-const Header_01 = (props) => {
+const Header01 = (props) => {
   const apolloClient = useApolloClient();
-  let routeHistory = useHistory();
-  const config = useConfigCache();
-  const userCache = useUserCache();
-  const [logout] = useMutation(LOGOUT_MUTATION, {
+  const { configCache, userCache } = useAuth();
+  const [ logout ] = useMutation(LOGOUT_MUTATION, {
     onCompleted: (result) => {
       if (result && result.logout && result.logout.success) {
-        apolloClient.resetStore().then(()=>{
-          clearCache()
-        })
-        // apolloClient.clearStore()
+        clearCache()
+        apolloClient.clearStore()
       }
     }
   });
@@ -69,12 +67,12 @@ const Header_01 = (props) => {
         {
           name: 'Dashboard',
           icon: null,
-          route: '/dashboard'
+          route: '/'
         },
         {
           name: 'Inventory',
           icon: null,
-          route: '/'
+          route: '/inventory'
         },
         {
           name: 'Orders',
@@ -95,9 +93,8 @@ const Header_01 = (props) => {
     }
   }
 
-
-
   const getMenuItemDisplay = () => {
+
     let result = [];
     menuItem.map((aMenuItem,index)=>{
       let buttonProps = {
@@ -109,27 +106,27 @@ const Header_01 = (props) => {
       else {
         buttonProps['type'] = 'link'
       }
+
       result.push(
-        <div className={`header_01-item ${routeHistory.location.pathname == aMenuItem.route ? "header_01-activeLink" : ""}`} key={index} onClick={()=>{
-          routeHistory.push(aMenuItem.route)
-          }}>
+        <NavLink key={index} exact={true} to={aMenuItem.route} className="header01-item" activeClassName="header01-activeLink">
           {
             menuCollapsed ? 
             <Tooltip title={aMenuItem.name} placement="right">
               <Button {...buttonProps}>{aMenuItem.name[0].toUpperCase()}</Button>
             </Tooltip>
-            : <span className={routeHistory.location.pathname == aMenuItem.route ? "header_01-activeLink" : ""}>{aMenuItem.name}</span>
+            : <span>{aMenuItem.name}</span>
           }
-        </div>
+        </NavLink>
       )
+ 
     });
     return result;
   }
 
   return (
-    <header id="header_01" data-header-collapsed={menuCollapsed}>
-      <div className="header_01-header">
-        <div className="header_01-item collapse-btn">
+    <header id="header01" data-header-collapsed={menuCollapsed}>
+      <div className="header01-header">
+        <div className="header01-item collapse-btn">
            <Button 
               shape="circle" 
               type="link"
@@ -141,23 +138,23 @@ const Header_01 = (props) => {
         </div>
       </div>
 
-      <div className="header_01-content">
+      <div className="header01-content">
         {getMenuItemDisplay()}
       </div>
-      <div className="header_01-footer">
+      <div className="header01-footer">
         {
-          config && !menuCollapsed ? (
+          configCache && userCache && userCache.success && !menuCollapsed ? (
             <>
-              <div className="header_01-item" style={{cursor: 'default'}}>
+              <div className="header01-item" style={{cursor: 'default'}}>
                 { userCache.data.username }
               </div>
-              <div className="header_01-item" style={{cursor: 'default'}}>
-                { config.profile.name }
+              <div className="header01-item" style={{cursor: 'default'}}>
+                { configCache.profile.name }
               </div>
             </>
           ) : null
         }
-        <div className="header_01-item" onClick={handleLogout}>
+        <div className="header01-item" onClick={handleLogout}>
           {
             menuCollapsed ?
                 <Tooltip title="Logout" placement="right">
@@ -175,4 +172,4 @@ const Header_01 = (props) => {
   );
 }
 
-export default Header_01;
+export default Header01;

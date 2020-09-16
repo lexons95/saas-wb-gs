@@ -13,7 +13,7 @@ const OrderInvoice = (props) => {
   const orderItems = (item) => {
     let title = item.product.name;
     let variant = "";
-    console.log('item',item)
+    // console.log('item',item)
     if (item.variant) {
       let variantKeys = Object.keys(item.variant);
       variantKeys.map((aKey, index)=>{

@@ -1,5 +1,24 @@
 export const defaultImage_system = require("./noImageFound.png");
 
+export const rewardTypeOptions = [
+  {
+    label: "Percentage",
+    value: "percentage"
+  },
+  {
+    label: "Fixed Amount",
+    value: "fixedAmount"
+  },
+  {
+    label: "Free Shipping",
+    value: "freeShipping"
+  },
+  {
+    label: "Free Gift",
+    value: "freeGift"
+  }
+]
+
 export const getAllProductCategory = (products) => {
   let result = [];
   products.map((aProduct)=>{

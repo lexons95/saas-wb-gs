@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Space, Input, InputNumber, Button, List, Checkbox, Switch } from 'antd';
 import { DeleteOutlined, PlusOutlined } from '@ant-design/icons';
-import { useLazyQuery, useQuery, useMutation } from "@apollo/react-hooks";
+import { useLazyQuery, useQuery, useMutation } from '@apollo/client';
 import { useConfigCache ,useInventoryQuery } from '../../../utils/customHook';
 
 // const fixedVariants = [
@@ -496,17 +496,10 @@ const FormRow = (props) => {
       </Space>
     </div>
   )
-  // return (
-  //   <List.Item>
-  //     <Space>
-  //       {result}
-  //     </Space>
-  //   </List.Item>
-  // )
 }
 
 const InventoryFormTable2 = (props) => {
-  const { productId, inventoryData: xxxx, setInventoryData, productVariants, setProductVariants } = props;
+  const { productId, productVariants, setProductVariants } = props;
 
   const configCache = useConfigCache();
   const [ form ] = Form.useForm();
@@ -546,59 +539,76 @@ const InventoryFormTable2 = (props) => {
   }
 
   return (
-    <Form form={form} onFinish={onFormFinished}>
-      <Form.List name={formFieldName}>
-      {
-        (fields, { add, remove, move }) => {
-          let formValues = getFormValues(formFieldName);
+    <div className="inventoryFormTable-container">
+      <div className="inventoryFormTable-table-header">
+      </div>
+      <Form form={form} onFinish={onFormFinished} className="inventoryFormTable-form">
+        <Form.List name={formFieldName}>
+        {
+          (fields, { add, remove, move }) => {
+            let formValues = getFormValues(formFieldName);
 
-          const addRow = (value) => {
-            add()
-          }
-          const removeRow = (value) => {
-            remove(value)
-          }
-          return (
-            <div className="formList-wrapper">
-              <List>
-                <List.Item key={'header'}>
-                  <Space direction="vertical">
-                    <Button onClick={()=>{addRow()}}>New</Button>
-                    <Space>
-                    {
-                      allColumns.map((aColumn, index)=>{
-                        return <FormCell key={index} width={aColumn.width} style={aColumn.style}>{aColumn.title}</FormCell>
-                      })
-                    }
+            const addRow = (value) => {
+              add()
+            }
+            const removeRow = (value) => {
+              remove(value)
+            }
+            return (
+              <>
+                {/* <List.Item key={'header'} style={{position: 'fixed', paddingTop: 0}}> */}
+                  <div className="inventoryFormTable-table-row">
+                    <Space direction="vertical">
+                      <Space>
+                      {
+                        allColumns.map((aColumn, index)=>{
+                          return <FormCell key={index} width={aColumn.width} style={aColumn.style}>{aColumn.title}</FormCell>
+                        })
+                      }
+                      </Space>
                     </Space>
-                  </Space>
-                </List.Item>
+                  </div>
+                {/* </List.Item> */}
 
-                
-                {
-                  fields.map((field,index)=>{
-                    let fieldData = formValues[index];
-                    return (
-                      <List.Item key={index}>
-                        <FormRow 
-                          key={index}
-                          index={index}
-                          data={fieldData}
-                          field={field}
-                          removeRow={removeRow}
-                        />
-                      </List.Item>
-                    )
-                  })
-                }
-              </List>
-            </div>
-          )
+                <div className="inventoryFormTable-table-data">
+                  {
+                    fields.map((field,index)=>{
+                      let fieldData = formValues[index];
+                      {/* return (
+                        <List.Item key={index}>
+                          <FormRow 
+                            key={index}
+                            index={index}
+                            data={fieldData}
+                            field={field}
+                            removeRow={removeRow}
+                          />
+                        </List.Item>
+                      ) */}
+                      return (
+                         <div className="inventoryFormTable-table-row" key={index}>
+                          <FormRow 
+                            key={index}
+                            index={index}
+                            data={fieldData}
+                            field={field}
+                            removeRow={removeRow}
+                          />
+                        </div>
+                      )
+                    })
+                  }
+        <Button onClick={()=>{addRow()}}>New</Button>
+
+                </div>
+              </>
+            )
+          }
         }
-      }
-      </Form.List>
-      <Button onClick={()=>{form.submit()}}>Submit</Button>
-    </Form>
+        </Form.List>
+        <Button onClick={()=>{form.submit()}}>Submit</Button>
+      </Form>
+    </div>
   )
 }
 

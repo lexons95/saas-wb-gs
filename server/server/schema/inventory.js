@@ -11,7 +11,6 @@ const schema = gql`
 
     bulkUpdateInventory(inventory: [JSONObject!]): Response!
     updateInventoryPublish(ids: [String!], published: Boolean!): Response!
-    editInventory(productId: String!, inventory: [JSONObject!]): Response!
   }
 
   type Inventory {

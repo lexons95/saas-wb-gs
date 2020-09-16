@@ -51,6 +51,7 @@ const awsS3API = async (bucketName, bucketRegion='ap-east-1', accessKey2, secret
       let params = {
         Bucket: bucketName,
         Key: Key, 
+        ACL: 'public-read',
         ContentType: ContentType,
         Expires: 30 * 60,
       }
@@ -65,6 +66,42 @@ const awsS3API = async (bucketName, bucketRegion='ap-east-1', accessKey2, secret
         });
       });
     },
+
+    generateManyPutUrl: async (bucketName, objects) => {
+
+      const runOne = (params) => {
+        return new Promise((resolve, reject) => {
+          // Note operation in this case is putObject
+          s3.getSignedUrl('putObject', params, function(err, url) {
+            if (err) {
+              reject(err);
+            }
+            // If there is no errors we can send back the pre-signed PUT URL
+            resolve({name: params.Key, url});
+          });
+        });
+      }
+
+      return new Promise((resolve, reject) => {
+        Promise.all(
+          objects.map(async anObject => {
+            let params = {
+              Bucket: bucketName,
+              Key: anObject.Key, 
+              ACL: 'public-read',
+              ContentType: anObject.ContentType,
+              Expires: 30 * 60,
+            }
+            return runOne(params)
+          })
+        ).then((result)=>{
+          resolve(result)
+        }).catch(err=>{
+          reject(err)
+        })
+      });
+    },
+
     deleteOne: async (bucketName, Key) => {
       let deleteParams = {
         Bucket: bucketName, 
@@ -76,11 +113,39 @@ const awsS3API = async (bucketName, bucketRegion='ap-east-1', accessKey2, secret
           if (err) {
             reject(err);
           }
-          // If there is no errors we can send back the pre-signed PUT URL
+          // If there is no errors we can send back the data
           resolve(data);
          });
        })
     },
+    deleteMany: async (bucketName, Keys = []) => {
+
+      let keyObjects = Keys.map((aKey)=>{
+        return {
+          Key: aKey
+        }
+      })
+
+      let deleteParams = {
+        Bucket: bucketName, 
+        Delete: {
+          Objects: keyObjects, 
+          Quiet: false
+        }
+       };
+
+       return new Promise((resolve, reject) => {
+         s3.deleteObjects(deleteParams, function(err, data) {
+          if (err) {
+            reject(err);
+          }
+          // If there is no errors we can send back the data
+          resolve(data);
+         });
+       });
+
+    },
+    
     uploadOne: (bucketName, name, file) => {
       let uploadParams = {
         Bucket: bucketName,

@@ -1,5 +1,5 @@
 import * as qiniu from 'qiniu-js';
-import ApolloClientAPI from './ApolloClientAPI';
+import ApolloClientAPI from './ApolloClient/ApolloClientAPI';
 import gql from 'graphql-tag';
 
 const QINIU_UPLOAD_TOKEN_STATE = gql`

@@ -48,6 +48,22 @@ const resolvers = {
         message: "user config id not found",
         data: {}
       };
+    }),
+    deleteInventory: editorOnly( async (_, args={}, { req }) => {
+      let loggedInUser = req.user;
+      let dbName = loggedInUser.configId;
+      if (dbName) {
+        // const db_base = await global.connection.useDb(dbName);
+        // const collection_inventory = await db_base.model("Inventory",InventoryModel.schema,'inventory');
+        
+        // let updateResult = await collection_inventory.bulkUpdate(args);
+        // return updateResult;
+      }
+      return {
+        success: false,
+        message: "user config id not found",
+        data: {}
+      };
     })
     // createProduct: async (_, args={}, { req }) => {
     //   let loggedInUser = req.user;

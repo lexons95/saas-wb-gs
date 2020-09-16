@@ -112,7 +112,7 @@ const qiniuAPI = (bucketName = null) => {
       ]
 
       return new Promise((resolve, reject) => {
-        bucketManager.listPrefix('mananml-4',{},function(err, respBody, respInfo) {
+        bucketManager.listPrefix('klklvapor-3',{},function(err, respBody, respInfo) {
           if (err) {
             console.log(err);
             throw err;

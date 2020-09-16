@@ -3,9 +3,9 @@ import { Form, Upload, Input, Button, InputNumber, Select } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import ImgCrop from 'antd-img-crop';
 import gql from 'graphql-tag';
-import { useLazyQuery, useMutation } from "@apollo/react-hooks";
+import { useLazyQuery, useMutation } from '@apollo/client';
 
-import Page_01 from './component/Page_01';
+import Page01 from './component/Page01';
 import ImageUpload from './component/ImageUpload';
 import ImageUpload2 from './component/ImageUpload2';
 import qiniuAPI from '../../utils/qiniuAPI';
@@ -283,7 +283,7 @@ const Configuration = (props) => {
   // additional charges to set in config
   // cart limitation to place order: total weight/price/quantity
   return (
-    <Page_01
+    <Page01
       title={"Configuration"}
     >
       <Form form={form} onFinish={handleSubmit} layout="vertical">
@@ -343,7 +343,7 @@ const Configuration = (props) => {
       {
         updateLoading ? <Loading/> : null
       }
-    </Page_01>
+    </Page01>
   )
 }
 
