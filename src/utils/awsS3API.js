@@ -5,8 +5,8 @@ import axios from 'axios';
 
 const bucketRegion = 'ap-east-1';
 // const IdentityPoolId = 'ap-east-1:bcd5bb0f-792b-40fc-b8cb-20632b3453c1';
-const accessKey = 'AKIA2MHRZXWFZKCVXX6S';
-const secretAccessKey = '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';
+const accessKey = process.env.AWSS3_ACCESSKEY;
+const secretAccessKey = process.env.AWSS3_SECRETACCESSKEY;
 
 
 const AWS_GET_SIGNED_URL = gql`
