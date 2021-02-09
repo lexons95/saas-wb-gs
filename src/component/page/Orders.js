@@ -196,7 +196,12 @@ const Orders = (props) => {
       key: 'customer',
       sorter: (a, b) => a.name - b.name,
       render: (text, record) => {
-        return text.name;
+        
+        if (text) {
+          return text.name;
+
+        }
+        return "---"
       }
     },
     {

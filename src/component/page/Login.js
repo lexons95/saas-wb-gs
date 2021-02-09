@@ -3,6 +3,7 @@ import { useLazyQuery, useMutation } from '@apollo/client';
 import gql from "graphql-tag";
 import { Form, Input, Button, Checkbox } from 'antd';
 import { useHistory } from "react-router-dom";
+import Cookies from 'js-cookie';
 
 import Loading from '../../utils/component/Loading';
 import { useAuth } from '../../utils/context/authContext';
@@ -15,6 +16,7 @@ const LOGIN_MUTATION = gql`
         success
         message
         data
+        token
       }
     }
 `;
@@ -39,6 +41,11 @@ const Login = (props) => {
   const [login, { data: loginResult, loading }] = useMutation(LOGIN_MUTATION,{
     onCompleted: (result)=>{
       if (result && result.login && result.login.success) {
+        const accessTokenHeaderLabel = "saas-access-TENANT";
+        const refreshTokenHeaderLabel = "saas-refresh-TENANT";
+        
+        Cookies.set(accessTokenHeaderLabel, result.login.token.accessToken)
+        Cookies.set(refreshTokenHeaderLabel, result.login.token.refreshToken)
         fetchUser()
       }
       else {

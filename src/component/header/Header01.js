@@ -7,6 +7,8 @@ import {
   ArrowLeftOutlined,
   LogoutOutlined
 } from '@ant-design/icons';
+import Cookies from 'js-cookie';
+
 import confirmation from '../../utils/component/confirmation';
 import Loading from '../../utils/component/Loading';
 import { useConfigCache, clearCache, useUserCache } from '../../utils/customHook';
@@ -28,6 +30,11 @@ const Header01 = (props) => {
   const [ logout ] = useMutation(LOGOUT_MUTATION, {
     onCompleted: (result) => {
       if (result && result.logout && result.logout.success) {
+        const accessTokenHeaderLabel = "saas-access-TENANT";
+        const refreshTokenHeaderLabel = "saas-refresh-TENANT";
+  
+        Cookies.remove(accessTokenHeaderLabel);
+        Cookies.remove(refreshTokenHeaderLabel);
         clearCache()
         apolloClient.clearStore()
       }

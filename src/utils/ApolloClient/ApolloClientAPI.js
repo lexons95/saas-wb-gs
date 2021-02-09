@@ -1,13 +1,17 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { HttpLink, createHttpLink } from 'apollo-link-http';
 import { setContext } from 'apollo-link-context';
+import Cookies from 'js-cookie';
 
 import { configVar, userVar } from './cache';
 
-// export const MIDDLETIER_URL = "http://localhost:8080/graphql";
-export const MIDDLETIER_URL = "http://localhost:3000/graphql";
+// export const MIDDLETIER_URL = "http://127.0.0.1:8080/graphql";
+// export const MIDDLETIER_URL = "http://localhost:3000/graphql";
 // export const MIDDLETIER_URL = "http://15.165.150.23/graphql";
 // export const MIDDLETIER_URL = "http://8.210.145.128/graphql";
+// export const MIDDLETIER_URL = "https://goldensurrey.store/graphql";
+export const MIDDLETIER_URL = "http://server.goldensurrey.store/graphql"
+
 const cache = new InMemoryCache({ 
   addTypename: false,
   typePolicies: {
@@ -40,18 +44,27 @@ export default function ApolloClientAPI(middletierURL = null) {
   });
 
   const authLink = setContext((_, { headers }) => {
+    const accessTokenHeaderLabel = "saas-access-TENANT";
+    const refreshTokenHeaderLabel = "saas-refresh-TENANT";
+
+    const accessToken = Cookies.get(accessTokenHeaderLabel);
+    const refreshToken = Cookies.get(refreshTokenHeaderLabel);
+    // return the headers to the context so httpLink can read them
+    
     return {
       headers: {
         ...headers,
-        //'Access-Control-Allow-Origin': '*'
+        // authorization: accessToken ? `Bearer ${accessToken}` : "",
+        authorization: accessToken && refreshToken ? `${accessToken},${refreshToken}` : "",
+        // "Set-Cookie": `${accessTokenHeaderLabel}=${accessToken}`
+
       },
-      //credentials: "include"
+      credentials: "include"
     }
   });
 
   const client = new ApolloClient({
-    //link: authLink.concat(httpLink),
-    link: httpLink,
+    link: authLink.concat(httpLink),
     cache
   });
 

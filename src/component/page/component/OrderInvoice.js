@@ -124,12 +124,18 @@ const OrderInvoice = (props) => {
             bordered
             column={{ xxl: 1, xl: 1, lg: 1, md: 1, sm: 1, xs: 1 }}
         >
-            <Descriptions.Item label="名字">{order.customer.name}</Descriptions.Item>
-            <Descriptions.Item label="电话号码">{order.customer.contact}</Descriptions.Item>
-            <Descriptions.Item label="收件地址">{order.customer.address}</Descriptions.Item>
-            <Descriptions.Item label="邮编">{order.customer.postcode}</Descriptions.Item>
-            <Descriptions.Item label="省份">{order.customer.province}</Descriptions.Item>
-            <Descriptions.Item label="备注">{order.remark ? order.remark : '-'}</Descriptions.Item>
+          {
+            order.customer ? (
+              <>
+                <Descriptions.Item label="名字">{order.customer.name}</Descriptions.Item>
+                <Descriptions.Item label="电话号码">{order.customer.contact}</Descriptions.Item>
+                <Descriptions.Item label="收件地址">{order.customer.address}</Descriptions.Item>
+                <Descriptions.Item label="邮编">{order.customer.postcode}</Descriptions.Item>
+                <Descriptions.Item label="省份">{order.customer.province}</Descriptions.Item>
+                <Descriptions.Item label="备注">{order.remark ? order.remark : '-'}</Descriptions.Item>
+              </>
+            ) : <Descriptions.Item label="错误">查无资料</Descriptions.Item> 
+          }
         </Descriptions>
         <Divider orientation="left">购买列表</Divider>
         <List
