@@ -28,6 +28,7 @@ const GET_ORDERS_QUERY = gql`
       customer
       remark
       sellerRemark
+      remarkForMerchant
       paid
       sentOut
       trackingNum
@@ -87,11 +88,24 @@ const UPDATE_ORDER_REMARK_QUERY = gql`
   }
 `;
 
+const UPDATE_ORDER_DATA_QUERY = gql`
+  mutation updateOrderData($_id: String!, $property: String!, $value: String!) {
+    updateOrderData(_id: $_id, property: $property, value: $value) {
+      success
+      message
+      data
+    }
+  }
+`;
+
 const Orders = (props) => {
   const configCache = useConfigCache();
   const userCache = useUserCache();
   const [ orderModalDisplay, setOrderModalDisplay ] = useState(false);
   const [ selectedOrder, setSelectedOrder ] = useState(null);
+
+  let isTenant = userCache && userCache.success && userCache.data.role == 'TENANT';
+  let isSubTenant = userCache && userCache.success && userCache.data.role == 'SUBTENANT';
 
   // const { data, loading: loadingOrders, error, refetch: refetchOrders } = useOrdersQuery({
   //   variables: {
@@ -145,13 +159,20 @@ const Orders = (props) => {
     }
   })
 
+  const [ updateOrderData , updateOrderDataResult ] = useMutation(UPDATE_ORDER_DATA_QUERY,{
+    onCompleted: (result) => {
+      refetchOrders()
+    }
+  })
+
   let isLoading = updateOrderStatusResult.loading ||
                   updateOrderPaymentResult.loading ||
                   updateOrderDeliveryResult.loading ||
                   cancelOrderResult.loading ||
                   updateOrderRemarkResult.loading ||
+                  updateOrderDataResult.loading ||
                   loadingOrders;
-
+                  
   const handleOrderModalDisplayOpen = (selectedOrder) => {
     setOrderModalDisplay(true);
     setSelectedOrder(selectedOrder)
@@ -302,7 +323,7 @@ const Orders = (props) => {
               }
             })
           }
-          return (<Button type="primary" size="small" onClick={handleUpdateStatus} disabled={isLoading}>Done Preparing</Button>)
+          return (<Button type="primary" size="small" onClick={handleUpdateStatus} disabled={isLoading}>Confirm Order</Button>)
         }
       }
     ]]
@@ -436,7 +457,43 @@ const Orders = (props) => {
           return result;
         }
       }
+      
     ]]
+
+    
+    let remarkForMerchantCol = {
+      title: "Remark for Merchant",
+      dataIndex: 'remarkForMerchant',
+      key: 'remarkForMerchant',
+      width: 200,
+      render: (text, record) => {
+        let result = null;
+        const handleOnSearch = (value) => {
+          updateOrderData({
+            variables: {
+              _id: record._id,
+              property: "remarkForMerchant",
+              value: value
+            }
+          })
+        }
+        if (isTenant) {
+          result = (
+            <Search
+              placeholder="Enter remark for merchant"
+              enterButton={(<CheckOutlined />)}
+              defaultValue={text}
+              size="small"
+              onSearch={handleOnSearch}
+            />
+          )
+        }
+        else {
+          result = text ? text : "-";
+        }
+        return result;
+      }
+    }
 
     let sellerRemarkCol = {
       title: "Remark",
@@ -466,13 +523,30 @@ const Orders = (props) => {
       }
     }
 
+    let moveToPaid = {
+      title: "",
+      dataIndex: 'xx',
+      key: 'xx',
+      render: (text, record) => {
+        const handleUpdateStatus = () => {
+          updateOrderStatus({
+            variables: {
+              _id: record._id,
+              status: "1"
+            }
+          })
+        }
+        return (<Button type="danger" size="small" onClick={handleUpdateStatus} disabled={isLoading}>Back to Paid</Button>)
+      }
+    }
+
     return {
       newOrders: tableCol1,
-      paidOrders: tableCol2,
+      paidOrders: [...tableCol2, remarkForMerchantCol],
       pendingOrders: tableCol3,
       completedOrders: tableCol4,
-      paidOrders2: [...tableCol5, sellerRemarkCol],
-      preparedOrders: [...tableCol6, sellerRemarkCol]
+      paidOrders2: [...tableCol5, sellerRemarkCol, remarkForMerchantCol],
+      preparedOrders: [...tableCol6, sellerRemarkCol, moveToPaid]
     }
   }
 
@@ -539,8 +613,6 @@ const Orders = (props) => {
   let filteredColumns = getColumnsByTable();
   let filteredOrders = getFilteredOrders();
 
-  let isTenant = userCache && userCache.success && userCache.data.role == 'TENANT';
-  let isSubTenant = userCache && userCache.success && userCache.data.role == 'SUBTENANT';
 
   
   const colWidth = 150;

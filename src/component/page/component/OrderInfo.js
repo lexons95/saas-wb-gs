@@ -10,7 +10,7 @@ import { useConfigCache } from '../../../utils/customHook';
 const OrderInfo = (props) => {
   const { order, closeModal, visible, ...restProps } = props;
   const configCache = useConfigCache();
-
+console.log('orderrrrrr',order)
   const orderItems = (item) => {
     let title = item.product.name;
     let variant = "";

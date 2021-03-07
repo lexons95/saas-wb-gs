@@ -24,11 +24,12 @@ const OrderInvoice = (props) => {
     if (configCache && item.product.image) {
       imageSrc = configCache.imageSrc + item.product.image;
     }
+    
     return (
       <List.Item
         actions={[
           "qty: " + item.qty,
-          "price: " + item.onSale ? item.salePrice : item.price
+          "price: " + item.onSale && item.salePrice != null ? item.salePrice : item.price
         ]}
       >
         <List.Item.Meta
