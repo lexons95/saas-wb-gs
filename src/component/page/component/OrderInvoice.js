@@ -133,7 +133,8 @@ const OrderInvoice = (props) => {
                 <Descriptions.Item label="收件地址">{order.customer.address}</Descriptions.Item>
                 <Descriptions.Item label="邮编">{order.customer.postcode}</Descriptions.Item>
                 <Descriptions.Item label="省份">{order.customer.province}</Descriptions.Item>
-                <Descriptions.Item label="备注">{order.remark ? order.remark : '-'}</Descriptions.Item>
+                <Descriptions.Item label="客户留言">{order.remark ? order.remark : '-'}</Descriptions.Item>
+                <Descriptions.Item label="Remark for merchant">{order.remarkForMerchant ? order.remarkForMerchant : '-'}</Descriptions.Item>
               </>
             ) : <Descriptions.Item label="错误">查无资料</Descriptions.Item> 
           }

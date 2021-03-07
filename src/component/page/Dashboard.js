@@ -107,21 +107,22 @@ const DashBoard = (props) => {
 
       anOrder.items.forEach((anItem)=>{
         let foundCategoryIndex = distinctCategory.map((aCategory)=>aCategory.name).indexOf(anItem.product.category)
+        let actualPrice = anItem.onSale && anItem.salePrice != null ? anItem.salePrice : anItem.price;
         if (foundCategoryIndex >= 0) {
           distinctCategory[foundCategoryIndex] = {
             ...distinctCategory[foundCategoryIndex],
-            total: distinctCategory[foundCategoryIndex].total + (parseFloat(anItem.price)*parseInt(anItem.qty)),
+            total: distinctCategory[foundCategoryIndex].total + (parseFloat(actualPrice)*parseInt(anItem.qty)),
             qty: distinctCategory[foundCategoryIndex].qty + parseInt(anItem.qty)
           }
         }
         else {
           distinctCategory.push({
             name: anItem.product.category,
-            total: (parseFloat(anItem.price)*parseInt(anItem.qty)),
+            total: (parseFloat(actualPrice)*parseInt(anItem.qty)),
             qty: parseInt(anItem.qty)
           })
         }
-        subTotal += parseFloat(anItem.price)*parseInt(anItem.qty);
+        subTotal += parseFloat(actualPrice)*parseInt(anItem.qty);
       })
     });
 
