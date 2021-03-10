@@ -6,9 +6,6 @@ import Cookies from 'js-cookie';
 import { configVar, userVar } from './cache';
 
 // export const MIDDLETIER_URL = "http://127.0.0.1:8080/graphql";
-// export const MIDDLETIER_URL = "http://localhost:3000/graphql";
-// export const MIDDLETIER_URL = "http://15.165.150.23/graphql";
-// export const MIDDLETIER_URL = "http://8.210.145.128/graphql";
 // export const MIDDLETIER_URL = "https://goldensurrey.store/graphql";
 export const MIDDLETIER_URL = "http://server.goldensurrey.store/graphql"
 
