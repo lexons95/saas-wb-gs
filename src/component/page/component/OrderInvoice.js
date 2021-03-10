@@ -49,7 +49,7 @@ const OrderInvoice = (props) => {
     extraCharges.push(foundDutyTaxInsurance)
   }
 
-
+console.log('orderorder',order)
 
   const getPdf = () => {
     var element = document.getElementById('orderInvoice');
