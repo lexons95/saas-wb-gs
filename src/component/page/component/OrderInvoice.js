@@ -24,12 +24,14 @@ const OrderInvoice = (props) => {
     if (configCache && item.product.image) {
       imageSrc = configCache.imageSrc + item.product.image;
     }
+
+    let singlePrice =  item.onSale && item.salePrice != null ? item.salePrice : item.price;
     
     return (
       <List.Item
         actions={[
           "qty: " + item.qty,
-          "price: " + item.onSale && item.salePrice != null ? item.salePrice : item.price
+          "price: " + singlePrice
         ]}
       >
         <List.Item.Meta
@@ -49,6 +51,13 @@ const OrderInvoice = (props) => {
     extraCharges.push(foundDutyTaxInsurance)
   }
 
+  let subTotal = 0;
+  let totalWeight = 0;
+  order && order.items && order.items.forEach((anItem)=>{
+    let singlePrice =  anItem.onSale && anItem.salePrice != null ? anItem.salePrice : anItem.price;
+    subTotal += (anItem.qty * singlePrice);
+    totalWeight += (anItem.qty * anItem.weight)
+  })
 console.log('orderorder',order)
 
   const getPdf = () => {
@@ -153,6 +162,8 @@ console.log('orderorder',order)
                 column={{ xxl: 1, xl: 1, lg: 1, md: 1, sm: 1, xs: 1 }}
                 style={{maxWidth:"100%"}}
               >
+                <Descriptions.Item label={"总重量"}>{totalWeight/1000}kg</Descriptions.Item>
+                <Descriptions.Item label={"小计"}>{subTotal}</Descriptions.Item>
                 <Descriptions.Item label={"邮费"}>{order.deliveryFee ? order.deliveryFee : 0}</Descriptions.Item>
                 {
                   extraCharges.length > 0 ? 

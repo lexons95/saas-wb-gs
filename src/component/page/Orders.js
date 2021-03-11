@@ -540,13 +540,25 @@ const Orders = (props) => {
       }
     }
 
+    let generalCols = [
+      {
+        title: "Delivery Fee",
+        dataIndex: 'deliveryFee',
+        key: 'deliveryFee',
+        sorter: (a, b) => a.deliveryFee - b.deliveryFee,
+        width: 200,
+        render: (text, record) => {
+          return text;
+        }
+      }
+    ]
     return {
-      newOrders: tableCol1,
-      paidOrders: [...tableCol2, remarkForMerchantCol],
-      pendingOrders: tableCol3,
-      completedOrders: tableCol4,
-      paidOrders2: [...tableCol5, sellerRemarkCol, remarkForMerchantCol],
-      preparedOrders: [...tableCol6, sellerRemarkCol, moveToPaid]
+      newOrders: [...tableCol1, ...generalCols],
+      paidOrders: [...tableCol2, remarkForMerchantCol, ...generalCols],
+      pendingOrders: [...tableCol3, ...generalCols],
+      completedOrders: [...tableCol4, ...generalCols],
+      paidOrders2: [...tableCol5, sellerRemarkCol, remarkForMerchantCol, ...generalCols],
+      preparedOrders: [...tableCol6, sellerRemarkCol, moveToPaid, ...generalCols]
     }
   }
 

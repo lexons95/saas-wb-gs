@@ -415,7 +415,13 @@ const Inventory = (props) => {
   let allCategories = productsData && productsData.products ? getAllProductCategory(productsData.products) : []
   let allTags = productsData && productsData.products ? getAllProductTags(productsData.products) : []
 
-  let tableData = getTableData()
+  let tableData = getTableData();
+  let totalPublished = 0;
+  tableData.forEach((aData)=>{
+    if (aData.published) {
+      totalPublished += 1
+    }
+  })
 
   const getAllImagesName = async () => {
     let allImages = [];
@@ -499,7 +505,7 @@ const Inventory = (props) => {
           showSizeChanger: true,
           position: ['topRight'],
           showTotal: (total, range)=>{
-            return `Showing ${range[0]}-${range[1]}/${total}`
+            return `Total Published: ${totalPublished} Showing ${range[0]}-${range[1]}/${total}`
           }
         }}
         scroll={{x: columns.length * 150}}
